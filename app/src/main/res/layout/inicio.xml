@@ -5,11 +5,21 @@
     android:orientation="vertical">
 
 
+    <ImageView
+        android:id="@+id/tv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/LOGO2_ICN"
+        android:layout_marginTop="100dp"
+
+        />
+
     <TextView
         android:id="@+id/tv_inicioUsuario"
         android:layout_width="270dp"
         android:layout_height="50dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="50dp"
         android:hint="  Usuario"
         android:textSize="18sp"
         android:layout_gravity="center"
@@ -29,8 +39,8 @@
 
     <TextView
         android:id="@+id/tv_olvidastePassword"
-        android:layout_width="270dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:layout_marginLeft="60dp"
         android:hint="¿Olvidaste la contraseñia?"
@@ -39,8 +49,8 @@
 
     <TextView
         android:id="@+id/tv_recordarUsuario"
-        android:layout_width="270dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
         android:hint="Recordar usuario"
         android:textSize="18sp"
