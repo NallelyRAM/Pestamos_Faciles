@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/LOGO_ICN1"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_detalleNombre"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:text="Nombre"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tv_detalleDescripcion"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:text="Descipcion"/>
+
+</LinearLayout>
