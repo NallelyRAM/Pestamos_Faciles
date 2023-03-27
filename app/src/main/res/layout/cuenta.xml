@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/user" />
+
+        <TextView
+            android:id="@+id/tv_cuentaUsuario"
+            android:layout_width="190dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:textSize="18sp"
+            android:text="Usuario"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_configuracionCuenta"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="4dp"
+        android:layout_gravity="center"
+        android:text="Configuración de la cuenta"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="350dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:background="@color/purple_500"/>
+
+    <TextView
+        android:id="@+id/tv_misDatos"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="18sp"
+        android:text="Mis datos"/>
+
+    <TextView
+        android:id="@+id/tv_seguridad"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="18sp"
+        android:text="Seguridad"/>
+
+    <TextView
+        android:id="@+id/tv_misTarjetas"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="18sp"
+        android:text="Mis tarjetas"/>
+
+    <TextView
+        android:id="@+id/tv_direccion"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="18sp"
+        android:text="Dirección"/>
+
+    <TextView
+        android:id="@+id/tv_privacidad"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="18sp"
+        android:text="Privacidad"/>
+
+    <TextView
+        android:id="@+id/tv_cerrarSesion"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="18sp"
+        android:text="Cerrar cuenta"/>
+
+    <View
+        android:layout_width="350dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:background="@color/purple_500"/>
+</LinearLayout>
