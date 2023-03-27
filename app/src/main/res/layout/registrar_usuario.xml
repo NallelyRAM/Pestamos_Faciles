@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/LOGO2_ICN" />
 
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="450dp"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/round_textview">
 
         <TextView
@@ -122,10 +130,10 @@
     <Button
         android:id="@+id/btn_registrar"
         android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="49dp"
         android:layout_gravity="center"
-        android:text="Registrar"
-        android:background="@drawable/round_button"/>
+        android:layout_marginTop="15dp"
+        android:background="@drawable/round_button"
+        android:text="Registrar" />
 
 </LinearLayout>
