@@ -27,10 +27,10 @@
     <Button
         android:id="@+id/btn_nuevaContrasenia"
         android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Guardar"
-        android:background="@drawable/round_button"/>
+        android:layout_marginTop="15dp"
+        android:background="@drawable/round_button"
+        android:text="Guardar" />
 
 </LinearLayout>
