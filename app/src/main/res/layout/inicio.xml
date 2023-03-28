@@ -39,19 +39,19 @@
 
     <TextView
         android:id="@+id/tv_olvidastePassword"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="15dp"
         android:hint="¿Olvidaste la contraseñia?"
         android:textSize="18sp"
         android:layout_gravity="center" />
 
     <TextView
         android:id="@+id/tv_recordarUsuario"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="15dp"
         android:hint="Recordar usuario"
         android:textSize="18sp"
         android:layout_gravity="center"/>
