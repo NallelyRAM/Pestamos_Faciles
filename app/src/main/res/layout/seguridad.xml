@@ -82,12 +82,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30sp"
-        android:text="Para mayor seguridad de la cuenta,
-        \nagrega tu número de teléfono. Si
-        \nhay un inicio de sesión inusual,
-        \npodemos enviarte un código y
-        \nverificar si eres tu."
+        android:text="Para mayor seguridad de la cuenta, agrega tu número de teléfono. Si hay un inicio de sesión inusual, podemos enviarte un código y verificar si eres tu."
         android:layout_marginLeft="65dp"
+        android:textAlignment="center"
+        android:layout_marginRight="65dp"
         android:textSize="18sp"
         android:textStyle="italic"
         />

@@ -23,13 +23,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30sp"
         android:layout_marginRight="65dp"
-        android:text="Al utilizar los servicios de prestodo,
-        \nusted está dando consentimiento a
-        \nlas prácticas descritas en este aviso
-        \nde privacidad.
+        android:text="Al utilizar los servicios de prestodo, usted está dando consentimiento a las prácticas descritas en este aviso de privacidad.
         \n
         \nSi tiene preguntas sobre cómo recabamos y usamos sus datos personales o sobre este aviso de privacidad, por favor póngase en contacto con nosotros.\n\nNuestros datos de contacto son:"
         android:layout_marginLeft="65dp"
+        android:textAlignment="center"
         android:textSize="18sp"
         />
 
