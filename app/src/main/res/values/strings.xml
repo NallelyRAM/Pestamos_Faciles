@@ -1,13 +1,4 @@
 <resources>
     <string name="app_name">PrestamosFaciles</string>
 
-        <font-family name=">AvenirFF"
-            fontStyle="normal"
-            fontWeight="400">
-                <font
-                    font="@Font/AvenirLTStd-Book"
-                    fontStyle="normal"
-                    fontWeight="400" />
-        </font-family>
-
 </resources>
