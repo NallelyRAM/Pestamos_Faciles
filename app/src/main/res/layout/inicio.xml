@@ -13,7 +13,6 @@
         android:layout_gravity="center"
         android:src="@drawable/LOGO2_ICN"
         android:layout_marginTop="100dp"
-
         />
 
     <TextView
@@ -60,7 +59,7 @@
     <Button
         android:id="@+id/btn_inicioRegistrar"
         android:layout_width="250dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:text="Registrar"
@@ -69,7 +68,7 @@
     <Button
         android:id="@+id/btn_iniciarSesion"
         android:layout_width="250dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:text="Iniciar Sesión"
