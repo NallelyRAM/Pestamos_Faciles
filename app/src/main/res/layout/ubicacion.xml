@@ -37,6 +37,7 @@
 
     <TextView
         android:id="@+id/tv_ubicacion"
+        android:layout_marginTop="15dp"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginLeft="30dp"
