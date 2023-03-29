@@ -12,6 +12,9 @@
         android:theme="@style/Theme.PrestamosFaciles"
         tools:targetApi="31">
         <activity
+            android:name=".perfil"
+            android:exported="false" />
+        <activity
             android:name=".Condiciones"
             android:exported="false" />
         <activity
