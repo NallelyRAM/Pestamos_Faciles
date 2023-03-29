@@ -13,5 +13,27 @@
         android:layout_height="wrap_content"
         android:text="Descripción"
         android:textSize="30sp" />
+    <TextView
+        android:id="@+id/tv_descripcion_seleccion_producto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descripción del prducto"
+        android:textSize="18sp" />
+    <ImageView
+        android:id="@+id/iv_producto_seleccionado"
+        android:layout_width="142dp"
+        android:layout_height="191dp"
+        android:layout_gravity="center"
+        android:src="@drawable/LOGO2_ICN"
+        />
+
+    <TextView
+        android:id="@+id/tv_precio_seleccionProducto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0.0"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
 
 </LinearLayout>
