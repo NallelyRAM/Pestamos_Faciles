@@ -10,12 +10,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:layout_marginTop="60dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView19"
+            android:id="@+id/iv_productoCondiciones"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
             app:srcCompat="@drawable/LOGO2_ICN" />
 
         <LinearLayout
@@ -25,29 +27,97 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_condicionesNombreProducto"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="A"
+                android:text="Nombre del producto"
                 android:textSize="20sp"
 
                 />
+
             <TextView
+                android:id="@+id/tv_condicionesDescripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="sdas"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:text="adasdad"
+                android:text="descripción"
                 />
 
         </LinearLayout>
-
+        
 
     </LinearLayout>
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginTop="50dp"
+        android:textSize="30sp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginRight="20dp"
+        android:text="Tiempo de devolución\ny condiciones"
+        />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginRight="43dp"
+        android:textSize="17dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        android:layout_marginBottom="36dp"
+
+        />
+
+    <Button
+        android:id="@+id/btn_condicionesLocalizar"
+        android:layout_marginTop="15dp"
+        android:layout_width="270dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:background="@drawable/round_button"
+        android:text="Localizar"
+        android:textSize="18sp"/>
+    <Button
+        android:id="@+id/btn_condicionesSiguiente"
+        android:layout_marginTop="15dp"
+        android:layout_width="270dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:background="@drawable/round_button"
+        android:text="Siguiente"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/home" />
+
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/user" />
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/busqueda" />
+
+    </LinearLayout>
 
 </LinearLayout>
