@@ -14,9 +14,9 @@
 
     <GridView
         android:id="@+id/id_grid"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="520dp"
         android:numColumns="1" />
 
     <LinearLayout
