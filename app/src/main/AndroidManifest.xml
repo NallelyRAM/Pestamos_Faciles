@@ -12,8 +12,10 @@
         android:theme="@style/Theme.PrestamosFaciles"
         tools:targetApi="31">
         <activity
-            android:name=".Historial"
-            android:exported="false" />
+            android:name=".HistorialActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme"
+            />
         <activity
             android:name=".perfil"
             android:exported="false" />
@@ -25,13 +27,37 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/AppTheme"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".InicioActivity"
+                android:theme="@style/AppTheme"
+            />
+
+        <activity android:name=".PrincipalActivity"
+            android:theme="@style/AppTheme"
+            />
+
+        <activity android:name=".CuentaActivity"
+            android:theme="@style/AppTheme"
+            />
+        <activity android:name=".DatosPersonalesActivity"
+            android:theme="@style/AppTheme"
+            />
+
+        <activity android:name=".MisTarjetasActivity"
+            android:theme="@style/AppTheme"
+            />
+        <activity android:name=".PrivacidadActivity"
+            android:theme="@style/AppTheme"
+            />
+
     </application>
 
 </manifest>

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".CuentaActivity"
     android:theme="@android:style/Theme.NoTitleBar"
+
     android:orientation="vertical">
 
     <LinearLayout
@@ -56,6 +59,7 @@
         android:layout_marginLeft="30dp"
         android:textSize="18sp"
         android:text="Mis datos"/>
+
     <TextView
         android:id="@+id/tv_historial"
         android:layout_width="190dp"
@@ -72,6 +76,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
+        android:onClick="cargarTarjetas"
         android:textSize="18sp"
         android:text="Mis tarjetas"/>
 
@@ -103,7 +108,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="50dp"
         android:layout_height="50dp"
         android:orientation="horizontal">
 
@@ -113,6 +118,7 @@
             android:layout_width="70dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:onClick="btnHome"
             app:srcCompat="@drawable/home" />
 
         <ImageView

@@ -24,7 +24,7 @@
         android:layout_width="142dp"
         android:layout_height="191dp"
         android:layout_gravity="center"
-        android:src="@drawable/LOGO2_ICN"
+        android:src="@drawable/logo2_icn"
         />
 
     <TextView

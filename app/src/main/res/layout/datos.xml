@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".DatosPersonalesActivity"
     android:theme="@android:style/Theme.NoTitleBar"
+
     android:orientation="vertical">
 
 
@@ -27,84 +30,91 @@
         android:background="@drawable/round_textview">
 
 
-        <TextView
+        <EditText
             android:id="@+id/tv_misDatosNombre"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:textSize="18sp"
-            android:text=" Nombre" />
+            android:enabled="true"
+            android:hint=" Nombre"
+            android:textSize="18sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/purple_500"/>
 
-        <TextView
+        <EditText
             android:id="@+id/tv_misDatosApellidos"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:textSize="18sp"
-            android:text=" Apellidos" />
+            android:hint=" Apellidos" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/purple_500"/>
 
-        <TextView
+        <EditText
             android:id="@+id/tv_misDatosFechaNacimiento"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:textSize="18sp"
-            android:text=" Fecha de nacimiento" />
+            android:hint=" Fecha de nacimiento"
+            android:focusable="false"
+            android:inputType="none"
+            android:onClick="mostrarDatePicker"
+            />
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/purple_500"/>
 
-        <TextView
+        <EditText
             android:id="@+id/tv_telefono"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:textSize="18sp"
-            android:text=" Telefono" />
+            android:hint=" Telefono"
+            android:inputType="number"
+            />
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/purple_500"/>
 
-        <TextView
+        <EditText
             android:id="@+id/tv_Correo"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:textSize="18sp"
-            android:text=" Correo" />
+            android:hint=" Correo" />
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/purple_500"/>
 
-        <TextView
+        <EditText
             android:id="@+id/tv_misDatosUbicacion"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:textSize="18sp"
-            android:text=" Ubicación" />
+            android:hint=" Ubicación" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_inicioFinalizar"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="85dp"
         android:background="@drawable/round_button"
         android:text="Finalizar" />
 

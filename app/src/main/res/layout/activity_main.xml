@@ -11,11 +11,12 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="398dp"
-        android:layout_height="241dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginTop="250dp"
-        app:srcCompat="@drawable/LOGO2_ICN"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/logo2_icn"
         tools:layout_editor_absoluteX="106dp"
         tools:layout_editor_absoluteY="123dp" />
 
