@@ -20,10 +20,10 @@
 
     <LinearLayout
         android:layout_width="300dp"
-        android:layout_height="250dp"
+        android:layout_height="380dp"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="1dp"
         android:background="@drawable/round_textview">
 
 
@@ -60,7 +60,30 @@
             android:layout_marginTop="10dp"
             android:textSize="18sp"
             android:text=" Fecha de nacimiento" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/purple_500"/>
 
+        <TextView
+            android:id="@+id/tv_telefono"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"
+            android:text=" Telefono" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/purple_500"/>
+
+        <TextView
+            android:id="@+id/tv_Correo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"
+            android:text=" Correo" />
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
