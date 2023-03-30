@@ -117,21 +117,21 @@
 
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/iv_navMenu_cuenta_Inicio"
             android:layout_width="70dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/home" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/iv_navMenu_cuenta_Perfil"
             android:layout_width="70dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/user" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/iv_navMenu_cuenta_Categorias"
             android:layout_width="70dp"
             android:layout_height="50dp"
             android:layout_weight="1"

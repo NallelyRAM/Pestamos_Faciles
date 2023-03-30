@@ -85,21 +85,21 @@
 
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/iv_navMenu_Privacidad_Inicio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:srcCompat="@drawable/home" />
 
         <ImageView
-            android:id="@+id/imageView12"
+            android:id="@+id/iv_navMenu_Privacidad_Perfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:srcCompat="@drawable/user" />
 
         <ImageView
-            android:id="@+id/imageView13"
+            android:id="@+id/iv_navMenu_Privacidad_Categorias"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
