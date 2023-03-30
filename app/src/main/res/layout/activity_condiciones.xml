@@ -65,7 +65,7 @@
         android:layout_marginLeft="43dp"
         android:layout_marginRight="43dp"
         android:textSize="17dp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        android:text="Tienes 7 días corridos para devolverlo desde que te llegó."
         android:layout_marginBottom="36dp"
 
         />

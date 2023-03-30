@@ -65,14 +65,6 @@
         android:textSize="18sp"
         android:text="Historial"/>
 
-    <TextView
-        android:id="@+id/tv_seguridad"
-        android:layout_width="190dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="30dp"
-        android:textSize="18sp"
-        android:text="Seguridad"/>
 
     <TextView
         android:id="@+id/tv_misTarjetas"
@@ -83,14 +75,6 @@
         android:textSize="18sp"
         android:text="Mis tarjetas"/>
 
-    <TextView
-        android:id="@+id/tv_direccion"
-        android:layout_width="190dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="30dp"
-        android:textSize="18sp"
-        android:text="Dirección"/>
 
     <TextView
         android:id="@+id/tv_privacidad"
@@ -119,7 +103,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="130dp"
         android:layout_height="50dp"
         android:orientation="horizontal">
 
