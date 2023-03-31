@@ -23,8 +23,8 @@
 
     <TextView
         android:id="@+id/tv_numeroTarjeta"
-        android:layout_width="330dp"
-        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
         android:textSize="18sp"
@@ -49,8 +49,8 @@
 
             <TextView
                 android:id="@+id/tv_vencimiento"
-                android:layout_width="210dp"
-                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
@@ -86,12 +86,12 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
-                android:text="CCV"/>
+                android:text="CVV"/>
 
             <TextView
                 android:id="@+id/tv_numeroCCV"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
@@ -127,8 +127,8 @@
 
             <TextView
                 android:id="@+id/tv_emisor"
-                android:layout_width="200dp"
-                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
@@ -205,8 +205,8 @@
 
             <TextView
                 android:id="@+id/tv_cantidadSubtotal"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="00 00"
@@ -214,8 +214,8 @@
 
             <TextView
                 android:id="@+id/tv_cantidadIVA"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="00 00"
@@ -223,8 +223,8 @@
 
             <TextView
                 android:id="@+id/tv_cantidadTotal"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="00 00"

@@ -110,7 +110,7 @@ class MisTarjetasActivity : AppCompatActivity() {
             var layout = vista.findViewById<LinearLayout>(R.id.layout_tarjeta)
 
             cuatroDigitos.setText("XXXX "+tarjeta.ultimosCuatroDigitos)
-            vencimiento.setText(tarjeta.fechaVencimiento.toString())
+            vencimiento.setText(getFormatoFecha(tarjeta.fechaVencimiento.toString()))
             layout.setOnClickListener{
                 if(precio != 0.0){
                     val intento = Intent(context,PagoActivity::class.java)
@@ -127,6 +127,20 @@ class MisTarjetasActivity : AppCompatActivity() {
             }
             return vista
         }
+
+        fun getFormatoFecha(fecha: String?) : String{
+            val formatoActual = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US)
+            // Convertimos el String a un objeto Date
+            val fecha = formatoActual.parse(fecha)
+
+            // Creamos una segunda instancia de SimpleDateFormat con el formato deseado
+            val formatoDeseado = SimpleDateFormat("MM/yy", Locale.US)
+
+            // Formateamos la fecha en el formato deseado
+            val fechaFormateada = formatoDeseado.format(fecha)
+            return fechaFormateada
+        }
+
     }
 
 

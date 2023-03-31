@@ -15,42 +15,54 @@
         android:layout_height="2dp"
         android:background="@color/purple_500"/>
 
+
+
     <GridView
         android:id="@+id/id_grid"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="520dp"
+        android:layout_height="550dp"
         android:verticalSpacing="50dp"
         android:numColumns="1" />
 
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
 
 
-        <ImageView
-            android:id="@+id/iv_navMenu_Principal_Inicio"
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/home" />
+            <ImageView
+                android:id="@+id/iv_navMenu_Principal_Inicio"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/home" />
 
-        <ImageView
-            android:id="@+id/iv_navMenu_Principal_Perfil"
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="btnMiPerfil"
-            app:srcCompat="@drawable/user" />
+            <ImageView
+                android:id="@+id/iv_navMenu_Principal_Perfil"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:onClick="btnMiPerfil"
+                app:srcCompat="@drawable/user" />
 
-        <ImageView
-            android:id="@+id/iv_navMenu_Principal_Categorias"
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/busqueda" />
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_navMenu_Principal_Categorias"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/busqueda" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
 
 </LinearLayout>
