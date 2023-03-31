@@ -31,6 +31,7 @@ class CuentaActivity : AppCompatActivity() {
 
         btnMisTarjetas.setOnClickListener{
             var intent: Intent = Intent(this,MisTarjetasActivity::class.java)
+            intent.putExtra("seleccion",1)
             startActivity(intent)
         }
 

@@ -8,34 +8,45 @@
     android:theme="@android:style/Theme.NoTitleBar"
     tools:context=".SeleccionProducto">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Descripción"
-        android:textSize="30sp" />
-    <TextView
-        android:id="@+id/tv_descripcion_seleccion_producto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Descripción del prducto"
-        android:textSize="18sp" />
+
     <ImageView
         android:id="@+id/iv_producto_seleccionado"
         android:layout_width="142dp"
         android:layout_height="191dp"
         android:layout_gravity="center"
         android:src="@drawable/logo2_icn"
+        android:layout_marginBottom="15dp"
         />
-
     <TextView
         android:id="@+id/tv_precio_seleccionProducto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="0.0"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_nombreProducto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="25dp"
+        android:text="Nombre"
+        android:textStyle="bold"
+        android:layout_marginBottom="25dp"
+        android:textSize="30sp" />
+    <TextView
+        android:id="@+id/tv_descripcion_seleccion_producto"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:paddingLeft="50dp"
+        android:text="Descripción del prducto"
+        android:textSize="18sp" />
+
+
+
     <Button
-        android:id="@+id/btn_registrar"
+        android:id="@+id/btn_detalles"
         android:layout_width="250dp"
         android:layout_height="49dp"
         android:layout_gravity="center"

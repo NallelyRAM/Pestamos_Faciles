@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.GridView
+import android.widget.LinearLayout
 import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,18 +21,28 @@ class MisTarjetasActivity : AppCompatActivity() {
     var adapter: TarjetaAdapter? = null
     var tarjetas = ArrayList<Tarjeta>()
 
+    var precio: Double = 0.0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mis_tarjetas)
 
+        val bundle = intent.extras
+
         cargarTarjetas()
         val gridview: GridView = findViewById(R.id.id_grid)
-        adapter = TarjetaAdapter(tarjetas,this)
+        if (bundle != null) {
+            precio = bundle.getDouble("precio")
+        }
+
+        adapter = TarjetaAdapter(tarjetas,this,precio)
+
         gridview.adapter = adapter
 
-    }
 
+
+    }
     fun cargarTarjetas(){
 
         // Aquí se cargarán las tarjetas, pero por lo mientras, se cargan así xD
@@ -65,10 +76,13 @@ class MisTarjetasActivity : AppCompatActivity() {
     class TarjetaAdapter : BaseAdapter{
         var tarjetas = ArrayList<Tarjeta>()
         var context: Context? = null
+        var precio: Double = 0.0
 
-        constructor(tarjetas: ArrayList<Tarjeta>, context: Context?) : super() {
+
+        constructor(tarjetas: ArrayList<Tarjeta>, context: Context?, precio: Double) : super() {
             this.tarjetas = tarjetas
             this.context = context
+            this.precio = precio
         }
 
         override fun getCount(): Int {
@@ -93,14 +107,28 @@ class MisTarjetasActivity : AppCompatActivity() {
 
             var cuatroDigitos = vista.findViewById(R.id.tv_detalle_terminaEn) as TextView
             var vencimiento = vista.findViewById<TextView>(R.id.tv_detalle_venceEn)
+            var layout = vista.findViewById<LinearLayout>(R.id.layout_tarjeta)
 
             cuatroDigitos.setText("XXXX "+tarjeta.ultimosCuatroDigitos)
             vencimiento.setText(tarjeta.fechaVencimiento.toString())
+            layout.setOnClickListener{
+                if(precio != 0.0){
+                    val intento = Intent(context,PagoActivity::class.java)
 
+                    intento.putExtra("numTarjeta",tarjeta.numTarjeta)
+                    intento.putExtra("fechaVencimiento",tarjeta.fechaVencimiento.toString())
+                    intento.putExtra("CVV",tarjeta.CVV)
+                    intento.putExtra("nombreTitular",tarjeta.nombreTitular)
+                    intento.putExtra("emisor",tarjeta.emisor)
+                    intento.putExtra("ultimosCuatroDigitor",tarjeta.ultimosCuatroDigitos)
+                    intento.putExtra("precio",precio)
+                    context!!.startActivity(intento)
+                }
+            }
             return vista
-
         }
     }
+
 
     fun btnMiPerfil(view: View){
         var intent: Intent = Intent(this,CuentaActivity::class.java)

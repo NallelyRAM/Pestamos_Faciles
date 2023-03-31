@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.GridView
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import java.util.*
 import kotlin.collections.ArrayList
@@ -80,11 +81,21 @@ class PrincipalActivity : AppCompatActivity() {
             var precio = vista.findViewById<TextView>(R.id.tv_detallePrecio)
             var descripcion = vista.findViewById<TextView>(R.id.tv_detalleDescripcion)
             var imagen = vista.findViewById<ImageView>(R.id.iv_producto)
+            var layoutClick = vista.findViewById<LinearLayout>(R.id.producto_completo)
 
             nombre.setText(producto.nombre)
             precio.setText("$${producto.precio}")
             descripcion.setText(producto.descripcion)
             imagen.setImageResource(producto.imagen)
+
+            layoutClick.setOnClickListener{
+                val intento = Intent(context,SeleccionProducto::class.java)
+                intento.putExtra("nombre",producto.nombre)
+                intento.putExtra("imagen",producto.imagen)
+                intento.putExtra("precio",producto.precio)
+                intento.putExtra("descripcion",producto.descripcion)
+                context!!.startActivity(intento)
+            }
 
             return vista
 
