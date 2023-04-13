@@ -135,6 +135,13 @@
                 app:srcCompat="@drawable/user" />
 
             <ImageView
+                android:id="@+id/iv_navMenu_cuenta_mas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/más" />
+
+            <ImageView
                 android:id="@+id/iv_navMenu_cuenta_Categorias"
                 android:layout_width="70dp"
                 android:layout_height="50dp"

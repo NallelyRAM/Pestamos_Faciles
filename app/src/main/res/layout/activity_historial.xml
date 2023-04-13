@@ -103,6 +103,13 @@
             app:srcCompat="@drawable/user" />
 
         <ImageView
+            android:id="@+id/iv_navMenu_perfil_más"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/más" />
+
+        <ImageView
             android:id="@+id/iv_navMenu_perfil_Categorias"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
