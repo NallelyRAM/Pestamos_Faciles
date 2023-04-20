@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">PrestamosFaciles</string>
 
+    //activity_agregar_producto
+    <string name="categoria_producto">Categoría de producto</string>
+    <string name="agregar_foto">agregar foto</string>
+    <string name="agregar_producto">Agregar Producto</string>
+    <string name="nombre_producto">Nombre del producto</string>
+    <string name="descripcion_articulo">Descripción del artículo</string>
+    <string name="precio_alquiler">Precio alquiler</string>
+    <string name="ubicacion">Ubicación</string>
+    <string name="condiciones_entrega_devolucion">Condiciones de entrega y devolución</string>
+    <string name="condiciones_articulo">Condiciones dela artículo</string>
+    <string name="condiciones_uso">Condiciones de uso</string>
 </resources>

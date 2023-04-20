@@ -71,7 +71,7 @@
                 android:layout_width="70dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/más" />
+                app:srcCompat="@drawable/mas" />
 
             <ImageView
                 android:id="@+id/iv_navMenu_MisTarjetas_Categorias"
