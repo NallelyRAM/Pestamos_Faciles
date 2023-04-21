@@ -11,7 +11,7 @@ class InicioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.inicio)
 
-        var btnIniciar: Button =findViewById(R.id.btn_iniciarSesion) as Button
+        var btnIniciar: Button =findViewById(R.id.btn_iniciar_sesion) as Button
 
         var intent: Intent =Intent(this,PrincipalActivity::class.java)
 

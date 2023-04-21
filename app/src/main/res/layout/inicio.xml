@@ -6,38 +6,99 @@
     android:layout_height="match_parent"
     tools:context=".InicioActivity"
     android:theme="@android:style/Theme.NoTitleBar"
-
     android:orientation="vertical">
-
 
     <ImageView
         android:id="@+id/tv_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@drawable/logo2_icn"
-        android:layout_marginTop="110dp"
-        />
+        android:layout_width="267dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/logo_icn" />
 
-    <TextView
-        android:id="@+id/Tv_eslogan"
-        android:layout_width="398dp"
-        android:layout_height="57dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:fontFamily="cursive"
-        android:text="Prestar para trascender"
-        android:textAlignment="center"
-        android:textSize="34sp" />
+
+    <EditText
+        android:id="@+id/et_usuario"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/usuario"
+        android:paddingHorizontal="30dp"
+        android:textStyle="italic"
+        android:fontFamily="@font/avenir_roman"
+        android:textSize="18dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:background="@drawable/contour_round_rectangle" />
+
+    <EditText
+        android:id="@+id/et_contra"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/contra"
+        android:paddingHorizontal="30dp"
+        android:textStyle="italic"
+        android:fontFamily="@font/avenir_roman"
+        android:textSize="18dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:background="@drawable/contour_round_rectangle" />
 
     <Button
-        android:id="@+id/btn_iniciarSesion"
-        android:layout_width="250dp"
+        android:id="@+id/btn_olvidaste_contra"
+        android:layout_width="329dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="20dp"
+        android:background="@null"
+        android:text="@string/olvidaste_contra"
+        android:fontFamily="@font/avenir_roman"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/gray"
+        android:textStyle="italic"
+        android:textSize="18dp"
+        tools:ignore="RtlCompat" />
+
+    <CheckBox
+        android:id="@+id/cb_recordar_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="0dp"
+        android:elegantTextHeight="false"
+        android:text="@string/recordar_usuario"
+        android:textColor="@color/gray"
+        android:fontFamily="@font/avenir_roman"
+        android:textStyle="italic"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_iniciar_sesion"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
         android:background="@drawable/round_button"
-        android:text="Iniciar " />
+        android:text="@string/iniciar_sesion"
+        android:textColor="@color/white"
+        android:fontFamily="@font/avenir_book"
+        android:textSize="18dp"/>
+
+    <Button
+        android:id="@+id/btn_registrar"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_button"
+        android:text="@string/registrarse"
+        android:textColor="@color/white"
+        android:fontFamily="@font/avenir_book"
+        android:textSize="18dp"/>
 
 
 </LinearLayout>

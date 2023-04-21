@@ -12,14 +12,14 @@
 
     <TextView
         android:id="@+id/tv_datoxs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="Datos personales"
-        android:textStyle="bold"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="300dp"
@@ -42,7 +42,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/purple_500"/>
+            android:background="@color/orange"/>
 
         <EditText
             android:id="@+id/tv_misDatosApellidos"
@@ -55,7 +55,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/purple_500"/>
+            android:background="@color/orange"/>
 
         <EditText
             android:id="@+id/tv_misDatosFechaNacimiento"
@@ -71,7 +71,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/purple_500"/>
+            android:background="@color/orange"/>
 
         <EditText
             android:id="@+id/tv_telefono"
@@ -85,7 +85,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/purple_500"/>
+            android:background="@color/orange"/>
 
         <EditText
             android:id="@+id/tv_Correo"
@@ -97,7 +97,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/purple_500"/>
+            android:background="@color/orange"/>
 
         <EditText
             android:id="@+id/tv_misDatosUbicacion"
