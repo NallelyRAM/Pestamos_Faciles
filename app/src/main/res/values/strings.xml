@@ -6,7 +6,7 @@
     <string name="contra">Contraseña</string>
     <string name="olvidaste_contra">¿Olvidaste tu contraseña?</string>
     <string name="recordar_usuario">Recordar usuario</string>
-    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="iniciar_sesion">Iniciar</string>
     <string name="registrarse">Registrarse</string>
 
     //activity_agregar_producto
