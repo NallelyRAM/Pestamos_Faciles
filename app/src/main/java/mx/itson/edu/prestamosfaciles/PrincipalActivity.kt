@@ -3,16 +3,13 @@ package mx.itson.edu.prestamosfaciles
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.GridView
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -25,6 +22,8 @@ class PrincipalActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.principal)
+
+
 
         cargarProductos()
         val gridview: GridView = findViewById(R.id.id_grid)
@@ -103,7 +102,26 @@ class PrincipalActivity : AppCompatActivity() {
     }
 
     fun btnMiPerfil(view: View){
-        var intent: Intent = Intent(this,CuentaActivity::class.java)
-        startActivity(intent)
+
+        val bundle = intent.extras
+
+        if(bundle != null) {
+            val name = bundle.getString("name")
+            val email = bundle.getString("email")
+            val id = bundle.getString("id")
+            val photoURI = bundle?.getParcelable<Uri>("photo")
+
+            var intent: Intent = Intent(this,CuentaActivity::class.java)
+            intent.putExtra("name", name)
+            intent.putExtra("email", email)
+            intent.putExtra("id", id)
+            intent.putExtra("photo", photoURI)
+
+            startActivity(intent)
+        } else {
+            Toast.makeText(this, "Ocurrió un error al cargar el usuario", Toast.LENGTH_SHORT).show()
+        }
+
+
     }
 }

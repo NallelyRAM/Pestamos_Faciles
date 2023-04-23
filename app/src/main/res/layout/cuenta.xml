@@ -16,20 +16,23 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/user" />
+            <ImageView
+                android:id="@+id/iv_photoUser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/user" />
 
         <TextView
-            android:id="@+id/tv_cuentaUsuario"
+            android:id="@+id/tv_nombreUsuario"
             android:layout_width="190dp"
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
-            android:textSize="18sp"
-            android:text="Usuario"/>
+            android:text="Usuario"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

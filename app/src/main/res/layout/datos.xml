@@ -23,7 +23,7 @@
 
     <LinearLayout
         android:layout_width="300dp"
-        android:layout_height="380dp"
+        android:layout_height="410dp"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:layout_marginTop="1dp"
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:enabled="true"
+            android:enabled="false"
             android:hint=" Nombre"
             android:textSize="18sp" />
 
@@ -50,6 +50,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:textSize="18sp"
+            android:enabled="false"
             android:hint=" Apellidos" />
 
         <View
@@ -90,9 +91,11 @@
         <EditText
             android:id="@+id/tv_Correo"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:layout_marginTop="10dp"
             android:textSize="18sp"
+            android:enabled="false"
+            android:autoSizeTextType="uniform"
             android:hint=" Correo" />
         <View
             android:layout_width="match_parent"

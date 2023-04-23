@@ -1,17 +1,44 @@
 package mx.itson.edu.prestamosfaciles
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 
 class CuentaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.cuenta)
+
+        val bundle = intent.extras
+
+        var name: String? = ""
+        var email: String? = ""
+        var id: String? = ""
+        var photoURI: Uri? = null
+
+        if(bundle != null) {
+            name = bundle.getString("name")
+            email = bundle.getString("email")
+            id = bundle.getString("id")
+            photoURI = bundle?.getParcelable<Uri>("photo")
+
+            val tv_nombre: TextView = findViewById(R.id.tv_nombreUsuario)
+            val iv_photoUser: ImageView = findViewById(R.id.iv_photoUser)
+
+            tv_nombre.text = name
+            // Insertamos la imagen en el image view
+            Glide.with(this)
+                .load(photoURI)
+                .into(iv_photoUser)
+        }
+
 
         val btnMisDatos = findViewById<TextView>(R.id.tv_misDatos)
         val btnMiHistorial = findViewById<TextView>(R.id.tv_historial)
@@ -20,7 +47,12 @@ class CuentaActivity : AppCompatActivity() {
         val btnCerrarMiSesion = findViewById<TextView>(R.id.tv_cerrarSesion)
 
         btnMisDatos.setOnClickListener{
-            var intent: Intent = Intent(this,DatosPersonalesActivity::class.java)
+            var intent = Intent(this,DatosPersonalesActivity::class.java)
+            intent.putExtra("name", name)
+            intent.putExtra("email", email)
+            intent.putExtra("id", id)
+            intent.putExtra("photo", photoURI)
+
             startActivity(intent)
         }
 
@@ -43,6 +75,9 @@ class CuentaActivity : AppCompatActivity() {
         btnCerrarMiSesion.setOnClickListener{
             cerrarSesion()
         }
+
+
+
 
     }
 
