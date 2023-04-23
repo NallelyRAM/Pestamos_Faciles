@@ -6,9 +6,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
 class CuentaActivity : AppCompatActivity() {
 
@@ -94,6 +97,7 @@ class CuentaActivity : AppCompatActivity() {
             val intent = Intent(this, InicioActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
+            signOut()
             finish()
         }
         builder.setNegativeButton("No") { _, _ ->
@@ -101,5 +105,14 @@ class CuentaActivity : AppCompatActivity() {
         }
         val dialog = builder.create()
         dialog.show()
+    }
+
+    // Cierra la sesión gmail actual del usuario.
+    fun signOut(){
+        val googleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)
+
+        googleSignInClient.signOut().addOnCompleteListener(this) {
+            Toast.makeText(this, "Sesión terminada", Toast.LENGTH_SHORT).show()
+        }
     }
 }
