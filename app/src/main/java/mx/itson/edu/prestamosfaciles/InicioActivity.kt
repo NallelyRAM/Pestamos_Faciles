@@ -1,24 +1,25 @@
 package mx.itson.edu.prestamosfaciles
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.fido.fido2.api.common.RequestOptions
 import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.FirebaseFirestore
 
 class InicioActivity : AppCompatActivity() {
 
     lateinit var mGoogleSignInClient: GoogleSignInClient
+    private val userRef = FirebaseFirestore.getInstance().collection("usuarios")
+
     val RC_SIG_IN = 343
     val LOG_OUT = 234
 
@@ -41,6 +42,8 @@ class InicioActivity : AppCompatActivity() {
         }
 
     }
+
+
 
     override fun onStart() {
         super.onStart()
@@ -71,6 +74,11 @@ class InicioActivity : AppCompatActivity() {
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
+            usuarioExiste(account) { existe ->
+                if (!existe) {
+                    guardarUsuario(account)
+                }
+            }
             updateUI(account)
         } catch (e: ApiException) {
             Log.w("test_signin", "signInResult:failed code=" + e.statusCode)
@@ -90,4 +98,36 @@ class InicioActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun usuarioExiste(acct: GoogleSignInAccount?, onComplete: (Boolean) -> Unit) {
+        userRef.whereEqualTo("id", acct?.id).get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val documents = task.result
+                onComplete(!documents.isEmpty)
+            } else {
+                // Maneja el error de la consulta
+                Log.d(ContentValues.TAG, "Error getting documents: ", task.exception)
+                onComplete(false)
+            }
+        }
+    }
+
+
+    private fun guardarUsuario(acct: GoogleSignInAccount?){
+        val nameFull = acct?.displayName?.split(" ")
+
+        val name = nameFull?.get(0)
+        val lastName = nameFull?.get(1)
+
+        val usuario = User(
+            acct?.id,
+            name,
+            lastName,
+            acct?.email,
+        )
+        userRef.add(usuario).addOnSuccessListener {
+
+        }
+    }
+
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "16412212258",
+    "project_id": "prestamosfaciles-b48f9",
+    "storage_bucket": "prestamosfaciles-b48f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16412212258:android:f87d33e94c1e58686c9e7b",
+        "android_client_info": {
+          "package_name": "mx.itson.edu.prestamosfaciles"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16412212258-5q0kop1c4tbu2e7p55hk2ujspg74ljel.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsGBU9Xza3XywDNfgaNh7PUdcZAMFv3ak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "16412212258-5q0kop1c4tbu2e7p55hk2ujspg74ljel.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

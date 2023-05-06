@@ -15,22 +15,23 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
 class CuentaActivity : AppCompatActivity() {
 
+
+    var name: String? = ""
+    var id: String? = ""
+    var photoURI: Uri? = null
+    var correo: String? = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.cuenta)
 
         val bundle = intent.extras
 
-        var name: String? = ""
-        var email: String? = ""
-        var id: String? = ""
-        var photoURI: Uri? = null
-
         if(bundle != null) {
             name = bundle.getString("name")
-            email = bundle.getString("email")
             id = bundle.getString("id")
             photoURI = bundle?.getParcelable<Uri>("photo")
+            correo = bundle.getString("email")
 
             val tv_nombre: TextView = findViewById(R.id.tv_nombreUsuario)
             val iv_photoUser: ImageView = findViewById(R.id.iv_photoUser)
@@ -40,6 +41,7 @@ class CuentaActivity : AppCompatActivity() {
             Glide.with(this)
                 .load(photoURI)
                 .into(iv_photoUser)
+
         }
 
 
@@ -51,8 +53,6 @@ class CuentaActivity : AppCompatActivity() {
 
         btnMisDatos.setOnClickListener{
             var intent = Intent(this,DatosPersonalesActivity::class.java)
-            intent.putExtra("name", name)
-            intent.putExtra("email", email)
             intent.putExtra("id", id)
             intent.putExtra("photo", photoURI)
 
@@ -78,14 +78,17 @@ class CuentaActivity : AppCompatActivity() {
         btnCerrarMiSesion.setOnClickListener{
             cerrarSesion()
         }
-
-
-
-
     }
 
+
+
+
     fun btnHome(view: View){
-        var intent: Intent = Intent(this,PrincipalActivity::class.java)
+        var intent = Intent(this,PrincipalActivity::class.java)
+        intent.putExtra("name",name)
+        intent.putExtra("email",correo)
+        intent.putExtra("id",id)
+        intent.putExtra("photo",photoURI)
         startActivity(intent)
     }
 

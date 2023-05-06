@@ -117,12 +117,9 @@
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_gravity="center"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/round_button"
         android:text="Finalizar" />
-
-
-
 
     <RelativeLayout
         android:layout_width="match_parent"

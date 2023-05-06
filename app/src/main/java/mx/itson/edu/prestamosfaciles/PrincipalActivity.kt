@@ -23,12 +23,14 @@ class PrincipalActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.principal)
 
-
-
         cargarProductos()
         val gridview: GridView = findViewById(R.id.id_grid)
         adapter = ProductoAdapter(productos,this)
         gridview.adapter = adapter
+
+        val btnAgregarProducto = findViewById<ImageView>(R.id.iv_navMenu_Principal_mas)
+
+        btnAgregarProducto.setOnClickListener{goScreenAddProducts()}
 
     }
 
@@ -111,7 +113,7 @@ class PrincipalActivity : AppCompatActivity() {
             val id = bundle.getString("id")
             val photoURI = bundle?.getParcelable<Uri>("photo")
 
-            var intent: Intent = Intent(this,CuentaActivity::class.java)
+            var intent = Intent(this,CuentaActivity::class.java)
             intent.putExtra("name", name)
             intent.putExtra("email", email)
             intent.putExtra("id", id)
@@ -121,7 +123,18 @@ class PrincipalActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Ocurrió un error al cargar el usuario", Toast.LENGTH_SHORT).show()
         }
+    }
 
+    fun goScreenAddProducts(){
+
+        val bundle = intent.extras
+
+        if(bundle != null) {
+            var intent = Intent(this,AgregarProductoActivity::class.java)
+            intent.putExtra("id", bundle.getString("id"))
+            startActivity(intent)
+        }
 
     }
+
 }

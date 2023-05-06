@@ -58,6 +58,7 @@
                 android:layout_width="70dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:onClick="btnAgregarProducto"
                 app:srcCompat="@drawable/mas" />
 
             <ImageView
