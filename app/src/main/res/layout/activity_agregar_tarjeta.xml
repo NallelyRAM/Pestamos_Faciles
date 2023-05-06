@@ -148,17 +148,38 @@
             android:text="@string/cp"
             android:textColor="@color/gray" />
 
-        <EditText
-            android:id="@+id/et_codigo_postal"
-            android:layout_width="132dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/contour_rectangle"
-            android:fontFamily="@font/avenir_roman"
-            android:hint="@string/nulo"
-            android:padding="10dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="79dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_codigo_postal"
+                android:layout_width="132dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/contour_rectangle"
+                android:fontFamily="@font/avenir_roman"
+                android:hint="@string/nulo"
+                android:padding="10dp" />
+
+            <Button
+                android:id="@+id/btn_aceptar"
+                android:layout_width="181dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_button"
+                android:fontFamily="@font/avenir_black"
+                android:text="@string/aceptar"
+                android:textAllCaps="false"
+                android:textSize="20dp" />
+
+
+        </LinearLayout>
 
 
     </LinearLayout>
