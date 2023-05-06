@@ -11,9 +11,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.Scopes
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.Scope
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
+
 
 class InicioActivity : AppCompatActivity() {
 
@@ -28,6 +31,8 @@ class InicioActivity : AppCompatActivity() {
         setContentView(R.layout.inicio)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestScopes(Scope(Scopes.PLUS_LOGIN))
+            .requestScopes(Scope(Scopes.PLUS_ME))
             .requestEmail()
             .build()
 
