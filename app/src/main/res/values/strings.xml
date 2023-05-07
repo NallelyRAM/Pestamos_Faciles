@@ -20,6 +20,7 @@
     <string name="condiciones_entrega_devolucion">Condiciones de entrega y devolución</string>
     <string name="condiciones_articulo">Condiciones dela artículo</string>
     <string name="condiciones_uso">Condiciones de uso</string>
+    <string name="agregar">Agregar</string>
 
 
     //activity_agregar_tarjeta
@@ -33,4 +34,11 @@
     <string name="apellidos">Apellidos</string>
     <string name="cp">Código postal</string>
     <string name="nulo">---</string>
+
+    //Datos personales
+    <string name="mis_datos">Mis datos</string>
+    <string name="fecha_nac">Fecha de nacimiento</string>
+    <string name="telefono">Teléfono</string>
+    <string name="correo">Correo</string>
+    <string name="guardar">Guardar</string>
 </resources>

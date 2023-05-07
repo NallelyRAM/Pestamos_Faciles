@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -47,7 +47,7 @@
             android:id="@+id/sp_categoria_producto"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"/>
@@ -116,28 +116,20 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/contour_rectangle"/>
 
-        <Spinner
-            android:id="@+id/sp_condiciones_entrega_devolucion"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
-
-        <Spinner
-            android:id="@+id/sp_condiciones_articulo"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
-
-        <Spinner
-            android:id="@+id/sp_condiciones_uso"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
-
+        <Button
+            android:id="@+id/btn_agregar_producto"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_button"
+            android:fontFamily="@font/avenir_roman"
+            android:gravity="center"
+            android:text="@string/agregar"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
     </LinearLayout>
     <LinearLayout

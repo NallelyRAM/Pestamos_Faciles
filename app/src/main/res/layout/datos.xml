@@ -10,23 +10,37 @@
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/tv_datoxs"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
-        android:text="Datos personales"
-        android:textSize="30dp"
-        android:textStyle="bold" />
+        android:layout_height="54dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/btn_atras" />
+
+        <TextView
+            android:layout_width="310dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/avenir_roman"
+            android:text="@string/mis_datos"
+            android:textAlignment="textStart"
+            android:textSize="25sp" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="410dp"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/round_textview">
 
 
@@ -36,7 +50,8 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:enabled="false"
-            android:hint=" Nombre"
+            android:hint="@string/nombre"
+            android:fontFamily="@font/avenir_roman"
             android:textSize="18sp" />
 
         <View
@@ -51,7 +66,8 @@
             android:layout_marginTop="10dp"
             android:textSize="18sp"
             android:enabled="false"
-            android:hint=" Apellidos" />
+            android:fontFamily="@font/avenir_roman"
+            android:hint="@string/apellidos" />
 
         <View
             android:layout_width="match_parent"
@@ -64,9 +80,10 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:textSize="18sp"
-            android:hint=" Fecha de nacimiento"
+            android:hint="@string/fecha_nac"
             android:focusable="false"
             android:inputType="none"
+            android:fontFamily="@font/avenir_roman"
             android:onClick="mostrarDatePicker"
             />
         <View
@@ -80,8 +97,9 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:textSize="18sp"
-            android:hint=" Telefono"
+            android:hint="@string/telefono"
             android:inputType="number"
+            android:fontFamily="@font/avenir_roman"
             />
         <View
             android:layout_width="match_parent"
@@ -96,7 +114,8 @@
             android:textSize="18sp"
             android:enabled="false"
             android:autoSizeTextType="uniform"
-            android:hint=" Correo" />
+            android:hint="@string/correo"
+            android:fontFamily="@font/avenir_roman"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -108,7 +127,8 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:textSize="18sp"
-            android:hint=" Ubicación" />
+            android:hint="@string/ubicacion"
+            android:fontFamily="@font/avenir_roman"/>
 
     </LinearLayout>
 
@@ -117,9 +137,13 @@
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/round_button"
-        android:text="Finalizar" />
+        android:text="@string/guardar"
+        android:textSize="20dp"
+        android:fontFamily="@font/avenir_roman"
+        android:textColor="@color/white"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

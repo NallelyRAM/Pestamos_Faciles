@@ -33,149 +33,166 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="583dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/selecciona_tipo_tarjeta"
-            android:textColor="@color/gray" />
-
-        <Spinner
-            android:id="@+id/sp_tipo_tarjeta"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp" />
-
-
-        <EditText
-            android:id="@+id/et_numero_tarjeta"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/contour_rectangle"
-            android:fontFamily="@font/avenir_roman"
-            android:hint="@string/numero_tarjeta"
-            android:inputType="numberDecimal"
-            android:padding="10dp" />
-
-        <EditText
-            android:id="@+id/et_nombre_tarjeta"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="@string/nombre"
-            android:padding="10dp"
-            android:fontFamily="@font/avenir_roman"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/contour_rectangle"/>
-
-        <EditText
-            android:id="@+id/et_apellidos_tarjeta"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="@string/apellidos"
-            android:padding="10dp"
-            android:fontFamily="@font/avenir_roman"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/contour_rectangle"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/fecha_caducidad"
-            android:textColor="@color/gray" />
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/sp_mes_caducidad"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp" />
-
-            <Spinner
-                android:id="@+id/sp_año_caducidad"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp" />
-        </LinearLayout>
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/codigo_seguridad"
-            android:textColor="@color/gray" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/et_codigo_seguridad"
-            android:layout_width="132dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/contour_rectangle"
-            android:fontFamily="@font/avenir_roman"
-            android:hint="@string/nulo"
-            android:padding="10dp"
-            android:inputType="numberDecimal"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/selecciona_tipo_tarjeta"
+                android:textColor="@color/gray" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/cp"
-            android:textColor="@color/gray" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="79dp"
-            android:orientation="horizontal">
+            <Spinner
+                android:id="@+id/sp_tipo_tarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp" />
 
             <EditText
-                android:id="@+id/et_codigo_postal"
-                android:layout_width="132dp"
+                android:id="@+id/et_numero_tarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/contour_rectangle"
+                android:fontFamily="@font/avenir_roman"
+                android:hint="@string/numero_tarjeta"
+                android:inputType="numberDecimal"
+                android:maxLength="16"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/et_nombre_tarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/contour_rectangle"
+                android:fontFamily="@font/avenir_roman"
+                android:hint="@string/nombre"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/et_apellidos_tarjeta"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/contour_rectangle"
                 android:fontFamily="@font/avenir_roman"
-                android:hint="@string/nulo"
-                android:padding="10dp"
-                android:inputType="numberDecimal"/>
+                android:hint="@string/apellidos"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/fecha_caducidad"
+                android:textColor="@color/gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/sp_mes_caducidad"
+                    android:layout_width="160dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp" />
+
+                <Spinner
+                    android:id="@+id/sp_año_caducidad"
+                    android:layout_width="160dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/codigo_seguridad"
+                    android:textColor="@color/gray" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/cp"
+                    android:textColor="@color/gray" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_codigo_seguridad"
+                    android:layout_width="132dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/contour_rectangle"
+                    android:fontFamily="@font/avenir_roman"
+                    android:hint="@string/nulo"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp"
+                    android:maxLength="3"/>
+
+                <EditText
+                    android:id="@+id/et_codigo_postal"
+                    android:layout_width="132dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/contour_rectangle"
+                    android:fontFamily="@font/avenir_roman"
+                    android:hint="@string/nulo"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp"
+                    android:maxLength="5"/>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_aceptar"
                 android:layout_width="181dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/round_button"
-                android:fontFamily="@font/avenir_black"
+                android:fontFamily="@font/avenir_roman"
                 android:text="@string/aceptar"
                 android:textAllCaps="false"
                 android:textSize="20dp" />
@@ -183,8 +200,8 @@
 
         </LinearLayout>
 
+    </ScrollView>
 
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
