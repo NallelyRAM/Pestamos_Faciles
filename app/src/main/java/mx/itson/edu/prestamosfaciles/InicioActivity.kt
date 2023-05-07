@@ -39,7 +39,7 @@ class InicioActivity : AppCompatActivity() {
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        var btnIniciar: Button = findViewById(R.id.btn_iniciar_sesion) as Button
+        var btnIniciar: Button = findViewById(R.id.btn_iniciar_sesion)
 
         btnIniciar.setOnClickListener {
             val sigInIntent = mGoogleSignInClient.signInIntent
