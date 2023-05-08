@@ -32,6 +32,7 @@
                 android:layout_height="40dp"
                 android:text="Nombre del producto"
                 android:textSize="20sp"
+                android:fontFamily="@font/avenir_roman"
 
                 />
 
@@ -40,6 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="descripción"
+                android:fontFamily="@font/avenir_roman"
                 />
 
         </LinearLayout>
@@ -51,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:textSize="30sp"
-
+        android:fontFamily="@font/avenir_roman"
         android:gravity="center"
         android:text="Tiempo de devolución\ny condiciones"
         />

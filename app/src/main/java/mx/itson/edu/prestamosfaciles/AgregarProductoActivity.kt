@@ -40,6 +40,12 @@ class AgregarProductoActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+        val btn_agregar: Button = findViewById(R.id.btn_agregar_producto)
+
+        btn_agregar.setOnClickListener{
+
+        }
+
     }
 
 

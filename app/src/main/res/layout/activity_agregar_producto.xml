@@ -40,17 +40,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="583dp"
+        android:layout_height="532dp"
         android:orientation="vertical">
 
         <Spinner
             android:id="@+id/sp_categoria_producto"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp" />
 
         <Button
             android:id="@+id/btn_agregar_imagen"
@@ -60,8 +60,8 @@
             android:layout_marginRight="30dp"
             android:background="@drawable/btn_agregar_imagen"
             android:backgroundTint="@null"
-            android:text="@string/agregar_foto"
             android:gravity="center"
+            android:text="@string/agregar_foto"
             android:textAllCaps="false"
             android:textColor="@color/gray"
             android:textSize="20sp" />
@@ -70,13 +70,13 @@
             android:id="@+id/et_nombre_producto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/nombre_producto"
-            android:padding="10dp"
-            android:fontFamily="@font/avenir_roman"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/contour_rectangle"/>
+            android:background="@drawable/contour_rectangle"
+            android:fontFamily="@font/avenir_roman"
+            android:hint="@string/nombre_producto"
+            android:padding="10dp" />
 
         <EditText
             android:id="@+id/et_descripcion"
@@ -95,34 +95,34 @@
             android:id="@+id/et_precio_alquiler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/precio_alquiler"
-            android:padding="10dp"
-            android:fontFamily="@font/avenir_roman"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
+            android:background="@drawable/contour_rectangle"
+            android:fontFamily="@font/avenir_roman"
+            android:hint="@string/precio_alquiler"
             android:inputType="numberDecimal"
-            android:background="@drawable/contour_rectangle"/>
+            android:padding="10dp" />
 
         <EditText
             android:id="@+id/et_nombre_ubicacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/ubicacion"
-            android:padding="10dp"
-            android:fontFamily="@font/avenir_roman"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/contour_rectangle"/>
+            android:background="@drawable/contour_rectangle"
+            android:fontFamily="@font/avenir_roman"
+            android:hint="@string/ubicacion"
+            android:padding="10dp" />
 
         <Button
             android:id="@+id/btn_agregar_producto"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_marginLeft="80dp"
-            android:layout_marginRight="80dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="80dp"
             android:background="@drawable/round_button"
             android:fontFamily="@font/avenir_roman"
             android:gravity="center"
@@ -132,6 +132,7 @@
             android:textSize="20sp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"

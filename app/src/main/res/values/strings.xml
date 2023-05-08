@@ -36,9 +36,12 @@
     <string name="nulo">---</string>
 
     //Datos personales
-    <string name="mis_datos">Mis datos</string>
+    <string name="mis_datos">Mis Datos</string>
     <string name="fecha_nac">Fecha de nacimiento</string>
     <string name="telefono">Teléfono</string>
     <string name="correo">Correo</string>
     <string name="guardar">Guardar</string>
+
+    //Mis tarjetas
+    <string name="mis_tarjetas">Mis Tarjetas</string>
 </resources>

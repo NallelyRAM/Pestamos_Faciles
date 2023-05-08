@@ -8,10 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.GridView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -40,7 +37,12 @@ class MisTarjetasActivity : AppCompatActivity() {
 
         gridview.adapter = adapter
 
+        val btnMas: Button = findViewById(R.id.btn_agregar_tarjeta)
 
+        btnMas.setOnClickListener{
+            var intent: Intent = Intent(this,AgregarTarjeta::class.java)
+            startActivity(intent)
+        }
 
     }
     fun cargarTarjetas(){
