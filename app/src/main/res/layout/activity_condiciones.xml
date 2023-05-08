@@ -55,7 +55,8 @@
         android:textSize="30sp"
         android:fontFamily="@font/avenir_roman"
         android:gravity="center"
-        android:text="Tiempo de devolución\ny condiciones"
+        android:text="@string/texto1"
+        android:textColor="@color/gray"
         />
 
     <TextView
@@ -66,7 +67,8 @@
         android:layout_marginRight="43dp"
         android:textSize="17dp"
         android:gravity="center"
-        android:text="Tienes 7 días corridos para devolverlo desde que te llegó."
+        android:text="@string/texto2"
+        android:textColor="@color/gray"
         android:layout_marginBottom="36dp"
 
         />
@@ -78,8 +80,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/round_button"
-        android:text="Localizar"
-        android:textSize="18sp"/>
+        android:text="@string/localizar"
+        android:textSize="20sp"
+        android:fontFamily="@font/avenir_roman"
+        android:textAllCaps="false"
+        android:textColor="@color/white"/>
     <Button
         android:id="@+id/btn_condicionesSiguiente"
         android:layout_marginTop="15dp"
@@ -87,57 +92,51 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/round_button"
-        android:text="Siguiente"
-        android:textSize="18sp"
+        android:text="@string/siguiente"
+        android:textSize="20sp"
+        android:fontFamily="@font/avenir_roman"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         android:layout_marginBottom="20dp"/>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_alignParentBottom="true"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
+
+        <ImageView
+            android:id="@+id/iv_navMenu_Principal_Inicio"
+            android:layout_width="70dp"
             android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            app:srcCompat="@drawable/home" />
 
+        <ImageView
+            android:id="@+id/iv_navMenu_Principal_Perfil"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="btnMiPerfil"
+            app:srcCompat="@drawable/user" />
 
-            <ImageView
-                android:id="@+id/iv_navMenu_condiciones_Inicio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="btnHome"
-                app:srcCompat="@drawable/home" />
+        <ImageView
+            android:id="@+id/iv_navMenu_Principal_mas"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/mas" />
 
-            <ImageView
-                android:id="@+id/iv_navMenu_condiciones_Perfil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="btnMiPerfil"
-                app:srcCompat="@drawable/user" />
-
-
-            <ImageView
-                android:id="@+id/iv_navMenu_mas_condindicones"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/mas" />
-
-            <ImageView
-                android:id="@+id/iv_navMenu_condiciones_Categorias"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/busqueda" />
-
-        </LinearLayout>
-
-    </RelativeLayout>
+        <ImageView
+            android:id="@+id/iv_navMenu_Principal_Categorias"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/busqueda" />
+    </LinearLayout>
 
 
 </LinearLayout>

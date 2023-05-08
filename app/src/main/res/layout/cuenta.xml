@@ -32,7 +32,8 @@
             android:enabled="false"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:fontFamily="@font/avenir_black"/>
 
     </LinearLayout>
 
@@ -43,9 +44,11 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="4dp"
         android:layout_gravity="center"
-        android:text="Configuración de la cuenta"
+        android:text="@string/configuracion_cuenta"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/gray"
+        android:fontFamily="@font/avenir_roman"/>
 
     <View
         android:layout_width="350dp"
@@ -61,7 +64,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
         android:textSize="18sp"
-        android:text="Mis datos"/>
+        android:text="@string/mis_datos"
+        android:fontFamily="@font/avenir_roman"
+        android:textColor="@color/gray"/>
 
     <TextView
         android:id="@+id/tv_historial"
@@ -70,7 +75,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
         android:textSize="18sp"
-        android:text="Historial"/>
+        android:text="@string/historial"
+        android:fontFamily="@font/avenir_roman"
+        android:textColor="@color/gray"/>
 
 
     <TextView
@@ -81,7 +88,9 @@
         android:layout_marginLeft="30dp"
         android:onClick="cargarTarjetas"
         android:textSize="18sp"
-        android:text="Mis tarjetas"/>
+        android:text="@string/mis_tarjetas"
+        android:fontFamily="@font/avenir_roman"
+        android:textColor="@color/gray"/>
 
 
     <TextView
@@ -91,7 +100,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
         android:textSize="18sp"
-        android:text="Privacidad"/>
+        android:text="@string/privacidad"
+        android:fontFamily="@font/avenir_roman"
+        android:textColor="@color/gray"/>
 
     <TextView
         android:id="@+id/tv_cerrarSesion"
@@ -100,7 +111,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
         android:textSize="18sp"
-        android:text="Cerrar cuenta"/>
+        android:text="@string/cerrar_cuenta"
+        android:fontFamily="@font/avenir_roman"
+        android:textColor="@color/gray"/>
 
     <View
         android:layout_width="350dp"

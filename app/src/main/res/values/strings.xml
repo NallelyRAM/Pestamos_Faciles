@@ -44,4 +44,33 @@
 
     //Mis tarjetas
     <string name="mis_tarjetas">Mis Tarjetas</string>
+
+    //Condiciones
+    <string name="texto1">Tiempo de devolución y condiciones</string>
+    <string name="texto2">Tienes 7 días corridos para devolverlo desde que te llegó.</string>
+    <string name="localizar">Localizar</string>
+    <string name="siguiente">Siguiente</string>
+
+    //Selección
+    <string name="descripcion">Descripción</string>
+    <string name="detalles">Detalles</string>
+
+    //Cuenta
+    <string name="cuenta">Cuenta</string>
+    <string name="configuracion_cuenta">Configuración de la cuenta</string>
+    <string name="historial">Historial</string>
+    <string name="privacidad">Privacidad</string>
+    <string name="cerrar_cuenta">Cerrar cuenta</string>
+
+    //Pago
+    <string name="numero">Cuenta</string>
+    <string name="fecha_venc">Fecha vencimiento</string>
+    <string name="cvv">CVV</string>
+    <string name="emisor">Emisor</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="iva">IVA</string>
+    <string name="total">Total</string>
+    <string name="pagar">Pagar</string>
+
+
 </resources>

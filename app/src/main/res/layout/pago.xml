@@ -6,9 +6,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/btn_atras" />
+
+        <TextView
+            android:layout_width="310dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/avenir_roman"
+            android:text="@string/agregar_tarjeta"
+            android:textAlignment="textStart"
+            android:textSize="25sp" />
+
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_height="2dp"
         android:background="@color/orange"/>
 
@@ -19,7 +43,10 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
         android:textSize="18sp"
-        android:text="NÚMERO DE TARJETA"/>
+        android:text="@string/numero_tarjeta"
+        android:textAllCaps="true"
+        android:fontFamily="@font/avenir_roman"
+        android:textColor="@color/gray"/>
 
     <TextView
         android:id="@+id/tv_numeroTarjeta"
@@ -28,7 +55,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
         android:textSize="18sp"
-        android:text="0000 0000 0000 0000"/>
+        android:text="0000 0000 0000 0000"
+        android:fontFamily="@font/avenir_roman"
+        android:textColor="@color/gray"/>
 
     <View
         android:layout_width="match_parent"
@@ -54,7 +83,10 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
-                android:text="FECHA DE VENCIMIENTO"/>
+                android:text="@string/fecha_venc"
+                android:textAllCaps="true"
+                android:fontFamily="@font/avenir_roman"
+                android:textColor="@color/gray"/>
 
             <TextView
                 android:id="@+id/tv_fechaDeVencimiento"
@@ -63,7 +95,9 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
-                android:text="00 00"/>
+                android:text="00 00"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/avenir_roman"/>
 
         </LinearLayout>
 
@@ -86,7 +120,10 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
-                android:text="CVV"/>
+                android:text="@string/cvv"
+                android:textAllCaps="true"
+                android:fontFamily="@font/avenir_roman"
+                android:textColor="@color/gray"/>
 
             <TextView
                 android:id="@+id/tv_numeroCCV"
@@ -95,7 +132,9 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
-                android:text="000"/>
+                android:text="000"
+                android:fontFamily="@font/avenir_roman"
+                android:textColor="@color/gray"/>
 
         </LinearLayout>
 
@@ -123,7 +162,10 @@
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:text="Emisor"/>
+                android:text="@string/emisor"
+                android:textAllCaps="true"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/avenir_roman"/>
 
             <TextView
                 android:id="@+id/tv_emisor"
@@ -132,6 +174,8 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
+                android:fontFamily="@font/avenir_roman"
+                android:textColor="@color/gray"
                 android:text="asdada sdadada asdadsa asdada dsasdasd"/>
 
         </LinearLayout>
@@ -175,7 +219,10 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
-                android:text="Subtotal"/>
+                android:text="@string/subtotal"
+                android:textAllCaps="true"
+                android:fontFamily="@font/avenir_roman"
+                android:textColor="@color/gray"/>
 
             <TextView
                 android:id="@+id/tv_IVA"
@@ -184,7 +231,10 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
-                android:text="IVA"/>
+                android:text="@string/iva"
+                android:textAllCaps="true"
+                android:fontFamily="@font/avenir_roman"
+                android:textColor="@color/gray"/>
 
             <TextView
                 android:id="@+id/tv_Total"
@@ -193,7 +243,10 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
-                android:text="Total"/>
+                android:text="@string/total"
+                android:textAllCaps="true"
+                android:fontFamily="@font/avenir_roman"
+                android:textColor="@color/gray"/>
 
         </LinearLayout>
 
@@ -210,7 +263,9 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="00 00"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/avenir_roman"/>
 
             <TextView
                 android:id="@+id/tv_cantidadIVA"
@@ -219,7 +274,9 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="00 00"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/avenir_roman"/>
 
             <TextView
                 android:id="@+id/tv_cantidadTotal"
@@ -228,7 +285,9 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="00 00"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/avenir_roman"/>
 
         </LinearLayout>
 
@@ -242,7 +301,10 @@
         android:layout_gravity="center"
         android:background="@drawable/round_button"
         android:text="Pagar"
-        android:textSize="18sp"/>
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/avenir_roman"
+        android:textAllCaps="false"/>
 
 
 </LinearLayout>
