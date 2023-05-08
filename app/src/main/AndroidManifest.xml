@@ -14,26 +14,26 @@
         android:theme="@style/Theme.PrestamosFaciles"
         tools:targetApi="31">
         <activity
-            android:name=".AgregarTarjeta"
+            android:name=".Actividades.AgregarTarjetaActivity"
             android:exported="false" />
         <activity
-            android:name=".AgregarProductoActivity"
+            android:name=".Actividades.AgregarProductoActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".HistorialActivity"
+            android:name=".Actividades.HistorialActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".CondicionesActivity"
+            android:name=".Actividades.CondicionesActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".SeleccionProducto"
+            android:name=".Actividades.SeleccionProductoActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -43,28 +43,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InicioActivity"
+            android:name=".Actividades.InicioActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".PrincipalActivity"
+            android:name=".Actividades.PrincipalActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".CuentaActivity"
+            android:name=".Actividades.CuentaActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".DatosPersonalesActivity"
+            android:name=".Actividades.DatosPersonalesActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".MisTarjetasActivity"
+            android:name=".Actividades.MisTarjetasActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".PrivacidadActivity"
+            android:name=".Actividades.PrivacidadActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".UbicacionActivity"
+            android:name=".Actividades.UbicacionActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".PagoActivity"
+            android:name=".Actividades.PagoActivity"
             android:theme="@style/AppTheme" />
     </application>
 

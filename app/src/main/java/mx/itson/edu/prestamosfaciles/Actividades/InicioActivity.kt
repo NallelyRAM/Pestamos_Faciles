@@ -1,4 +1,4 @@
-package mx.itson.edu.prestamosfaciles
+package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.content.ContentValues
 import android.content.Intent
@@ -16,6 +16,8 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.Scope
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
+import mx.itson.edu.prestamosfaciles.Entidades.User
+import mx.itson.edu.prestamosfaciles.R
 
 
 class InicioActivity : AppCompatActivity() {

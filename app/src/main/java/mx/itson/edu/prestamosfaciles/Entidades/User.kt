@@ -1,8 +1,7 @@
-package mx.itson.edu.prestamosfaciles
+package mx.itson.edu.prestamosfaciles.Entidades
 
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.GeoPoint
-import java.util.*
 
 data class User(
     var id: String ?= null,

@@ -1,12 +1,12 @@
-package mx.itson.edu.prestamosfaciles
+package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import mx.itson.edu.prestamosfaciles.R
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -54,7 +54,7 @@ class PagoActivity : AppCompatActivity() {
 
         btn_pagar.setOnClickListener{
             Toast.makeText(this, "Gracias por su compra! :D", Toast.LENGTH_SHORT).show()
-            var intent: Intent = Intent(this,PrincipalActivity::class.java)
+            var intent: Intent = Intent(this, PrincipalActivity::class.java)
             startActivity(intent)
         }
 

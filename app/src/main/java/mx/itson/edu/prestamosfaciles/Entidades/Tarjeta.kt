@@ -1,4 +1,4 @@
-package mx.itson.edu.prestamosfaciles
+package mx.itson.edu.prestamosfaciles.Entidades
 
 import java.util.*
 

@@ -1,4 +1,4 @@
-package mx.itson.edu.prestamosfaciles
+package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.content.Intent
 import android.net.Uri
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import mx.itson.edu.prestamosfaciles.R
 
 class CuentaActivity : AppCompatActivity() {
 
@@ -52,7 +53,7 @@ class CuentaActivity : AppCompatActivity() {
         val btnCerrarMiSesion = findViewById<TextView>(R.id.tv_cerrarSesion)
 
         btnMisDatos.setOnClickListener{
-            var intent = Intent(this,DatosPersonalesActivity::class.java)
+            var intent = Intent(this, DatosPersonalesActivity::class.java)
             intent.putExtra("id", id)
             intent.putExtra("photo", photoURI)
 
@@ -60,18 +61,18 @@ class CuentaActivity : AppCompatActivity() {
         }
 
         btnMiHistorial.setOnClickListener{
-            var intent: Intent = Intent(this,HistorialActivity::class.java)
+            var intent: Intent = Intent(this, HistorialActivity::class.java)
             startActivity(intent)
         }
 
         btnMisTarjetas.setOnClickListener{
-            var intent: Intent = Intent(this,MisTarjetasActivity::class.java)
+            var intent: Intent = Intent(this, MisTarjetasActivity::class.java)
             intent.putExtra("seleccion",1)
             startActivity(intent)
         }
 
         btnMiPrivacidad.setOnClickListener{
-            var intent: Intent = Intent(this,PrivacidadActivity::class.java)
+            var intent: Intent = Intent(this, PrivacidadActivity::class.java)
             startActivity(intent)
         }
 
@@ -84,7 +85,7 @@ class CuentaActivity : AppCompatActivity() {
 
 
     fun btnHome(view: View){
-        var intent = Intent(this,PrincipalActivity::class.java)
+        var intent = Intent(this, PrincipalActivity::class.java)
         intent.putExtra("name",name)
         intent.putExtra("email",correo)
         intent.putExtra("id",id)

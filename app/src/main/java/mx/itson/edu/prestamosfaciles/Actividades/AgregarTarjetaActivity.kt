@@ -1,12 +1,13 @@
-package mx.itson.edu.prestamosfaciles
+package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
+import mx.itson.edu.prestamosfaciles.R
 
 
-class AgregarTarjeta : AppCompatActivity() {
+class AgregarTarjetaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agregar_tarjeta)

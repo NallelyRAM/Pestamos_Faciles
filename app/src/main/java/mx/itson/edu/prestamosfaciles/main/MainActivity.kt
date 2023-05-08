@@ -1,4 +1,4 @@
-package mx.itson.edu.prestamosfaciles
+package mx.itson.edu.prestamosfaciles.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,8 @@ import android.os.Handler
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import mx.itson.edu.prestamosfaciles.Actividades.InicioActivity
+import mx.itson.edu.prestamosfaciles.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

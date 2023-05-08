@@ -1,4 +1,4 @@
-package mx.itson.edu.prestamosfaciles
+package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -7,8 +7,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import mx.itson.edu.prestamosfaciles.R
 
-class SeleccionProducto : AppCompatActivity() {
+class SeleccionProductoActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +33,7 @@ class SeleccionProducto : AppCompatActivity() {
 
         btnDetalles.setOnClickListener{
             if(bundle != null){
-                val intento = Intent(this,CondicionesActivity::class.java)
+                val intento = Intent(this, CondicionesActivity::class.java)
                 intento.putExtra("nombre",bundle.getString("nombre"))
                 intento.putExtra("imagen",bundle.getInt("imagen"))
                 intento.putExtra("precio",bundle.getDouble("precio"))

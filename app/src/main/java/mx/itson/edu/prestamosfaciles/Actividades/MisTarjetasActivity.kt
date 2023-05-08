@@ -1,4 +1,4 @@
-package mx.itson.edu.prestamosfaciles
+package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import mx.itson.edu.prestamosfaciles.Entidades.Tarjeta
+import mx.itson.edu.prestamosfaciles.R
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -40,7 +42,7 @@ class MisTarjetasActivity : AppCompatActivity() {
         val btnMas: Button = findViewById(R.id.btn_agregar_tarjeta)
 
         btnMas.setOnClickListener{
-            var intent: Intent = Intent(this,AgregarTarjeta::class.java)
+            var intent: Intent = Intent(this, AgregarTarjetaActivity::class.java)
             startActivity(intent)
         }
 
@@ -52,27 +54,81 @@ class MisTarjetasActivity : AppCompatActivity() {
         var dateString = "2025-04-01"
         var date = format.parse(dateString)
 
-        tarjetas.add(Tarjeta("4152 5896 4785 1458","1458", date,"Brayan","589","VISA"))
+        tarjetas.add(
+            Tarjeta(
+                "4152 5896 4785 1458",
+                "1458",
+                date,
+                "Brayan",
+                "589",
+                "VISA"
+            )
+        )
 
         dateString = "2026-10-01"
         date = format.parse(dateString)
-        tarjetas.add(Tarjeta("5874 1458 1025 8575","8575", date,"Juanito","102","Mastercard"))
+        tarjetas.add(
+            Tarjeta(
+                "5874 1458 1025 8575",
+                "8575",
+                date,
+                "Juanito",
+                "102",
+                "Mastercard"
+            )
+        )
 
         dateString = "2025-08-05"
         date = format.parse(dateString)
-        tarjetas.add(Tarjeta("5814 1025 8965 0014","0014", date,"Pedrito","158","American Express"))
+        tarjetas.add(
+            Tarjeta(
+                "5814 1025 8965 0014",
+                "0014",
+                date,
+                "Pedrito",
+                "158",
+                "American Express"
+            )
+        )
 
         dateString = "2028-12-25"
         date = format.parse(dateString)
-        tarjetas.add(Tarjeta("4587 0125 3697 7845","7845", date,"Luisito","145","VISA"))
+        tarjetas.add(
+            Tarjeta(
+                "4587 0125 3697 7845",
+                "7845",
+                date,
+                "Luisito",
+                "145",
+                "VISA"
+            )
+        )
 
         dateString = "2024-03-15"
         date = format.parse(dateString)
-        tarjetas.add(Tarjeta("1478 9896 1023 8747","8747", date,"Nallely","587","VISA"))
+        tarjetas.add(
+            Tarjeta(
+                "1478 9896 1023 8747",
+                "8747",
+                date,
+                "Nallely",
+                "587",
+                "VISA"
+            )
+        )
 
         dateString = "2023-10-14"
         date = format.parse(dateString)
-        tarjetas.add(Tarjeta("1356 8965 7845 4523","4523", date,"Joaquin","025","American Express"))
+        tarjetas.add(
+            Tarjeta(
+                "1356 8965 7845 4523",
+                "4523",
+                date,
+                "Joaquin",
+                "025",
+                "American Express"
+            )
+        )
     }
 
     class TarjetaAdapter : BaseAdapter{
@@ -115,7 +171,7 @@ class MisTarjetasActivity : AppCompatActivity() {
             vencimiento.setText(getFormatoFecha(tarjeta.fechaVencimiento.toString()))
             layout.setOnClickListener{
                 if(precio != 0.0){
-                    val intento = Intent(context,PagoActivity::class.java)
+                    val intento = Intent(context, PagoActivity::class.java)
 
                     intento.putExtra("numTarjeta",tarjeta.numTarjeta)
                     intento.putExtra("fechaVencimiento",tarjeta.fechaVencimiento.toString())
@@ -147,11 +203,11 @@ class MisTarjetasActivity : AppCompatActivity() {
 
 
     fun btnMiPerfil(view: View){
-        var intent: Intent = Intent(this,CuentaActivity::class.java)
+        var intent: Intent = Intent(this, CuentaActivity::class.java)
         startActivity(intent)
     }
     fun btnHome(view: View){
-        var intent: Intent = Intent(this,PrincipalActivity::class.java)
+        var intent: Intent = Intent(this, PrincipalActivity::class.java)
         startActivity(intent)
     }
 }

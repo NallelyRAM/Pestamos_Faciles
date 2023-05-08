@@ -1,4 +1,4 @@
-package mx.itson.edu.prestamosfaciles
+package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import mx.itson.edu.prestamosfaciles.R
 
 class CondicionesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,14 +29,14 @@ class CondicionesActivity : AppCompatActivity() {
         }
 
         btnUbicacion.setOnClickListener{
-            var intent: Intent = Intent(this,UbicacionActivity::class.java)
+            var intent: Intent = Intent(this, UbicacionActivity::class.java)
             startActivity(intent)
         }
 
         btnSiguiente.setOnClickListener{
             if(bundle != null){
                 var precio = bundle.getDouble("precio")
-                val intento = Intent(this,MisTarjetasActivity::class.java)
+                val intento = Intent(this, MisTarjetasActivity::class.java)
                 intento.putExtra("precio",precio)
                 this!!.startActivity(intento)
             }
@@ -44,11 +45,11 @@ class CondicionesActivity : AppCompatActivity() {
     }
 
     fun btnMiPerfil(view: View){
-        var intent: Intent = Intent(this,CuentaActivity::class.java)
+        var intent: Intent = Intent(this, CuentaActivity::class.java)
         startActivity(intent)
     }
     fun btnHome(view: View){
-        var intent: Intent = Intent(this,PrincipalActivity::class.java)
+        var intent: Intent = Intent(this, PrincipalActivity::class.java)
         startActivity(intent)
     }
 }

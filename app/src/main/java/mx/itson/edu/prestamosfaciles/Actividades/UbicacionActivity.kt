@@ -1,9 +1,10 @@
-package mx.itson.edu.prestamosfaciles
+package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import mx.itson.edu.prestamosfaciles.R
 
 class UbicacionActivity : AppCompatActivity() {
 
@@ -13,7 +14,7 @@ class UbicacionActivity : AppCompatActivity() {
     }
 
     fun btnCondiciones(view: View){
-        var intent: Intent = Intent(this,CondicionesActivity::class.java)
+        var intent: Intent = Intent(this, CondicionesActivity::class.java)
         startActivity(intent)
     }
 

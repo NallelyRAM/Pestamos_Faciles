@@ -1,9 +1,10 @@
-package mx.itson.edu.prestamosfaciles
+package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import mx.itson.edu.prestamosfaciles.R
 
 class HistorialActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,11 +16,11 @@ class HistorialActivity : AppCompatActivity() {
     }
 
     fun btnMiPerfil(view: View){
-        var intent: Intent = Intent(this,CuentaActivity::class.java)
+        var intent: Intent = Intent(this, CuentaActivity::class.java)
         startActivity(intent)
     }
     fun btnHome(view: View){
-        var intent: Intent = Intent(this,PrincipalActivity::class.java)
+        var intent: Intent = Intent(this, PrincipalActivity::class.java)
         startActivity(intent)
     }
 }

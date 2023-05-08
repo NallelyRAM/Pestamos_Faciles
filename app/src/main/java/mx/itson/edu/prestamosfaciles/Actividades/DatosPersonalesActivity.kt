@@ -1,4 +1,4 @@
-package mx.itson.edu.prestamosfaciles
+package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
@@ -6,19 +6,15 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.Timestamp
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
-import kotlinx.coroutines.tasks.await
-import java.lang.Math.abs
-import java.sql.Time
+import mx.itson.edu.prestamosfaciles.Entidades.User
+import mx.itson.edu.prestamosfaciles.R
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -122,7 +118,7 @@ class DatosPersonalesActivity : AppCompatActivity() {
                 .addOnFailureListener { e ->
                     Log.e(TAG, "Error al obtener usuarios: $e")
                 }
-            var intent = Intent(this,CuentaActivity::class.java)
+            var intent = Intent(this, CuentaActivity::class.java)
             intent.putExtra("name", "$nombre $apellidos")
             intent.putExtra("photo",photoURI)
             intent.putExtra("id",id)
@@ -200,7 +196,7 @@ class DatosPersonalesActivity : AppCompatActivity() {
 
 
     fun btnHome(){
-        var intent = Intent(this,PrincipalActivity::class.java)
+        var intent = Intent(this, PrincipalActivity::class.java)
         intent.putExtra("name", "$nombre $apellidos")
         intent.putExtra("email",correo)
         intent.putExtra("id",id)
