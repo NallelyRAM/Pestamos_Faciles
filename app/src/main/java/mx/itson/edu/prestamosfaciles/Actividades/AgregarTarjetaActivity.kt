@@ -1,68 +1,151 @@
 package mx.itson.edu.prestamosfaciles.Actividades
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.util.Log
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.FirebaseFirestore
+import mx.itson.edu.prestamosfaciles.Entidades.Tarjeta
+import mx.itson.edu.prestamosfaciles.Entidades.User
 import mx.itson.edu.prestamosfaciles.R
 
 
 class AgregarTarjetaActivity : AppCompatActivity() {
+
+    private val userRef = FirebaseFirestore.getInstance().collection("usuarios")
+
+    // Seleccion spinners
+    var emisorSeleccionado: String = ""
+    var mesCaducidadSeleccionado: String = ""
+    var anioCaducidadSeleccionado: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agregar_tarjeta)
+        llenadoSpinners()
 
-        llenarDatos()
+        val bundle = intent.extras
+
+        val btn_back: Button = findViewById(R.id.btn_back)
+        val btn_aceptar: Button = findViewById(R.id.btn_aceptar)
+
+        btn_aceptar.setOnClickListener { guardarTarjetaAUsuario(bundle) }
+
+        btn_back.setOnClickListener { finish() }
 
     }
-    fun llenarDatos(){
-        val tipos_tarjeta: MutableList<String> = ArrayList()
-        tipos_tarjeta.add("Visa")
-        tipos_tarjeta.add("Mastercard")
 
-        val mes_caducidad: MutableList<String> = ArrayList()
-        mes_caducidad.add ("01")
-        mes_caducidad.add("02")
-        mes_caducidad.add("03")
-        mes_caducidad.add("04")
-        mes_caducidad.add("05")
-        mes_caducidad.add("06")
-        mes_caducidad.add("07")
-        mes_caducidad.add("08")
-        mes_caducidad.add("09")
-        mes_caducidad.add("10")
-        mes_caducidad.add("11")
-        mes_caducidad.add("12")
-        val anio_caducidad: MutableList<String> = ArrayList()
-        anio_caducidad.add("2023")
-        anio_caducidad.add("2024")
-        anio_caducidad.add("2025")
-        anio_caducidad.add("2026")
-        anio_caducidad.add("2027")
-        anio_caducidad.add("2028")
-        anio_caducidad.add("2029")
-        anio_caducidad.add("2030")
+    private fun guardarTarjetaAUsuario(bundle: Bundle?){
+        val et_numeroTarjeta: EditText = findViewById(R.id.et_numero_tarjeta)
+        val et_nombrePropietario: EditText = findViewById(R.id.et_nombre_tarjeta)
+        val et_apellidosPropietario: EditText = findViewById(R.id.et_apellidos_tarjeta)
+        val et_codigoSeguridad: EditText = findViewById(R.id.et_codigo_seguridad)
+        val et_codigoPostal: EditText = findViewById(R.id.et_codigo_postal)
 
+        val tarjeta = Tarjeta(
+            numTarjeta = et_numeroTarjeta.text.toString(),
+            mesCaducidad = mesCaducidadSeleccionado,
+            anioCaducidad = anioCaducidadSeleccionado,
+            codigoPostal = et_codigoPostal.text.toString(),
+            nombreTitular = et_nombrePropietario.text.toString(),
+            apellidoTitular = et_apellidosPropietario.text.toString(),
+            CVV = et_codigoSeguridad.text.toString(),
+            emisor = emisorSeleccionado
+        )
+        val id = bundle?.getString("id").toString()
+        userRef.whereEqualTo("id", id)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val usuario = document.toObject(User::class.java)
+                    usuario.addTarjeta(tarjeta)
+                    val usuarioRef = document.reference
+                    usuarioRef.update(usuario.toMap())
+                        .addOnSuccessListener {
+                            Log.d(TAG, "Usuario actualizado correctamente.")
+                            Toast.makeText(this, "Se agregó la tarjeta correctamente", Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
+                        .addOnFailureListener { e ->
+                            Log.e(TAG, "Error al guardar la tarjeta: $e")
+                        }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents: ", exception)
+            }
+    }
 
-        val adaptador_tarjeta: ArrayAdapter<String> =
-            ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tipos_tarjeta)
-        adaptador_tarjeta.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+    private fun llenadoSpinners(){
+        // Llenamos el emisor de tarjetas
+        val tipoTarjeta = arrayOf("Seleccione un emisor",
+                                    "Visa",
+                                    "Mastercard", "American Express",
+                                    "Discover",
+                                    "Dinner's Club")
 
-        val sp_tipo_tarjeta: Spinner = findViewById(R.id.sp_tipo_tarjeta)
-        sp_tipo_tarjeta.setAdapter(adaptador_tarjeta)
+        val adapterTarjeta = ArrayAdapter(this, android.R.layout.simple_spinner_item, tipoTarjeta)
+        adapterTarjeta.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        val adaptador_mes: ArrayAdapter<String> =
-            ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, mes_caducidad)
-        adaptador_tarjeta.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val spinnerTarjeta: Spinner = findViewById(R.id.sp_tipo_tarjeta)
+        spinnerTarjeta.adapter = adapterTarjeta
 
-        val sp_mes_caducidad: Spinner = findViewById(R.id.sp_mes_caducidad)
-        sp_mes_caducidad.setAdapter(adaptador_mes)
+        spinnerTarjeta.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                // Emisor seleccionado
+                emisorSeleccionado = parent.getItemAtPosition(position) as String
+            }
 
-        val adaptador_anio: ArrayAdapter<String> =
-            ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, anio_caducidad)
-        adaptador_tarjeta.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // No hacer nada
+            }
+        }
 
-        val sp_anio_caducidad: Spinner = findViewById(R.id.sp_año_caducidad)
-        sp_anio_caducidad.setAdapter(adaptador_anio)
+        // Llenamos los meses de caducidad
+        val mesCaducidad = arrayOf("Mes",
+                                    "01","02", "03","04","05","06","07","08","09","10","11","12")
+
+        val adapterMesCaducidad = ArrayAdapter(this, android.R.layout.simple_spinner_item, mesCaducidad)
+        adapterMesCaducidad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        val spinnerMesCaducidad: Spinner = findViewById(R.id.sp_mes_caducidad)
+        spinnerMesCaducidad.adapter = adapterMesCaducidad
+
+        spinnerMesCaducidad.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                // Mes seleccionado
+                mesCaducidadSeleccionado = parent.getItemAtPosition(position) as String
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // No hacer nada
+            }
+        }
+
+        // Llenamos los años de caducidad
+        val anioCaducidad = arrayOf("Año",
+                                    "2023","2024", "2025","2026","2027","2028","2029","2030","2031","2032","2033","2034")
+
+        val adapterAnioCaducidad = ArrayAdapter(this, android.R.layout.simple_spinner_item, anioCaducidad)
+        adapterAnioCaducidad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        val spinnerAnioCaducidad: Spinner = findViewById(R.id.sp_año_caducidad)
+        spinnerAnioCaducidad.adapter = adapterAnioCaducidad
+
+        spinnerAnioCaducidad.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                // Año seleccionado
+                anioCaducidadSeleccionado = parent.getItemAtPosition(position) as String
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // No hacer nada
+            }
+        }
     }
 }

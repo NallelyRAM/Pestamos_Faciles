@@ -34,8 +34,8 @@
 
     <ImageView
         android:id="@+id/iv_producto_seleccionado"
-        android:layout_width="142dp"
-        android:layout_height="191dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
         android:src="@drawable/logo2_icn"
         android:layout_marginBottom="15dp"

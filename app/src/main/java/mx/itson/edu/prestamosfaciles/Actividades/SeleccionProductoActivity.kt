@@ -2,11 +2,14 @@ package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
+import mx.itson.edu.prestamosfaciles.Entidades.Producto
 import mx.itson.edu.prestamosfaciles.R
 
 class SeleccionProductoActivity : AppCompatActivity() {
@@ -19,14 +22,19 @@ class SeleccionProductoActivity : AppCompatActivity() {
         val tv_nombreProducto: TextView = findViewById(R.id.tv_nombreProducto)
         val tv_precio: TextView = findViewById(R.id.tv_precio_seleccionProducto)
         val tv_descripcion: TextView = findViewById(R.id.tv_descripcion_seleccion_producto)
+        val btn_back: Button = findViewById(R.id.btn_back)
 
         val bundle = intent.extras
 
         if(bundle != null){
-            iv_producto.setImageResource(bundle.getInt("imagen"))
-            tv_nombreProducto.text = bundle.getString("nombre")
-            tv_precio.text = "$${bundle.getDouble("precio")}"
-            tv_descripcion.text = bundle.getString("descripcion")
+            val producto = intent.getSerializableExtra("producto") as Producto
+            Glide.with(this)
+                .load(producto.imagen)
+                .into(iv_producto)
+
+            tv_nombreProducto.text = producto.nombre
+            tv_precio.text = "$${producto.precio}"
+            tv_descripcion.text = producto.descripcion
         }
 
         var btnDetalles: Button = findViewById(R.id.btn_detalles)
@@ -34,12 +42,15 @@ class SeleccionProductoActivity : AppCompatActivity() {
         btnDetalles.setOnClickListener{
             if(bundle != null){
                 val intento = Intent(this, CondicionesActivity::class.java)
-                intento.putExtra("nombre",bundle.getString("nombre"))
-                intento.putExtra("imagen",bundle.getInt("imagen"))
-                intento.putExtra("precio",bundle.getDouble("precio"))
-                intento.putExtra("descripcion",bundle.getString("descripcion"))
+                val producto = intent.getSerializableExtra("producto") as Producto
+                val idUsuario = bundle.getString("id")
+                intento.putExtra("producto",producto)
+                intento.putExtra("id",idUsuario)
                 this!!.startActivity(intento)
             }
         }
+
+        btn_back.setOnClickListener { finish() }
+
     }
 }

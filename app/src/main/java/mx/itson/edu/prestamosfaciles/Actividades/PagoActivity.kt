@@ -6,6 +6,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import mx.itson.edu.prestamosfaciles.Entidades.Producto
+import mx.itson.edu.prestamosfaciles.Entidades.Tarjeta
 import mx.itson.edu.prestamosfaciles.R
 import java.text.SimpleDateFormat
 import java.util.*
@@ -32,12 +34,15 @@ class PagoActivity : AppCompatActivity() {
         val bundle = intent.extras
 
         if(bundle != null){
-            var subtotal = bundle.getDouble("precio")
-            var numeroTarjeta = bundle.getString("numTarjeta")
-            var fechaVencimiento = getFormatoFecha(bundle.getString("fechaVencimiento"))
+            val producto = intent.getSerializableExtra("producto") as Producto
+            val tarjeta = intent.getSerializableExtra("tarjeta") as Tarjeta
 
-            var CVV = bundle.getString("CVV")
-            var emisor = bundle.getString("emisor")
+            var subtotal = producto.precio
+            var numeroTarjeta = tarjeta.numTarjeta
+            var fechaVencimiento = tarjeta.mesCaducidad + "/"+tarjeta.anioCaducidad
+
+            var CVV = tarjeta.CVV
+            var emisor = tarjeta.emisor
 
             var IVA_actual = subtotal * IVA
             var total = subtotal + IVA_actual
@@ -58,18 +63,5 @@ class PagoActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-    }
-
-    fun getFormatoFecha(fecha: String?) : String{
-        val formatoActual = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US)
-        // Convertimos el String a un objeto Date
-        val fecha = formatoActual.parse(fecha)
-
-        // Creamos una segunda instancia de SimpleDateFormat con el formato deseado
-        val formatoDeseado = SimpleDateFormat("MM/yy", Locale.US)
-
-        // Formateamos la fecha en el formato deseado
-        val fechaFormateada = formatoDeseado.format(fecha)
-        return fechaFormateada
     }
 }

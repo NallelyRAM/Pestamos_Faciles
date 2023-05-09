@@ -10,6 +10,7 @@ import android.provider.OpenableColumns
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -25,6 +26,7 @@ import kotlin.collections.HashMap
 class AgregarProductoActivity : AppCompatActivity() {
 
     private val productoRef = FirebaseFirestore.getInstance().collection("productos")
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     private val File = 1
     private val database = Firebase.database
@@ -32,10 +34,12 @@ class AgregarProductoActivity : AppCompatActivity() {
     var fileName = ""
     var fileUri: Uri? = null
     var categoriaSeleccionada: String = ""
+    var filePathDownload: String? = ""
 
     object Constants {
         const val ID_REGEX = "PRDimg"
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,42 +51,18 @@ class AgregarProductoActivity : AppCompatActivity() {
         val btn_agregarImagen: Button = findViewById(R.id.btn_agregar_imagen)
         val btn_agregarProducto: Button = findViewById(R.id.btn_agregar_producto)
 
-        val et_nombreProducto: EditText = findViewById(R.id.et_nombre_producto)
-        val et_descripcionProducto: EditText = findViewById(R.id.et_descripcion)
-        val et_precioProducto: EditText = findViewById(R.id.et_precio_alquiler)
-        val et_ubicacionProducto: EditText = findViewById(R.id.et_nombre_ubicacion)
-
         btn_agregarImagen.setOnClickListener {
             fileUpload()
         }
 
         btn_back.setOnClickListener {
-            onBackPressed()
+            finish()
         }
-
-
 
         btn_agregarProducto.setOnClickListener{
             if(validaciones()){
-                val fullFileName = fileName.split(" ")
-                val nombre = et_nombreProducto.text.toString()
-                val descripcion = et_descripcionProducto.text.toString()
-                val precio = et_precioProducto.text.toString().toDouble()
-                val ubicacion = et_ubicacionProducto.text.toString()
-                val imagen = fileName
-                val id = fullFileName[2]
-
-                val producto = Producto(id = id,
-                                        nombre = nombre,
-                                        descripcion = descripcion,
-                                        imagen = fileUri,
-                                        categoria = categoriaSeleccionada,
-                                        precio = precio,
-                                        ubicacion = ubicacion)
-
-                productoRef.add(producto).addOnCompleteListener{
-                    fileUri?.let { it1 -> uploadImageToStorage(it1,fileName) }
-                }
+                finish()
+                fileUri?.let { it1 -> uploadImageToStorage(it1,fileName) }
             }
         }
 
@@ -129,14 +109,48 @@ class AgregarProductoActivity : AppCompatActivity() {
         if (fileUri != null) {
             fileRef.putFile(fileUri).addOnSuccessListener { taskSnapshot ->
                 fileRef.downloadUrl.addOnSuccessListener { uri ->
+                    filePathDownload = uri.toString() // <-- se obtiene la URL aquí
                     val hashMap = HashMap<String, String>()
                     hashMap["link"] = uri.toString()
                     myRef.setValue(hashMap)
                     Log.d("Mensaje", "Se subió correctamente")
+                    guardarProductoStorage()
                 }
             }
         }
     }
+
+    private fun guardarProductoStorage(){
+        val et_nombreProducto: EditText = findViewById(R.id.et_nombre_producto)
+        val et_descripcionProducto: EditText = findViewById(R.id.et_descripcion)
+        val et_precioProducto: EditText = findViewById(R.id.et_precio_alquiler)
+        val et_ubicacionProducto: EditText = findViewById(R.id.et_nombre_ubicacion)
+
+
+        val fullFileName = fileName.split(" ")
+        val nombre = et_nombreProducto.text.toString()
+        val descripcion = et_descripcionProducto.text.toString()
+        val precio = et_precioProducto.text.toString().toDouble()
+        val ubicacion = et_ubicacionProducto.text.toString()
+        val id = fullFileName[2]
+
+        val bundle = intent?.extras
+
+        val producto = Producto(id = id,
+            nombre = nombre,
+            descripcion = descripcion,
+            imagen = filePathDownload,
+            categoria = categoriaSeleccionada,
+            precio = precio,
+            ubicacion = ubicacion,
+            idVendedor = bundle?.getString("id").toString()
+        )
+        productoRef.add(producto).addOnCompleteListener{
+            Toast.makeText(this, "Se agregó el producto correctamente a nuestro catalogo", Toast.LENGTH_LONG).show()
+
+        }
+    }
+
     @SuppressLint("Range")
     private fun getFileName(uri: Uri?): String {
         var result: String? = null

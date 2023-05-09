@@ -131,10 +131,9 @@ class InicioActivity : AppCompatActivity() {
             name,
             lastName,
             acct?.email,
+            tarjetas = arrayListOf()
         )
-        userRef.add(usuario).addOnSuccessListener {
-
-        }
+        userRef.add(usuario)
     }
 
 }

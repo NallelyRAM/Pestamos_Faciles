@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
+import mx.itson.edu.prestamosfaciles.Entidades.Producto
 import mx.itson.edu.prestamosfaciles.R
 
 class CondicionesActivity : AppCompatActivity() {
@@ -23,9 +25,12 @@ class CondicionesActivity : AppCompatActivity() {
         val bundle = intent.extras
 
         if(bundle != null){
-            iv_producto.setImageResource(bundle.getInt("imagen"))
-            tv_nombreProducto.text = bundle.getString("nombre")
-            tv_descripcion.text = bundle.getString("descripcion")
+            val producto = intent.getSerializableExtra("producto") as Producto
+            Glide.with(this)
+                .load(producto.imagen)
+                .into(iv_producto)
+            tv_nombreProducto.text = producto.nombre
+            tv_descripcion.text = producto.descripcion
         }
 
         btnUbicacion.setOnClickListener{
@@ -35,21 +40,13 @@ class CondicionesActivity : AppCompatActivity() {
 
         btnSiguiente.setOnClickListener{
             if(bundle != null){
-                var precio = bundle.getDouble("precio")
+                val producto = intent.getSerializableExtra("producto") as Producto
                 val intento = Intent(this, MisTarjetasActivity::class.java)
-                intento.putExtra("precio",precio)
+                intento.putExtra("producto",producto)
+                intento.putExtra("id",bundle.getString("id"))
                 this!!.startActivity(intento)
             }
         }
 
-    }
-
-    fun btnMiPerfil(view: View){
-        var intent: Intent = Intent(this, CuentaActivity::class.java)
-        startActivity(intent)
-    }
-    fun btnHome(view: View){
-        var intent: Intent = Intent(this, PrincipalActivity::class.java)
-        startActivity(intent)
     }
 }
