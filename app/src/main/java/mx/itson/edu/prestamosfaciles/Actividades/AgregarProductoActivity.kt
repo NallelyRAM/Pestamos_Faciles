@@ -36,6 +36,9 @@ class AgregarProductoActivity : AppCompatActivity() {
     var categoriaSeleccionada: String = ""
     var filePathDownload: String? = ""
 
+    var producto: Producto? = null
+    var idUsuario : String = ""
+
     object Constants {
         const val ID_REGEX = "PRDimg"
     }
@@ -45,11 +48,26 @@ class AgregarProductoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agregar_producto)
 
-        llenarSpinner()
+        llenarSpinner(null)
 
         val btn_back: Button = findViewById(R.id.btn_back)
         val btn_agregarImagen: Button = findViewById(R.id.btn_agregar_imagen)
         val btn_agregarProducto: Button = findViewById(R.id.btn_agregar_producto)
+
+
+        val bundle = intent.extras
+        if(bundle != null){
+            try{
+                producto = intent.getSerializableExtra("producto") as Producto
+            }catch(e: Exception){
+
+            }
+            idUsuario = bundle.getString("idUsuario").toString()
+
+            producto?.let { llenarCampos(it) }
+
+        }
+
 
         btn_agregarImagen.setOnClickListener {
             fileUpload()
@@ -62,9 +80,33 @@ class AgregarProductoActivity : AppCompatActivity() {
         btn_agregarProducto.setOnClickListener{
             if(validaciones()){
                 finish()
+
+
                 fileUri?.let { it1 -> uploadImageToStorage(it1,fileName) }
+                if(producto?.imagen != null){
+                    guardarProductoStorage(producto)
+                }
             }
         }
+
+
+
+    }
+
+    private fun llenarCampos(producto: Producto){
+        llenarSpinner(producto)
+
+        val btn_agregarImagen: Button = findViewById(R.id.btn_agregar_imagen)
+        val et_nombreProducto: EditText = findViewById(R.id.et_nombre_producto)
+        val et_descripcionProducto: EditText = findViewById(R.id.et_descripcion)
+        val et_precioProducto: EditText = findViewById(R.id.et_precio_alquiler)
+        val et_ubicacionProducto: EditText = findViewById(R.id.et_nombre_ubicacion)
+
+        btn_agregarImagen.text = producto.id
+        et_nombreProducto.setText(producto.nombre)
+        et_descripcionProducto.setText(producto.descripcion)
+        et_precioProducto.setText(producto.precio.toString())
+        et_ubicacionProducto.setText(producto.ubicacion)
 
     }
 
@@ -113,43 +155,76 @@ class AgregarProductoActivity : AppCompatActivity() {
                     val hashMap = HashMap<String, String>()
                     hashMap["link"] = uri.toString()
                     myRef.setValue(hashMap)
+                    guardarProductoStorage(producto)
                     Log.d("Mensaje", "Se subió correctamente")
-                    guardarProductoStorage()
                 }
             }
         }
     }
 
-    private fun guardarProductoStorage(){
+    private fun guardarProductoStorage(producto: Producto?) {
         val et_nombreProducto: EditText = findViewById(R.id.et_nombre_producto)
         val et_descripcionProducto: EditText = findViewById(R.id.et_descripcion)
         val et_precioProducto: EditText = findViewById(R.id.et_precio_alquiler)
         val et_ubicacionProducto: EditText = findViewById(R.id.et_nombre_ubicacion)
 
 
-        val fullFileName = fileName.split(" ")
         val nombre = et_nombreProducto.text.toString()
         val descripcion = et_descripcionProducto.text.toString()
         val precio = et_precioProducto.text.toString().toDouble()
         val ubicacion = et_ubicacionProducto.text.toString()
-        val id = fullFileName[2]
+
+        val id: String = if(producto == null){
+            val fullFileName = fileName.split(" ")
+            fullFileName[2]
+        } else {
+            producto.id
+        }
 
         val bundle = intent?.extras
 
-        val producto = Producto(id = id,
-            nombre = nombre,
-            descripcion = descripcion,
-            imagen = filePathDownload,
-            categoria = categoriaSeleccionada,
-            precio = precio,
-            ubicacion = ubicacion,
-            idVendedor = bundle?.getString("id").toString()
-        )
-        productoRef.add(producto).addOnCompleteListener{
-            Toast.makeText(this, "Se agregó el producto correctamente a nuestro catalogo", Toast.LENGTH_LONG).show()
+        var idVendedor = bundle?.getString("id").toString()
 
+        // Query to search for products with the same name
+        val query = productoRef.whereEqualTo("id", producto?.id)
+
+        // Check if a product with the same name already exists
+        query.get().addOnSuccessListener { documents ->
+            if (documents.isEmpty) {
+                // Product does not exist, add it to the database
+                val producto = Producto(
+                    id = id,
+                    nombre = nombre,
+                    descripcion = descripcion,
+                    imagen = filePathDownload,
+                    categoria = categoriaSeleccionada,
+                    precio = precio,
+                    ubicacion = ubicacion,
+                    idVendedor = idVendedor
+                )
+                productoRef.add(producto).addOnCompleteListener {
+                    Toast.makeText(this, "Se agregó el producto correctamente a nuestro catalogo", Toast.LENGTH_LONG).show()
+                }
+            } else {
+                // Product already exists, update it
+                val productoId = documents.first().id
+                val producto = Producto(
+                    id = id,
+                    nombre = nombre,
+                    descripcion = descripcion,
+                    imagen = filePathDownload,
+                    categoria = categoriaSeleccionada,
+                    precio = precio,
+                    ubicacion = ubicacion,
+                    idVendedor = producto!!.idVendedor
+                )
+                productoRef.document(productoId).set(producto).addOnCompleteListener {
+                    Toast.makeText(this, "Se actualizó el producto correctamente en nuestro catalogo", Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
+
 
     @SuppressLint("Range")
     private fun getFileName(uri: Uri?): String {
@@ -175,7 +250,7 @@ class AgregarProductoActivity : AppCompatActivity() {
     }
 
 
-    private fun llenarSpinner(){
+    private fun llenarSpinner(producto: Producto?){
         val categoriasProductos = arrayOf("Seleccione una categoría",
                                             "Electrónica",
                                             "Moda", "Hogar y jardín",
@@ -189,6 +264,11 @@ class AgregarProductoActivity : AppCompatActivity() {
 
         val spinner: Spinner = findViewById(R.id.sp_categoria_producto)
         spinner.adapter = adapter
+
+        if(producto != null){
+            val position = adapter.getPosition(producto.categoria)
+            spinner.setSelection(position)
+        }
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {

@@ -1,14 +1,11 @@
 package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.annotation.SuppressLint
-import android.app.PendingIntent.getActivity
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,11 +13,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
-import com.google.firebase.database.ktx.database
-import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
 import mx.itson.edu.prestamosfaciles.Entidades.Producto
 import mx.itson.edu.prestamosfaciles.R
 import java.util.*
@@ -80,7 +73,7 @@ class PrincipalActivity : AppCompatActivity() {
                     idVendedor
                 ))
 
-                adapter = ProductoAdapter(productos, this,intent.extras)
+                adapter = ProductoAdapter(productos, this,intent.extras,1)
                 val gridview: GridView = findViewById(R.id.id_grid)
                 gridview.adapter = adapter
 
@@ -97,11 +90,13 @@ class PrincipalActivity : AppCompatActivity() {
         var productos = ArrayList<Producto>()
         var context: Context? = null
         var bundle: Bundle? = null
+        var seleccion: Int? = null
 
-        constructor(productos: ArrayList<Producto>, context: Context?, bundle: Bundle?) : super() {
+        constructor(productos: ArrayList<Producto>, context: Context?, bundle: Bundle?, seleccion: Int?) : super() {
             this.productos = productos
             this.context = context
             this.bundle = bundle
+            this.seleccion = seleccion
         }
 
         override fun getCount(): Int {
@@ -140,12 +135,14 @@ class PrincipalActivity : AppCompatActivity() {
 
 
             layoutClick.setOnClickListener{
-                val intento = Intent(context, SeleccionProductoActivity::class.java)
-                intento.putExtra("producto",producto)
-                intento.putExtra("id", bundle?.getString("id"))
-                context!!.startActivity(intento)
+                if(seleccion != null){
+                    val intento = Intent(context, SeleccionProductoActivity::class.java)
+                    intento.putExtra("producto",producto)
+                    intento.putExtra("id", bundle?.getString("id"))
+                    intento.putExtra("seleccion","0")
+                    context!!.startActivity(intento)
+                }
             }
-
             return vista
 
         }

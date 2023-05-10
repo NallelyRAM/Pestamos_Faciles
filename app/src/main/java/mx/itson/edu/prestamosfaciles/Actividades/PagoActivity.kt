@@ -24,12 +24,14 @@ class PagoActivity : AppCompatActivity() {
         val tv_numeroTarjeta: TextView = findViewById(R.id.tv_numeroTarjeta)
         val tv_cvv: TextView = findViewById(R.id.tv_numeroCCV)
         val tv_emisor: TextView = findViewById(R.id.tv_emisor)
+        val tv_nombreCompleto: TextView = findViewById(R.id.tv_nombreCompletoPropietario)
 
         val tv_subtotal: TextView = findViewById(R.id.tv_cantidadSubtotal)
         val tv_iva: TextView = findViewById(R.id.tv_cantidadIVA)
         val tv_total: TextView = findViewById(R.id.tv_cantidadTotal)
 
         val btn_pagar: Button = findViewById(R.id.btn_pagar)
+        val btn_back: Button = findViewById(R.id.btn_back)
 
         val bundle = intent.extras
 
@@ -55,6 +57,7 @@ class PagoActivity : AppCompatActivity() {
             tv_fechaVencimiento.text = fechaVencimiento
             tv_cvv.text = CVV
             tv_emisor.text = emisor
+            tv_nombreCompleto.text = tarjeta.nombreTitular + " " + tarjeta.apellidoTitular
         }
 
         btn_pagar.setOnClickListener{
@@ -62,6 +65,8 @@ class PagoActivity : AppCompatActivity() {
             var intent: Intent = Intent(this, PrincipalActivity::class.java)
             startActivity(intent)
         }
+
+        btn_back.setOnClickListener { finish() }
 
     }
 }

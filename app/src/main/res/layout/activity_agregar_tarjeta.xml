@@ -69,7 +69,8 @@
                 android:fontFamily="@font/avenir_roman"
                 android:hint="@string/numero_tarjeta"
                 android:inputType="number"
-                android:maxLength="16"
+                android:digits="0123456789"
+                android:maxLength="19"
                 android:padding="10dp" />
 
             <EditText

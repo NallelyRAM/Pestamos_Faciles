@@ -21,11 +21,11 @@
 
         <TextView
             android:layout_width="310dp"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:fontFamily="@font/avenir_roman"
-            android:text="@string/agregar_tarjeta"
+            android:text="Pagar"
             android:textAlignment="textStart"
             android:textSize="25sp" />
 
@@ -172,6 +172,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/avenir_roman"
+                android:textColor="@color/gray"
+                android:text="asdada sdadada asdadsa asdada dsasdasd"/>
+
+            <TextView
+                android:id="@+id/tv_nombrePropietario"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Propietario"
+                android:textAllCaps="true"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/avenir_roman"/>
+
+            <TextView
+                android:id="@+id/tv_nombreCompletoPropietario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
                 android:layout_marginLeft="30dp"
                 android:textSize="18sp"
                 android:fontFamily="@font/avenir_roman"

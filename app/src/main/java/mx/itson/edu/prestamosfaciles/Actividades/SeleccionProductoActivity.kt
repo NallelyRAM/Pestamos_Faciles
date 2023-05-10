@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -23,6 +24,7 @@ class SeleccionProductoActivity : AppCompatActivity() {
         val tv_precio: TextView = findViewById(R.id.tv_precio_seleccionProducto)
         val tv_descripcion: TextView = findViewById(R.id.tv_descripcion_seleccion_producto)
         val btn_back: Button = findViewById(R.id.btn_back)
+        var btnDetalles: Button = findViewById(R.id.btn_detalles)
 
         val bundle = intent.extras
 
@@ -35,9 +37,16 @@ class SeleccionProductoActivity : AppCompatActivity() {
             tv_nombreProducto.text = producto.nombre
             tv_precio.text = "$${producto.precio}"
             tv_descripcion.text = producto.descripcion
+
+
+            val seleccion = bundle.getString("seleccion")
+
+            if(seleccion == null){
+                btnDetalles.visibility = View.INVISIBLE
+            }
         }
 
-        var btnDetalles: Button = findViewById(R.id.btn_detalles)
+
 
         btnDetalles.setOnClickListener{
             if(bundle != null){

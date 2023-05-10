@@ -12,6 +12,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:longClickable="true"
         android:background="@drawable/round_textview">
 
         <TextView

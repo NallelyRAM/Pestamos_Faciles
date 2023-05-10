@@ -31,11 +31,6 @@
             android:textAlignment="textStart"
             android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/btn_opciones"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/btn_opciones" />
     </LinearLayout>
 
     <LinearLayout
@@ -125,7 +120,7 @@
             android:background="@drawable/round_button"
             android:fontFamily="@font/avenir_roman"
             android:gravity="center"
-            android:text="@string/agregar"
+            android:text="@string/aceptar"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20sp" />

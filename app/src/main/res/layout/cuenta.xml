@@ -69,13 +69,24 @@
         android:textColor="@color/gray"/>
 
     <TextView
-        android:id="@+id/tv_historial"
+        android:id="@+id/tv_misPrestamos"
         android:layout_width="190dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
         android:textSize="18sp"
-        android:text="@string/historial"
+        android:text="Mis Prestamos"
+        android:fontFamily="@font/avenir_roman"
+        android:textColor="@color/gray"/>
+
+    <TextView
+        android:id="@+id/tv_misRentas"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="18sp"
+        android:text="Mis Rentas"
         android:fontFamily="@font/avenir_roman"
         android:textColor="@color/gray"/>
 
@@ -123,16 +134,16 @@
         android:background="@color/orange"/>
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentBottom="true">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
             android:orientation="horizontal">
 
             <ImageView
@@ -165,7 +176,5 @@
                 app:srcCompat="@drawable/busqueda" />
         </LinearLayout>
     </RelativeLayout>
-
-
 
 </LinearLayout>
