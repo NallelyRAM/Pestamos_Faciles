@@ -38,11 +38,7 @@ class AgregarProductoActivity : AppCompatActivity() {
 
     var producto: Producto? = null
     var idUsuario : String = ""
-
-    object Constants {
-        const val ID_REGEX = "PRDimg"
-    }
-
+    var seleccion: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +59,7 @@ class AgregarProductoActivity : AppCompatActivity() {
 
             }
             idUsuario = bundle.getString("idUsuario").toString()
+            seleccion = bundle.getString("actualizar")
 
             producto?.let { llenarCampos(it) }
 
@@ -80,9 +77,7 @@ class AgregarProductoActivity : AppCompatActivity() {
         btn_agregarProducto.setOnClickListener{
             if(validaciones()){
                 finish()
-
-
-                fileUri?.let { it1 -> uploadImageToStorage(it1,fileName) }
+                uploadImageToStorage(fileUri)
                 if(producto?.imagen != null){
                     guardarProductoStorage(producto)
                 }
@@ -133,30 +128,45 @@ class AgregarProductoActivity : AppCompatActivity() {
             if (resultCode == RESULT_OK) {
                 fileUri = data!!.data
                 fileName = getFileName(fileUri)
-
-                val productoID = Constants.ID_REGEX +" "+ UUID.randomUUID().toString()
-
-                val newFileName = File(fileName).nameWithoutExtension +" "+productoID
                 val btn_agregarImagen: Button = findViewById(R.id.btn_agregar_imagen)
                 btn_agregarImagen.text = fileName
-                val extension = fileName.substring(fileName.lastIndexOf("."))
-                fileName = newFileName+extension
+                fileName = UUID.randomUUID().toString()
 
             }
         }
     }
-    private fun uploadImageToStorage(fileUri: Uri, fileName: String){
+    private fun uploadImageToStorage(fileUri: Uri?){
         val folderRef: StorageReference = FirebaseStorage.getInstance().reference.child("prestodo_objetos")
         val fileRef: StorageReference = folderRef.child(fileName)
-        if (fileUri != null) {
-            fileRef.putFile(fileUri).addOnSuccessListener { taskSnapshot ->
-                fileRef.downloadUrl.addOnSuccessListener { uri ->
-                    filePathDownload = uri.toString() // <-- se obtiene la URL aquí
-                    val hashMap = HashMap<String, String>()
-                    hashMap["link"] = uri.toString()
-                    myRef.setValue(hashMap)
-                    guardarProductoStorage(producto)
-                    Log.d("Mensaje", "Se subió correctamente")
+
+        if(seleccion.equals("actualizar")){
+            val fileRef: StorageReference = folderRef.child(producto!!.id)
+            // Actualizar el archivo
+            if (fileUri != null) {
+                fileRef.putFile(fileUri).addOnSuccessListener {
+                    fileRef.downloadUrl.addOnSuccessListener { uri ->
+                        filePathDownload = uri.toString() // <-- se obtiene la URL aquí
+                        val hashMap = HashMap<String, String>()
+                        hashMap["link"] = uri.toString()
+                        myRef.setValue(hashMap)
+                        guardarProductoStorage(producto)
+                        Log.d("Mensaje", "Se subió correctamente")
+                    }
+                }.addOnFailureListener {
+                    // Se produjo un error al actualizar el archivo
+                }
+            }
+        } else {
+            if (fileUri != null) {
+                fileRef.putFile(fileUri).addOnSuccessListener { taskSnapshot ->
+                    fileRef.downloadUrl.addOnSuccessListener { uri ->
+                        filePathDownload = uri.toString() // <-- se obtiene la URL aquí
+                        val hashMap = HashMap<String, String>()
+                        hashMap["link"] = uri.toString()
+                        myRef.setValue(hashMap)
+                        guardarProductoStorage(producto)
+                        Log.d("Mensaje", "Se subió correctamente")
+                    }
                 }
             }
         }
@@ -175,8 +185,8 @@ class AgregarProductoActivity : AppCompatActivity() {
         val ubicacion = et_ubicacionProducto.text.toString()
 
         val id: String = if(producto == null){
-            val fullFileName = fileName.split(" ")
-            fullFileName[2]
+            val fullFileName = fileName
+            fullFileName
         } else {
             producto.id
         }
@@ -208,6 +218,10 @@ class AgregarProductoActivity : AppCompatActivity() {
             } else {
                 // Product already exists, update it
                 val productoId = documents.first().id
+                if(filePathDownload == null || filePathDownload!!.isEmpty()){
+                    filePathDownload = producto!!.imagen
+                }
+
                 val producto = Producto(
                     id = id,
                     nombre = nombre,

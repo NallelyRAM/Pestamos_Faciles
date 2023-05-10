@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import mx.itson.edu.prestamosfaciles.Entidades.Producto
 import mx.itson.edu.prestamosfaciles.Entidades.Tarjeta
 import mx.itson.edu.prestamosfaciles.R
@@ -21,6 +22,7 @@ class MisPrestamosActivity : AppCompatActivity() {
 
     private val productoRef = FirebaseFirestore.getInstance().collection("productos")
     private val arrayMisProductos: ArrayList<Producto> = arrayListOf()
+    private val storageProductoRef = FirebaseStorage.getInstance().reference
 
     var idUsuario: String? = null
     var correo: String? = null
@@ -93,12 +95,17 @@ class MisPrestamosActivity : AppCompatActivity() {
         var intent = Intent(this, AgregarProductoActivity::class.java)
         intent.putExtra("producto",producto)
         intent.putExtra("idUsuario",idUsuario)
+        intent.putExtra("actualizar","actualizar")
         startActivity(intent)
     }
 
 
     private fun eliminarProducto(producto: Producto){
         // Consultar documentos cuyo campo "nombre" coincide con el valor dado
+
+        val referenciaCarpeta = storageProductoRef.child("prestodo_objetos")
+        val referenciaArchivo = referenciaCarpeta.child(producto.id)
+
         productoRef.whereEqualTo("id", producto.id)
             .get()
             .addOnSuccessListener { querySnapshot ->
@@ -113,6 +120,14 @@ class MisPrestamosActivity : AppCompatActivity() {
                 builder.setTitle("Eliminar producto")
                     .setMessage("¿Está seguro de que desea eliminar este producto?")
                     .setPositiveButton("Sí") { dialog, which ->
+
+                        referenciaArchivo.delete()
+                            .addOnSuccessListener {
+                                // Archivo eliminado exitosamente
+                            }
+                            .addOnFailureListener {
+                                // Error al eliminar archivo
+                            }
                         // Eliminar el documento
                         for (document in querySnapshot) {
                             document.reference.delete().addOnSuccessListener {
