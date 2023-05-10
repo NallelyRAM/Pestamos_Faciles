@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/avenir_roman"
-                android:text="Explora nuestro catálogo"
+                android:text="@string/explora_catalogo"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textSize="30sp" />
@@ -34,7 +34,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_marginTop="70dp"
-            android:layout_height="5dp"
+            android:layout_height="3dp"
             android:background="@color/orange"/>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

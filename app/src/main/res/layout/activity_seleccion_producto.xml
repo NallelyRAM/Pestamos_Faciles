@@ -76,7 +76,7 @@
         android:id="@+id/tv_nombreProducto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="25dp"
+        android:paddingLeft="50dp"
         android:text="Nombre"
         android:textStyle="bold"
         android:layout_marginBottom="25dp"
@@ -92,7 +92,7 @@
         android:paddingLeft="50dp"
         android:text="Descripción del prducto"
         android:textSize="18sp"
-        android:fontFamily="@font/avenir_black"
+        android:fontFamily="@font/avenir_roman"
         android:textColor="@color/gray"/>
 
 

@@ -9,19 +9,19 @@
 
     android:orientation="vertical">
 
-    <LinearLayout
+     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="100dp"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="30dp">
 
             <ImageView
                 android:id="@+id/iv_photoUser"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/user" />
+                app:srcCompat="@drawable/user"/>
 
         <TextView
             android:id="@+id/tv_nombreUsuario"
@@ -37,112 +37,120 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_configuracionCuenta"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="4dp"
-        android:layout_gravity="center"
-        android:text="@string/configuracion_cuenta"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/gray"
-        android:fontFamily="@font/avenir_roman"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="408dp"
+        android:orientation="vertical">
 
-    <View
-        android:layout_width="350dp"
-        android:layout_height="2dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:background="@color/orange"/>
+        <TextView
+            android:id="@+id/tv_configuracionCuenta"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/avenir_roman"
+            android:text="@string/configuracion_cuenta"
+            android:textColor="@color/gray"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_misDatos"
-        android:layout_width="190dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="30dp"
-        android:textSize="18sp"
-        android:text="@string/mis_datos"
-        android:fontFamily="@font/avenir_roman"
-        android:textColor="@color/gray"/>
+        <View
+            android:layout_width="350dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@color/orange" />
 
-    <TextView
-        android:id="@+id/tv_misPrestamos"
-        android:layout_width="190dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="30dp"
-        android:textSize="18sp"
-        android:text="Mis Prestamos"
-        android:fontFamily="@font/avenir_roman"
-        android:textColor="@color/gray"/>
+        <TextView
+            android:id="@+id/tv_misDatos"
+            android:layout_width="190dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/avenir_roman"
+            android:text="@string/mis_datos"
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_misRentas"
-        android:layout_width="190dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="30dp"
-        android:textSize="18sp"
-        android:text="Mis Rentas"
-        android:fontFamily="@font/avenir_roman"
-        android:textColor="@color/gray"/>
+        <TextView
+            android:id="@+id/tv_misPrestamos"
+            android:layout_width="190dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/avenir_roman"
+            android:text="Mis Prestamos"
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
 
-
-    <TextView
-        android:id="@+id/tv_misTarjetas"
-        android:layout_width="190dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="30dp"
-        android:onClick="cargarTarjetas"
-        android:textSize="18sp"
-        android:text="@string/mis_tarjetas"
-        android:fontFamily="@font/avenir_roman"
-        android:textColor="@color/gray"/>
+        <TextView
+            android:id="@+id/tv_misRentas"
+            android:layout_width="190dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/avenir_roman"
+            android:text="Mis Rentas"
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
 
 
-    <TextView
-        android:id="@+id/tv_privacidad"
-        android:layout_width="190dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="30dp"
-        android:textSize="18sp"
-        android:text="@string/privacidad"
-        android:fontFamily="@font/avenir_roman"
-        android:textColor="@color/gray"/>
+        <TextView
+            android:id="@+id/tv_misTarjetas"
+            android:layout_width="190dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/avenir_roman"
+            android:onClick="cargarTarjetas"
+            android:text="@string/mis_tarjetas"
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_cerrarSesion"
-        android:layout_width="190dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="30dp"
-        android:textSize="18sp"
-        android:text="@string/cerrar_cuenta"
-        android:fontFamily="@font/avenir_roman"
-        android:textColor="@color/gray"/>
 
-    <View
-        android:layout_width="350dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center"
-        android:background="@color/orange"/>
+        <TextView
+            android:id="@+id/tv_privacidad"
+            android:layout_width="190dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/avenir_roman"
+            android:text="@string/privacidad"
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_cerrarSesion"
+            android:layout_width="190dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/avenir_roman"
+            android:text="@string/cerrar_cuenta"
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="350dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:background="@color/orange" />
+
+    </LinearLayout>
+
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_alignParentBottom="true">
+        android:layout_height="76dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="bottom"
             android:orientation="horizontal">
 

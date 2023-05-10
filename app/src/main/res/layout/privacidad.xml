@@ -9,25 +9,40 @@
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/tv_privacidad"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Privacidad"
-        android:textStyle="bold"
-        android:textSize="30dp"/>
+        android:layout_height="54dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/btn_atras" />
+
+        <TextView
+            android:layout_width="310dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/avenir_roman"
+            android:text="@string/privacidad"
+            android:textAlignment="textStart"
+            android:textSize="25sp" />
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30sp"
         android:layout_marginRight="65dp"
-        android:text="Al utilizar los servicios de prestodo, usted está dando consentimiento a las prácticas descritas en este aviso de privacidad.\n
-        \nSi tiene preguntas sobre cómo recabamos y usamos sus datos personales o sobre este aviso de privacidad, por favor póngase en contacto con nosotros.\n\nNuestros datos de contacto son:"
+        android:text="@string/texto_privacidad"
         android:layout_marginLeft="65dp"
+        android:fontFamily="@font/avenir_roman"
+        android:textColor="@color/gray"
         android:gravity="center"
         android:textSize="18sp"
         />
@@ -36,7 +51,8 @@
         android:layout_width="300dp"
         android:layout_height="186dp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/round_textview"
         android:orientation="vertical">
 
@@ -46,8 +62,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:text="  ITSON Campus Nainari"
-            android:textSize="18sp" />
+            android:text="@string/itson_nai"
+            android:fontFamily="@font/avenir_roman"
+            android:textSize="18sp"
+            android:layout_marginLeft="15dp"/>
 
         <View
             android:layout_width="match_parent"
@@ -59,8 +77,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:text="  atencionalcliente@prestodo.com"
-            android:textSize="18sp" />
+            android:text="@string/correo_privacidad"
+            android:fontFamily="@font/avenir_roman"
+            android:textSize="18sp"
+            android:layout_marginLeft="15dp"/>
 
         <View
             android:layout_width="match_parent"
@@ -72,8 +92,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:text="   644 259 6559"
-            android:textSize="18sp" />
+            android:fontFamily="@font/avenir_roman"
+            android:text="@string/tel"
+            android:textSize="18sp"
+            android:layout_marginLeft="15dp"/>
 
     </LinearLayout>
 

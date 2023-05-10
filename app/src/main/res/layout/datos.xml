@@ -40,7 +40,7 @@
         android:layout_height="410dp"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/round_textview">
 
 
@@ -137,7 +137,7 @@
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/round_button"
         android:text="@string/guardar"

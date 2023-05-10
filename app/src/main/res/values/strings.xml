@@ -72,5 +72,13 @@
     <string name="total">Total</string>
     <string name="pagar">Pagar</string>
 
+    //Privacidad
+    <string name="texto_privacidad">Al utilizar los servicios de prestodo, usted está dando consentimiento a las prácticas descritas en este aviso de privacidad.\n\n Si tiene preguntas sobre cómo recabamos y usamos sus datos personales o sobre este aviso de privacidad, por favor póngase en contacto con nosotros.\n\nNuestros datos de contacto son:</string>
+    <string name="itson_nai">ITSON Campus Náinari</string>
+    <string name="correo_privacidad">atencionalcliente@prestodo.com</string>
+    <string name="tel">644 259 6559</string>
+
+    //Catálogo
+    <string name="explora_catalogo">Explora nuestro catálogo</string>
 
 </resources>
