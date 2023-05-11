@@ -3,9 +3,11 @@ package mx.itson.edu.prestamosfaciles.Actividades
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import mx.itson.edu.prestamosfaciles.Entidades.Producto
 import mx.itson.edu.prestamosfaciles.Entidades.Tarjeta
 import mx.itson.edu.prestamosfaciles.R
@@ -49,6 +51,8 @@ class PagoActivity : AppCompatActivity() {
             var IVA_actual = subtotal * IVA
             var total = subtotal + IVA_actual
 
+            var iv_producto: ImageView = findViewById(R.id.imagen_producto)
+
             tv_subtotal.text = String.format("$%,.2f", subtotal)
             tv_iva.text = String.format("$%,.2f", IVA_actual)
             tv_total.text = String.format("$%,.2f", total)
@@ -58,6 +62,12 @@ class PagoActivity : AppCompatActivity() {
             tv_cvv.text = CVV
             tv_emisor.text = emisor
             tv_nombreCompleto.text = tarjeta.nombreTitular + " " + tarjeta.apellidoTitular
+
+            Glide.with(this)
+                .load(producto.imagen)
+                .into(iv_producto)
+
+
         }
 
         btn_pagar.setOnClickListener{

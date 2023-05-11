@@ -54,18 +54,18 @@
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
-            android:layout_marginTop="100dp"
-            android:layout_height="match_parent">
+            android:layout_height="466dp"
+            android:layout_marginTop="100dp">
 
             <GridView
                 android:id="@+id/id_grid"
 
-                android:layout_marginVertical="50dp"
-                android:layout_marginTop="100dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:verticalSpacing="15dp"
-                android:numColumns="1" />
+                android:layout_marginVertical="50dp"
+                android:layout_marginTop="100dp"
+                android:numColumns="1"
+                android:verticalSpacing="15dp" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

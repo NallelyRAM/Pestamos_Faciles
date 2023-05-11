@@ -139,6 +139,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
@@ -211,6 +212,18 @@
             android:layout_height="165dp"
             android:layout_marginLeft="10dp"
             android:background="@color/orange"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imagen_producto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+        </LinearLayout>
 
 
 
