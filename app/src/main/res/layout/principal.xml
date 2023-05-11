@@ -19,15 +19,29 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
-            <TextView
+            <EditText
+                android:id="@+id/et_buscar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/avenir_roman"
-                android:text="@string/explora_catalogo"
+                android:hint="@string/explora_catalogo"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:textSize="30sp" />
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/clearButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:layout_alignEnd="@id/et_buscar"
+                android:layout_alignBottom="@id/et_buscar"
+                android:layout_marginStart="-50dp"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/transparent"
+                android:visibility="invisible" />
+
 
         </LinearLayout>
 
@@ -96,15 +110,6 @@
                     android:layout_gravity="bottom"
                     android:layout_marginBottom="25dp"
                     app:srcCompat="@drawable/mas" />
-
-                <ImageView
-                    android:id="@+id/iv_navMenu_Principal_Categorias"
-                    android:layout_width="70dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="25dp"
-                    app:srcCompat="@drawable/busqueda" />
             </LinearLayout>
 
         </RelativeLayout>

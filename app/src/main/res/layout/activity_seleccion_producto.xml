@@ -90,6 +90,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:paddingLeft="50dp"
+        android:paddingRight="50dp"
         android:text="Descripción del prducto"
         android:textSize="18sp"
         android:fontFamily="@font/avenir_roman"

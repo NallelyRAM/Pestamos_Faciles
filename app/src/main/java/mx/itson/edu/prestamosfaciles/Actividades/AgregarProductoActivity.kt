@@ -137,7 +137,7 @@ class AgregarProductoActivity : AppCompatActivity() {
     }
     private fun uploadImageToStorage(fileUri: Uri?){
         val folderRef: StorageReference = FirebaseStorage.getInstance().reference.child("prestodo_objetos")
-        val fileRef: StorageReference = folderRef.child(fileName)
+
 
         if(seleccion.equals("actualizar")){
             val fileRef: StorageReference = folderRef.child(producto!!.id)
@@ -158,6 +158,7 @@ class AgregarProductoActivity : AppCompatActivity() {
             }
         } else {
             if (fileUri != null) {
+                val fileRef: StorageReference = folderRef.child(fileName)
                 fileRef.putFile(fileUri).addOnSuccessListener { taskSnapshot ->
                     fileRef.downloadUrl.addOnSuccessListener { uri ->
                         filePathDownload = uri.toString() // <-- se obtiene la URL aquí

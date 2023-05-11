@@ -1,14 +1,13 @@
 package mx.itson.edu.prestamosfaciles.Actividades
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
@@ -32,6 +31,7 @@ class DatosPersonalesActivity : AppCompatActivity() {
     var id = ""
     var photoURI: Uri? = null
 
+    @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.datos)
@@ -44,6 +44,9 @@ class DatosPersonalesActivity : AppCompatActivity() {
         val tv_telefono: TextView = findViewById(R.id.tv_telefono)
         val tv_correo: TextView = findViewById(R.id.tv_Correo)
         val tv_ubicacion: TextView = findViewById(R.id.tv_misDatosUbicacion)
+
+        val btnBack: Button = findViewById(R.id.btn_back)
+
         tv_fechaNacimiento.setOnClickListener { mostrarDatePicker() }
 
         if(bundle != null) {
@@ -125,6 +128,8 @@ class DatosPersonalesActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        btnBack.setOnClickListener { finish() }
+
     }
 
     private fun mostrarDatePicker() {
@@ -192,16 +197,6 @@ class DatosPersonalesActivity : AppCompatActivity() {
         cal.add(Calendar.DAY_OF_MONTH, -1) // Restamos un día
         val date = cal.time
         return formatter.format(date)
-    }
-
-
-    fun btnHome(){
-        var intent = Intent(this, PrincipalActivity::class.java)
-        intent.putExtra("name", "$nombre $apellidos")
-        intent.putExtra("email",correo)
-        intent.putExtra("id",id)
-        intent.putExtra("photo",photoURI)
-        startActivity(intent)
     }
 
 }

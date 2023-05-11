@@ -161,27 +161,6 @@
                 android:layout_weight="1"
                 android:onClick="btnHome"
                 app:srcCompat="@drawable/home" />
-
-            <ImageView
-                android:id="@+id/iv_navMenu_cuenta_Perfil"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/user" />
-
-            <ImageView
-                android:id="@+id/iv_navMenu_cuenta_mas"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/mas" />
-
-            <ImageView
-                android:id="@+id/iv_navMenu_cuenta_Categorias"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/busqueda" />
         </LinearLayout>
     </RelativeLayout>
 

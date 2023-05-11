@@ -4,25 +4,28 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import mx.itson.edu.prestamosfaciles.Entidades.Producto
 import mx.itson.edu.prestamosfaciles.R
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class PrincipalActivity : AppCompatActivity() {
 
     var adapter: ProductoAdapter? = null
     var productos = ArrayList<Producto>()
+    var resultados = ArrayList<Producto>()
     val productosRef = FirebaseFirestore.getInstance().collection("productos")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +45,51 @@ class PrincipalActivity : AppCompatActivity() {
             swipeRefreshLayout.isRefreshing = false
         }
         swipeRefreshLayout.isRefreshing = false
+
+
+        val et_buscar: EditText = findViewById(R.id.et_buscar)
+
+        val clearButton: ImageButton = findViewById(R.id.clearButton)
+
+        // Asigna un clic al botón "X" para limpiar el contenido del EditText
+        clearButton.setOnClickListener {
+            et_buscar.text = null
+        }
+
+        et_buscar.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+                // Este método se llama antes de que el texto cambie
+            }
+
+            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+                clearButton.visibility = if (charSequence.isNullOrEmpty()) View.INVISIBLE else View.VISIBLE
+                // Este método se llama durante el cambio de texto
+                val texto = charSequence.toString()
+                buscarResultados(texto)
+            }
+
+            override fun afterTextChanged(editable: Editable) {
+                // Este método se llama después de que el texto haya cambiado
+            }
+        })
+
+
+
+
+
+
+    }
+
+    private fun buscarResultados(texto: String) {
+        resultados.clear() // Limpiar los resultados anteriores
+        for (producto in productos) {
+            if (producto.nombre.lowercase(Locale.getDefault())
+                    .contains(texto.lowercase(Locale.getDefault()))
+            ) {
+                resultados.add(producto)
+            }
+        }
+        agregarProductosCatalogo(resultados)
     }
 
     fun cargarProductos(){
@@ -73,10 +121,7 @@ class PrincipalActivity : AppCompatActivity() {
                     idVendedor
                 ))
 
-                adapter = ProductoAdapter(productos, this,intent.extras,1)
-                val gridview: GridView = findViewById(R.id.id_grid)
-                gridview.adapter = adapter
-
+                agregarProductosCatalogo(productos)
             }
             adapter?.notifyDataSetChanged()
 
@@ -86,6 +131,13 @@ class PrincipalActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun agregarProductosCatalogo(productos: ArrayList<Producto>){
+        adapter = ProductoAdapter(productos, this,intent.extras,1)
+        val gridview: GridView = findViewById(R.id.id_grid)
+        gridview.adapter = adapter
+    }
+
     class ProductoAdapter : BaseAdapter{
         var productos = ArrayList<Producto>()
         var context: Context? = null
@@ -126,9 +178,9 @@ class PrincipalActivity : AppCompatActivity() {
             var imagen = vista.findViewById<ImageView>(R.id.iv_producto)
             var layoutClick = vista.findViewById<LinearLayout>(R.id.producto_completo)
 
-            nombre.setText(producto.nombre)
-            precio.setText("$${producto.precio}")
-            descripcion.setText(producto.descripcion)
+            nombre.text = producto.nombre
+            precio.text = "$${producto.precio}"
+            descripcion.text = limitarString(producto.descripcion)
             Glide.with(context!!)
                 .load(producto.imagen)
                 .into(imagen)
@@ -144,7 +196,16 @@ class PrincipalActivity : AppCompatActivity() {
                 }
             }
             return vista
+        }
 
+        private fun limitarString(texto: String): String? {
+            var texto = texto
+            val limite = 50
+            val puntosSuspensivos = "...."
+            if (texto.length > limite) {
+                texto = texto.substring(0, limite - puntosSuspensivos.length) + puntosSuspensivos
+            }
+            return texto
         }
     }
 
