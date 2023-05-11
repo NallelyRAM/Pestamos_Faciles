@@ -202,10 +202,12 @@ class MisTarjetasActivity : AppCompatActivity() {
                         }
                     } else {
                         Toast.makeText(this, "Agregue una tarjeta para rentar! :)", Toast.LENGTH_LONG).show()
+                        break
                     }
                 }
             } else {
                 // No se encontraron documentos que coincidan con la consulta
+
             }
 
             adapter = TarjetaAdapter(tarjetas, this, producto,id)

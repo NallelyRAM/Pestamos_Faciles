@@ -72,12 +72,6 @@ class PrincipalActivity : AppCompatActivity() {
                 // Este método se llama después de que el texto haya cambiado
             }
         })
-
-
-
-
-
-
     }
 
     private fun buscarResultados(texto: String) {
