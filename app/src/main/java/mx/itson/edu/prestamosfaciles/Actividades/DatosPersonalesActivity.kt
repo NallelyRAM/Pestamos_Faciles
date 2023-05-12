@@ -149,19 +149,17 @@ class DatosPersonalesActivity : AppCompatActivity() {
         val numeroTelefono: EditText= findViewById(R.id.tv_telefono)
         numeroTelefono.length()==10
 
-        //val fechaNacimiento : EditText = findViewById(R.id.tv_misDatosFechaNacimiento)
+        val fechaNacimiento : EditText = findViewById(R.id.tv_misDatosFechaNacimiento)
+        val cal = Calendar.getInstance()
+        val currentDate = cal.time
+        val fecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val datee = fecha.parse(fechaNacimiento.text.toString())
 
         if(numeroTelefono.text.toString().length <= 9 && numeroTelefono.text.toString().length >=1){
             Toast.makeText(this, "Favor de ingresar los 10 digitos", Toast.LENGTH_LONG).show()
             return false
         }
-        val fechaNacimiento : EditText = findViewById(R.id.tv_misDatosFechaNacimiento)
 
-        val cal = Calendar.getInstance()
-        val currentDate = cal.time
-
-        val fecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        val datee = fecha.parse(fechaNacimiento.text.toString())
 
         if (datee?.compareTo(currentDate) == 1) {
             Toast.makeText(this, "No puedes ingresar una fecha futura", Toast.LENGTH_LONG).show()
