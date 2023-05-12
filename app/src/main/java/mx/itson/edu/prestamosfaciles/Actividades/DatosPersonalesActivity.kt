@@ -7,16 +7,19 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
+import mx.itson.edu.prestamosfaciles.Entidades.Producto
 import mx.itson.edu.prestamosfaciles.Entidades.User
 import mx.itson.edu.prestamosfaciles.R
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class DatosPersonalesActivity : AppCompatActivity() {
 
@@ -27,7 +30,8 @@ class DatosPersonalesActivity : AppCompatActivity() {
     var fechaNacimiento: Timestamp? = Timestamp(Date())
     var telefono: String? = ""
     var correo: String? = ""
-    var ubicacion: GeoPoint? = null
+    var ubicacion: String? = ""
+    //var ubicacionSeleccionada: String?= ""
     var id = ""
     var photoURI: Uri? = null
 
@@ -43,7 +47,7 @@ class DatosPersonalesActivity : AppCompatActivity() {
         val tv_fechaNacimiento: TextView = findViewById(R.id.tv_misDatosFechaNacimiento)
         val tv_telefono: TextView = findViewById(R.id.tv_telefono)
         val tv_correo: TextView = findViewById(R.id.tv_Correo)
-        val tv_ubicacion: TextView = findViewById(R.id.tv_misDatosUbicacion)
+        val sp_ubicacion: Spinner = findViewById(R.id.sp_categoria_colonia)
         val btn_agregarDatos: Button = findViewById(R.id.btn_inicioFinalizar)
 
         val btnBack: Button = findViewById(R.id.btn_back)
@@ -69,7 +73,7 @@ class DatosPersonalesActivity : AppCompatActivity() {
                         correo = data["correo"] as? String,
                         telefono = data["telefono"] as? String,
                         fechaNacimiento = data["fechaNacimiento"] as? Timestamp,
-                        ubicacion = data["ubicacion"] as? GeoPoint
+                        ubicacion = data["ubicacion"] as? String
                     )
 
                     nombre = user.nombre
@@ -84,7 +88,25 @@ class DatosPersonalesActivity : AppCompatActivity() {
                     tv_fechaNacimiento.text = fechaNacimiento?.let { secondsToDate(fechaNacimiento!!.seconds) } ?: ""
                     tv_telefono.text = telefono
                     tv_correo.text = correo
-                    tv_ubicacion.text = ubicacion?.let { formatGeoPoint(it.latitude,it.longitude) } ?: ""
+
+
+                    val adapterUbicacion = ArrayAdapter(this, android.R.layout.simple_spinner_item, llenarSpinner())
+                    adapterUbicacion.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+                    sp_ubicacion.adapter = adapterUbicacion
+
+                    sp_ubicacion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                            // Año seleccionado
+                            ubicacion = parent.getItemAtPosition(position) as String//AQUIIIIIIIIIIIIIIII
+                        }
+
+                        override fun onNothingSelected(parent: AdapterView<*>) {
+                            // No hacer nada
+                        }
+                    }
+
+                    ubicacion = ubicacion //AQUIIIIIIIIII
 
                 }
             }.addOnFailureListener { exception ->
@@ -103,7 +125,7 @@ class DatosPersonalesActivity : AppCompatActivity() {
                     "apellido" to tv_apellidos.text.toString(),
                     "telefono" to tv_telefono.text.toString(),
                     "fechaNacimiento" to stringToTimestamp(tv_fechaNacimiento.text.toString()),
-                    "ubicacion" to stringToGeoPoint(tv_ubicacion.text.toString()),
+                    "ubicacion" to ubicacion,//AQUIIIIIIIIII
                     "correo" to tv_correo.text.toString()
                 )
 
@@ -154,6 +176,12 @@ class DatosPersonalesActivity : AppCompatActivity() {
         val currentDate = cal.time
         val fecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         val datee = fecha.parse(fechaNacimiento.text.toString())
+
+
+        if(ubicacion=="Seleccione una colonia"){//AQUIIIIIIII
+            Toast.makeText(this, "Selecciona una colonia", Toast.LENGTH_LONG).show()
+            return false
+        }
 
         if(numeroTelefono.text.toString().length <= 9 && numeroTelefono.text.toString().length >=1){
             Toast.makeText(this, "Favor de ingresar los 10 digitos", Toast.LENGTH_LONG).show()
@@ -235,6 +263,234 @@ class DatosPersonalesActivity : AppCompatActivity() {
         return formatter.format(date)
     }
 
+    private fun llenarSpinner(): Array<String> {
+        val categoriasColonias = arrayOf("Seleccione una colonia",
+            "Agronomos",
+            "Alameda del Cedro",
+            "Alameda del Cedro II",
+            "Algodones",
+            "Alta California",
+            "Altar Residencial",
+            "Amanecer 1",
+            "Amanecer 2",
+            "Ampliación Miguel Alemán",
+            "Ampliación Miravalle",
+            "Aves Del Castillo",
+            "    ",
+            "Bellavista",
+            "Benito Juárez",
+            "Bosque Del Nainari",
+            "Bugambilias",
+            "  ",
+            "Cajeme",
+            "Campanario",
+            "Campestre",
+            "Campestre 2da. Ampliación",
+            "Casa Blanca",
+            "Casa Blanca Ampliación II",
+            "Casa Real",
+            "Cd. Obregón (Ciudad Obregón)",
+            "Central de Abastos",
+            "Chapultepec",
+            "Chihuahua",
+            "Cincuentenario",
+            "Ciudad Obregón Centro (Fundo Legal)",
+            "Colinas del Yaqui",
+            "Constitución",
+            "Cortinas 1ra. Sección",
+            "Cortinas 2da. Sección",
+            "Cortinas 3ra. Sección",
+            "Cortinas 4ta. Sección",
+            "Cuauhtémoc Cárdenas",
+            "Cuauhtémoc (Urbanizable 6)",
+            "Cumuripa",
+            "   ",
+            "Del Bosque",
+            "Del Lago",
+            "Del Valle",
+            "      ",
+            "Ejidatarios",
+            "Ejido Cajeme",
+            "Electricista",
+            "El Paraíso",
+            "El Roble",
+            "El Rodeo",
+            "Esperanza Tiznada",
+            "    ",
+            "Faustino Félix Serna",
+            "Fovissste",
+            "Fovissste 2",
+            "Fovissste 3",
+            "Francisco Eusebio Kino",
+            "Franja Comercial 300",
+            "Fuentes Del Bosque",
+            "      ",
+            "Galeana",
+            "Girasoles",
+            "Granjas FOVISSSTE Norte (Codornices)",
+            "        ",
+            "Hacienda Del Sol",
+            "Hacienda Real",
+            "Haciendas El Rosario",
+            "Haciendas San Francisco",
+            "Haciendas San Miguel",
+            "Herradura",
+            "Hidalgo",
+            "     ",
+            "Infonavit ",
+            "ISSSTESON",
+            "   ",
+            "Jardines Del Valle",
+            "    ",
+            "Ladrillera",
+            "La Florida",
+            "La Joya Villa California IV",
+            "La Misión",
+            "La Reforma",
+            "Las Arboledas",
+            "Las Brisas",
+            "Las Campanas",
+            "Las Espigas",
+            "Las Flores",
+            "Las Fuentes",
+            "Las Fuentes II",
+            "Las Haciendas",
+            "Las Misiones",
+            "Las Palmas",
+            "Las Puertas",
+            "Las Torres",
+            "Lázaro Mercado",
+            "Libertad",
+            "Linda Vista",
+            "Los Álamos 1",
+            "Los Álamos 2",
+            "Los Alisos",
+            "Los Angeles",
+            "Los Arcos",
+            "Los Encinos",
+            "Los Encinos II",
+            "Los Olivos",
+            "Los Patios",
+            "Los Portales",
+            "Los Presidentes",
+            "Los Sauces",
+            "Luis Donaldo Colosio",
+            "Luis Echeverría Álvarez (Álvaro Obregón)",
+            "     ",
+            "Manlio Fabio Beltrones",
+            "Matías Mendez",
+            "Maximiliano Rubio López",
+            "México",
+            "Mirasierra",
+            "Mirasoles",
+            "Miravalle",
+            "Misión del Real",
+            "Misión Del Sol",
+            "Misioneros",
+            "Misión San Javier",
+            "Misión San Rafael",
+            "Montecarlo",
+            "Morelos",
+            "Multifamiliares IMSS",
+            "Municipio Libre",
+            "     ",
+            "Nainari Del Yaqui",
+            "Noroeste",
+            "Nueva Galicia",
+            "Nueva Palmira",
+            "Nuevo Amanecer",
+            "Nuevo Cajeme",
+            "Nuevo Real del Norte",
+            "          ",
+            "Ostimuri",
+            "Otancahui",
+            "        ",
+            "Palmar",
+            "Palma Real",
+            "París",
+            "Parque Industrial",
+            "Parque Tecnológico",
+            "Paseo Alameda",
+            "Pedregal",
+            "Pioneros",
+            "Pioneros de Cajeme",
+            "Posada del Sol",
+            "Pradera Bonita",
+            "Prados de La Laguna",
+            "Prados Del Tepeyac",
+            "Primavera",
+            "Primero de Mayo",
+            "Privada de La Laguna",
+            "Puente Real",
+            "      ",
+            "Quinta Diaz",
+            "Quinta Real",
+            "       ",
+            "Real Campestre",
+            "Real Del Arco",
+            "Real Del Bosque",
+            "Real Del Sol",
+            "Real del Sol Ampliación",
+            "Real Del Valle",
+            "Real de Sabinos",
+            "Real de Sevilla",
+            "Rincón Del Valle",
+            "Robles Del Castillo",
+            "Russo Vogel",
+            "     ",
+            "San Anselmo",
+            "San Antonio",
+            "San Juan Capistrano",
+            "Santa Anita",
+            "Santa Fe",
+            "Sierra Vista",
+            "Sochiloa",
+            "Sonora",
+            "Sóstenes Valenzuela",
+            "         ",
+            "Torres de París",
+            "     ",
+            "Ultratec Aves",
+            "Urbanizable 2",
+            "Urbanizable 3",
+            "Urbanizable 4",
+            "Urbanizable 5",
+            "Urbanizable 6 (Cuauhtémoc) Ampliación",
+            "Urbanizable 7",
+            "Urbanizable I",
+            "    ",
+            "Valle del Sol",
+            "Valle Dorado",
+            "Valle Verde",
+            "Villa Alegre",
+            "Villa Aurora",
+            "Villa California",
+            "Villa California 2",
+            "Villa del Nainari",
+            "Villa del Rey Sección Colonial",
+            "Villa Del Tetabiate",
+            "Villa Florencia",
+            "Villa Fontana",
+            "Villa Guadalupe",
+            "Villa Itson",
+            "Villa Mezquite",
+            "Villa Satélite",
+            "Villas de Cortés",
+            "Villas del Campestre",
+            "Villas del Palmar",
+            "Villas del Real",
+            "Villas Del Rey",
+            "Villas Del Sol",
+            "Villas de Trigo",
+            "Vista Hermosa",
+            "   ",
+            "Zona Norte",
+            "Zona Norte Comercial",
+
+            )
+
+        return categoriasColonias;
+    }
 
 
 }

@@ -122,14 +122,15 @@
             android:layout_height="2dp"
             android:background="@color/orange"/>
 
-        <EditText
-            android:id="@+id/tv_misDatosUbicacion"
+
+        <Spinner
+            android:id="@+id/sp_categoria_colonia"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:textSize="18sp"
-            android:hint="@string/ubicacion"
-            android:fontFamily="@font/avenir_roman"/>
+            android:layout_height="45dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp" />
 
     </LinearLayout>
 
