@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.text.InputFilter
+import android.text.InputType
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,9 +20,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import mx.itson.edu.prestamosfaciles.Entidades.Producto
 import mx.itson.edu.prestamosfaciles.R
-import java.io.File
 import java.util.*
-import kotlin.collections.HashMap
 
 
 class AgregarProductoActivity : AppCompatActivity() {
@@ -112,7 +112,36 @@ class AgregarProductoActivity : AppCompatActivity() {
      * Para cualquier otra duda, mensajito a discord a Brayan:)
      */
     private fun validaciones() : Boolean{
+        val et_nombreProducto: EditText = findViewById(R.id.et_nombre_producto)
+        val et_descripcionProducto: EditText = findViewById(R.id.et_descripcion)
+        val et_precioProducto: EditText = findViewById(R.id.et_precio_alquiler)
+        val et_ubicacionProducto: EditText = findViewById(R.id.et_nombre_ubicacion)
 
+        if(categoriaSeleccionada=="Seleccione una categoría"){
+            Toast.makeText(this, "Selecciona una categoria", Toast.LENGTH_LONG).show()
+            return false
+        }
+        if(fileName==""&& producto?.imagen ==null){
+
+            Toast.makeText(this, "Favor de seleccionar una imagen del producto", Toast.LENGTH_LONG).show()
+            return false
+        }
+        if(et_nombreProducto.text.toString()==""){
+            Toast.makeText(this, "Favor de asignarle un nombre al producto", Toast.LENGTH_LONG).show()
+            return false
+        }
+        if(et_descripcionProducto.text.toString()==""){
+            Toast.makeText(this, "Favor de asignarle una descripción al producto", Toast.LENGTH_LONG).show()
+            return false
+        }
+        if(et_precioProducto.text.toString()==""){
+            Toast.makeText(this, "Favor de asignarle un precio al producto", Toast.LENGTH_LONG).show()
+            return false
+        }
+        if(et_ubicacionProducto.text.toString()==""){
+            Toast.makeText(this, "Favor de asignarle una ubicación", Toast.LENGTH_LONG).show()
+            return false
+        }
         return true
     }
 
@@ -174,6 +203,7 @@ class AgregarProductoActivity : AppCompatActivity() {
     }
 
     private fun guardarProductoStorage(producto: Producto?) {
+
         val et_nombreProducto: EditText = findViewById(R.id.et_nombre_producto)
         val et_descripcionProducto: EditText = findViewById(R.id.et_descripcion)
         val et_precioProducto: EditText = findViewById(R.id.et_precio_alquiler)
