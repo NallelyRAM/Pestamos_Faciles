@@ -98,6 +98,7 @@
             android:layout_marginTop="10dp"
             android:textSize="18sp"
             android:hint="@string/telefono"
+            android:maxLength="10"
             android:inputType="number"
             android:fontFamily="@font/avenir_roman"
             />

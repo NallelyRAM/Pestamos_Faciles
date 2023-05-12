@@ -44,6 +44,7 @@ class DatosPersonalesActivity : AppCompatActivity() {
         val tv_telefono: TextView = findViewById(R.id.tv_telefono)
         val tv_correo: TextView = findViewById(R.id.tv_Correo)
         val tv_ubicacion: TextView = findViewById(R.id.tv_misDatosUbicacion)
+        val btn_agregarDatos: Button = findViewById(R.id.btn_inicioFinalizar)
 
         val btnBack: Button = findViewById(R.id.btn_back)
 
@@ -94,44 +95,67 @@ class DatosPersonalesActivity : AppCompatActivity() {
         val btnFinalizar = findViewById<TextView>(R.id.btn_inicioFinalizar)
         btnFinalizar.setOnClickListener{
 
-            val usuarioActualizado = hashMapOf(
-                "nombre" to tv_nombre.text.toString(),
-                "apellido" to tv_apellidos.text.toString(),
-                "telefono" to tv_telefono.text.toString(),
-                "fechaNacimiento" to stringToTimestamp(tv_fechaNacimiento.text.toString()),
-                "ubicacion" to stringToGeoPoint(tv_ubicacion.text.toString()),
-                "correo" to tv_correo.text.toString()
-            )
+            //AQUI
+            if(validaciones()) {
 
-            userRef.whereEqualTo("id", id)
-                .get()
-                .addOnSuccessListener { documents ->
-                    for (document in documents) {
-                        val usuarioRef = document.reference
-                        usuarioRef.update(usuarioActualizado as Map<String, Any>)
-                            .addOnSuccessListener {
-                                Log.d(TAG, "Usuario actualizado correctamente.")
-                                Toast.makeText(this, "Se actualizó correctamente el usuario", Toast.LENGTH_SHORT).show()
-                            }
-                            .addOnFailureListener { e ->
-                                Log.e(TAG, "Error al actualizar usuario: $e")
-                            }
+                val usuarioActualizado = hashMapOf(
+                    "nombre" to tv_nombre.text.toString(),
+                    "apellido" to tv_apellidos.text.toString(),
+                    "telefono" to tv_telefono.text.toString(),
+                    "fechaNacimiento" to stringToTimestamp(tv_fechaNacimiento.text.toString()),
+                    "ubicacion" to stringToGeoPoint(tv_ubicacion.text.toString()),
+                    "correo" to tv_correo.text.toString()
+                )
+
+                userRef.whereEqualTo("id", id)
+                    .get()
+                    .addOnSuccessListener { documents ->
+                        for (document in documents) {
+                            val usuarioRef = document.reference
+                            usuarioRef.update(usuarioActualizado as Map<String, Any>)
+                                .addOnSuccessListener {
+                                    Log.d(TAG, "Usuario actualizado correctamente.")
+                                    Toast.makeText(this, "Se actualizó correctamente el usuario", Toast.LENGTH_SHORT).show()
+                                }
+                                .addOnFailureListener { e ->
+                                    Log.e(TAG, "Error al actualizar usuario: $e")
+                                }
+                        }
                     }
-                }
-                .addOnFailureListener { e ->
-                    Log.e(TAG, "Error al obtener usuarios: $e")
-                }
-            var intent = Intent(this, CuentaActivity::class.java)
-            intent.putExtra("name", "$nombre $apellidos")
-            intent.putExtra("photo",photoURI)
-            intent.putExtra("id",id)
-            startActivity(intent)
+                    .addOnFailureListener { e ->
+                        Log.e(TAG, "Error al obtener usuarios: $e")
+                    }
+                var intent = Intent(this, CuentaActivity::class.java)
+                intent.putExtra("name", "$nombre $apellidos")
+                intent.putExtra("photo",photoURI)
+                intent.putExtra("id",id)
+                startActivity(intent)
+
+            }
+
+
+
         }
 
         btnBack.setOnClickListener { finish() }
 
-    }
 
+
+    }
+    /**
+     * Agregue valdaciones numero de telefono
+     */
+    private fun validaciones() : Boolean {
+        val numeroTelefono: EditText= findViewById(R.id.tv_telefono)
+        numeroTelefono.length()==10
+
+        if(numeroTelefono.text.toString().length <= 9 && numeroTelefono.text.toString().length >=1){
+            Toast.makeText(this, "Favor de ingresar los 10 digitos", Toast.LENGTH_LONG).show()
+            return false
+        }
+
+        return true
+    }
     private fun mostrarDatePicker() {
         val editTextFecha = findViewById<EditText>(R.id.tv_misDatosFechaNacimiento)
         val fechaActual = Calendar.getInstance()
@@ -198,5 +222,7 @@ class DatosPersonalesActivity : AppCompatActivity() {
         val date = cal.time
         return formatter.format(date)
     }
+
+
 
 }
