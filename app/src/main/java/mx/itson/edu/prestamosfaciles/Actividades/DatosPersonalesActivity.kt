@@ -160,10 +160,10 @@ class DatosPersonalesActivity : AppCompatActivity() {
         val cal = Calendar.getInstance()
         val currentDate = cal.time
 
-        val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        val selectedDate = sdf.parse(fechaNacimiento.text.toString())
+        val fecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val datee = fecha.parse(fechaNacimiento.text.toString())
 
-        if (selectedDate?.compareTo(currentDate) == 1) {
+        if (datee?.compareTo(currentDate) == 1) {
             Toast.makeText(this, "No puedes ingresar una fecha futura", Toast.LENGTH_LONG).show()
             return false
         }
