@@ -83,6 +83,8 @@
                 android:background="@drawable/contour_rectangle"
                 android:fontFamily="@font/avenir_roman"
                 android:hint="@string/nombre"
+                android:maxLength="30"
+
                 android:padding="10dp" />
 
             <EditText
@@ -95,6 +97,8 @@
                 android:background="@drawable/contour_rectangle"
                 android:fontFamily="@font/avenir_roman"
                 android:hint="@string/apellidos"
+
+                android:maxLength="30"
                 android:padding="10dp" />
 
             <TextView

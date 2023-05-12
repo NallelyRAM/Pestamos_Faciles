@@ -142,14 +142,42 @@ class AgregarTarjetaActivity : AppCompatActivity() {
 
                     if (tarjetaExistente != null) {
                         // Actualizar tarjeta existente
+
                         tarjetaExistente.mesCaducidad = mesCaducidadSeleccionado
                         tarjetaExistente.anioCaducidad = anioCaducidadSeleccionado
                         tarjetaExistente.codigoPostal = et_codigoPostal.text.toString()
-                        tarjetaExistente.nombreTitular = et_nombrePropietario.text.toString()
-                        tarjetaExistente.apellidoTitular = et_apellidosPropietario.text.toString()
                         tarjetaExistente.CVV = et_codigoSeguridad.text.toString()
                         tarjetaExistente.emisor = emisorSeleccionado
+                       // tarjetaExistente.nombreTitular = et_nombrePropietario.text.toString()
+                       // tarjetaExistente.apellidoTitular = et_apellidosPropietario.text.toString()
+                        if (validarNombre(et_nombrePropietario.text.toString())){
+                            tarjetaExistente.nombreTitular = et_nombrePropietario.text.toString()
 
+                            if (validarNombre(et_apellidosPropietario.text.toString())){
+                                tarjetaExistente.apellidoTitular = et_apellidosPropietario.text.toString()
+
+                                val usuarioRef = document.reference
+                                usuarioRef.update(usuario.toMap())
+                                    .addOnSuccessListener {
+                                        Log.d(TAG, "Se actualizó la tarjeta en el usuario correctamente.")
+                                        Toast.makeText(this, "Se actualizó la tarjeta correctamente", Toast.LENGTH_SHORT).show()
+                                        finish()
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Log.e(TAG, "Error al actualizar la tarjeta: $e")
+                                    }
+
+                            } else{
+                                Toast.makeText(this, "Apellido/s incorrectos, vuelva a llenar los campos.", Toast.LENGTH_SHORT).show()
+                                et_apellidosPropietario.setText("")
+                            }
+
+                        } else{
+                            Toast.makeText(this, "Nombre/s incorrectos, vuelva a llenar los campos.", Toast.LENGTH_SHORT).show()
+                            et_nombrePropietario.setText("")
+                        }
+
+                        /*
                         val usuarioRef = document.reference
                         usuarioRef.update(usuario.toMap())
                             .addOnSuccessListener {
@@ -160,8 +188,48 @@ class AgregarTarjetaActivity : AppCompatActivity() {
                             .addOnFailureListener { e ->
                                 Log.e(TAG, "Error al actualizar la tarjeta: $e")
                             }
+                            */
+
                     } else {
                         // Agregar nueva tarjeta
+                        val tarjeta = Tarjeta()
+
+                        tarjeta.numTarjeta = numTarjeta
+                        tarjeta.mesCaducidad = mesCaducidadSeleccionado
+                        tarjeta.anioCaducidad = anioCaducidadSeleccionado
+                        tarjeta.codigoPostal = et_codigoPostal.text.toString()
+                        tarjeta.CVV = et_codigoSeguridad.text.toString()
+                        tarjeta.emisor = emisorSeleccionado
+
+                        if (validarNombre(et_nombrePropietario.text.toString())){
+                            tarjeta.nombreTitular = et_nombrePropietario.text.toString()
+
+                            if (validarNombre(et_apellidosPropietario.text.toString())){
+                                tarjeta.apellidoTitular = et_apellidosPropietario.text.toString()
+
+                                usuario.addTarjeta(tarjeta)
+                                val usuarioRef = document.reference
+                                usuarioRef.update(usuario.toMap())
+                                    .addOnSuccessListener {
+                                        Log.d(TAG, "Se agregó la tarjeta al usuario correctamente.")
+                                        Toast.makeText(this, "Se agregó la tarjeta correctamente", Toast.LENGTH_SHORT).show()
+                                        finish()
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Log.e(TAG, "Error al guardar la tarjeta: $e")
+                                    }
+
+                            } else{
+                                Toast.makeText(this, "Apellido/s incorrectos, vuelva a llenar los campos.", Toast.LENGTH_SHORT).show()
+                                et_apellidosPropietario.setText("")
+                            }
+
+                        } else{
+                            Toast.makeText(this, "Nombre/s incorrectos, vuelva a llenar los campos.", Toast.LENGTH_SHORT).show()
+                            et_nombrePropietario.setText("")
+                        }
+
+                            /*
                         val tarjeta = Tarjeta(
                             numTarjeta = numTarjeta,
                             mesCaducidad = mesCaducidadSeleccionado,
@@ -171,8 +239,9 @@ class AgregarTarjetaActivity : AppCompatActivity() {
                             apellidoTitular = et_apellidosPropietario.text.toString(),
                             CVV = et_codigoSeguridad.text.toString(),
                             emisor = emisorSeleccionado
-                        )
+                        )   */
 
+                        /*
                         usuario.addTarjeta(tarjeta)
                         val usuarioRef = document.reference
                         usuarioRef.update(usuario.toMap())
@@ -183,15 +252,15 @@ class AgregarTarjetaActivity : AppCompatActivity() {
                             }
                             .addOnFailureListener { e ->
                                 Log.e(TAG, "Error al guardar la tarjeta: $e")
-                            }
-                    }
-                }
+                            }*/
+
+                    }//agregar tarjeta
+                }//for
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error al buscar el usuario: ", exception)
             }
     }
-
 
     private fun llenadoSpinners(tarjeta: Tarjeta?){
         // Llenamos el emisor de tarjetas
@@ -275,4 +344,10 @@ class AgregarTarjetaActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun validarNombre(cadena: String):Boolean{
+        val patron = Regex("[^A-Za-z\\s]")
+        return !patron.containsMatchIn(cadena)
+    }
+
 }
