@@ -6,7 +6,10 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -35,7 +38,7 @@ class DatosPersonalesActivity : AppCompatActivity() {
     var id = ""
     var photoURI: Uri? = null
 
-    @SuppressLint("WrongViewCast")
+    @SuppressLint("WrongViewCast", "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.datos)
@@ -89,24 +92,53 @@ class DatosPersonalesActivity : AppCompatActivity() {
                     tv_telefono.text = telefono
                     tv_correo.text = correo
 
-
-                    val adapterUbicacion = ArrayAdapter(this, android.R.layout.simple_spinner_item, llenarSpinner())
+                    val dataSpinner: Array<String> = llenarSpinner()
+                    val adapterUbicacion = ArrayAdapter(this, android.R.layout.simple_spinner_item, dataSpinner)
+                    val editTextSearch: EditText = findViewById(R.id.editTextSearch)
                     adapterUbicacion.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
                     sp_ubicacion.adapter = adapterUbicacion
 
+                    val position = adapterUbicacion.getPosition(ubicacion)
+                    sp_ubicacion.setSelection(position)
+
+                    // Configurar el TextWatcher para realizar la búsqueda en el Spinner
+                    editTextSearch.addTextChangedListener(object : TextWatcher {
+                        override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {
+                        }
+
+                        override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+                        }
+
+                        override fun afterTextChanged(editable: Editable?) {
+                            val searchText = editable.toString().toLowerCase()
+
+                            // Filtrar los datos del Spinner en base al texto de búsqueda
+                            val filteredData = dataSpinner.filter { item ->
+                                item.lowercase().contains(searchText)
+                            }
+
+                            // Actualizar el adaptador del Spinner con los datos filtrados
+                            val filteredAdapter = ArrayAdapter<String>(this@DatosPersonalesActivity, android.R.layout.simple_spinner_item, filteredData)
+                            filteredAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                            sp_ubicacion.adapter = filteredAdapter
+                        }
+                    })
+
                     sp_ubicacion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                            // Año seleccionado
-                            ubicacion = parent.getItemAtPosition(position) as String//AQUIIIIIIIIIIIIIIII
+                        override fun onItemSelected(
+                            parent: AdapterView<*>,
+                            view: View?,
+                            position: Int,
+                            id: Long
+                        ) {
+                            ubicacion = parent.getItemAtPosition(position) as String
                         }
 
                         override fun onNothingSelected(parent: AdapterView<*>) {
                             // No hacer nada
                         }
                     }
-
-                    ubicacion = ubicacion //AQUIIIIIIIIII
 
                 }
             }.addOnFailureListener { exception ->
@@ -125,7 +157,7 @@ class DatosPersonalesActivity : AppCompatActivity() {
                     "apellido" to tv_apellidos.text.toString(),
                     "telefono" to tv_telefono.text.toString(),
                     "fechaNacimiento" to stringToTimestamp(tv_fechaNacimiento.text.toString()),
-                    "ubicacion" to ubicacion,//AQUIIIIIIIIII
+                    "ubicacion" to ubicacion,
                     "correo" to tv_correo.text.toString()
                 )
 
@@ -276,12 +308,10 @@ class DatosPersonalesActivity : AppCompatActivity() {
             "Ampliación Miguel Alemán",
             "Ampliación Miravalle",
             "Aves Del Castillo",
-            "    ",
             "Bellavista",
             "Benito Juárez",
             "Bosque Del Nainari",
             "Bugambilias",
-            "  ",
             "Cajeme",
             "Campanario",
             "Campestre",
@@ -304,11 +334,9 @@ class DatosPersonalesActivity : AppCompatActivity() {
             "Cuauhtémoc Cárdenas",
             "Cuauhtémoc (Urbanizable 6)",
             "Cumuripa",
-            "   ",
             "Del Bosque",
             "Del Lago",
             "Del Valle",
-            "      ",
             "Ejidatarios",
             "Ejido Cajeme",
             "Electricista",
@@ -316,7 +344,6 @@ class DatosPersonalesActivity : AppCompatActivity() {
             "El Roble",
             "El Rodeo",
             "Esperanza Tiznada",
-            "    ",
             "Faustino Félix Serna",
             "Fovissste",
             "Fovissste 2",
@@ -324,11 +351,9 @@ class DatosPersonalesActivity : AppCompatActivity() {
             "Francisco Eusebio Kino",
             "Franja Comercial 300",
             "Fuentes Del Bosque",
-            "      ",
             "Galeana",
             "Girasoles",
             "Granjas FOVISSSTE Norte (Codornices)",
-            "        ",
             "Hacienda Del Sol",
             "Hacienda Real",
             "Haciendas El Rosario",
@@ -336,12 +361,9 @@ class DatosPersonalesActivity : AppCompatActivity() {
             "Haciendas San Miguel",
             "Herradura",
             "Hidalgo",
-            "     ",
             "Infonavit ",
             "ISSSTESON",
-            "   ",
             "Jardines Del Valle",
-            "    ",
             "Ladrillera",
             "La Florida",
             "La Joya Villa California IV",
@@ -376,7 +398,6 @@ class DatosPersonalesActivity : AppCompatActivity() {
             "Los Sauces",
             "Luis Donaldo Colosio",
             "Luis Echeverría Álvarez (Álvaro Obregón)",
-            "     ",
             "Manlio Fabio Beltrones",
             "Matías Mendez",
             "Maximiliano Rubio López",
@@ -393,7 +414,6 @@ class DatosPersonalesActivity : AppCompatActivity() {
             "Morelos",
             "Multifamiliares IMSS",
             "Municipio Libre",
-            "     ",
             "Nainari Del Yaqui",
             "Noroeste",
             "Nueva Galicia",
@@ -401,10 +421,8 @@ class DatosPersonalesActivity : AppCompatActivity() {
             "Nuevo Amanecer",
             "Nuevo Cajeme",
             "Nuevo Real del Norte",
-            "          ",
             "Ostimuri",
             "Otancahui",
-            "        ",
             "Palmar",
             "Palma Real",
             "París",
@@ -422,10 +440,8 @@ class DatosPersonalesActivity : AppCompatActivity() {
             "Primero de Mayo",
             "Privada de La Laguna",
             "Puente Real",
-            "      ",
             "Quinta Diaz",
             "Quinta Real",
-            "       ",
             "Real Campestre",
             "Real Del Arco",
             "Real Del Bosque",
@@ -437,7 +453,6 @@ class DatosPersonalesActivity : AppCompatActivity() {
             "Rincón Del Valle",
             "Robles Del Castillo",
             "Russo Vogel",
-            "     ",
             "San Anselmo",
             "San Antonio",
             "San Juan Capistrano",
@@ -447,9 +462,7 @@ class DatosPersonalesActivity : AppCompatActivity() {
             "Sochiloa",
             "Sonora",
             "Sóstenes Valenzuela",
-            "         ",
             "Torres de París",
-            "     ",
             "Ultratec Aves",
             "Urbanizable 2",
             "Urbanizable 3",
@@ -458,7 +471,6 @@ class DatosPersonalesActivity : AppCompatActivity() {
             "Urbanizable 6 (Cuauhtémoc) Ampliación",
             "Urbanizable 7",
             "Urbanizable I",
-            "    ",
             "Valle del Sol",
             "Valle Dorado",
             "Valle Verde",
@@ -483,10 +495,8 @@ class DatosPersonalesActivity : AppCompatActivity() {
             "Villas Del Sol",
             "Villas de Trigo",
             "Vista Hermosa",
-            "   ",
             "Zona Norte",
             "Zona Norte Comercial",
-
             )
 
         return categoriasColonias;

@@ -37,7 +37,7 @@
 
     <LinearLayout
         android:layout_width="300dp"
-        android:layout_height="410dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
@@ -122,15 +122,25 @@
             android:layout_height="2dp"
             android:background="@color/orange"/>
 
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Buscar"
+            android:padding="8dp" />
 
         <Spinner
             android:id="@+id/sp_categoria_colonia"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextSearch"
+            android:background="@android:drawable/btn_dropdown"
+            android:popupBackground="@android:color/white"
+            android:spinnerMode="dropdown" />
+
+
+
+
 
     </LinearLayout>
 
