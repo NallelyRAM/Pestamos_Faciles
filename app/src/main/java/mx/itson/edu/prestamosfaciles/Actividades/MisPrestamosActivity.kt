@@ -137,6 +137,7 @@ class MisPrestamosActivity : AppCompatActivity() {
                                                 "",
                                         Toast.LENGTH_LONG
                                     ).show()
+                                    break
                                     flag = false
                                 }
 
@@ -167,7 +168,6 @@ class MisPrestamosActivity : AppCompatActivity() {
                                 }
                             }
                     }
-
                     .setNegativeButton("No") { dialog, which ->
                         // No hacer nada
                     }
