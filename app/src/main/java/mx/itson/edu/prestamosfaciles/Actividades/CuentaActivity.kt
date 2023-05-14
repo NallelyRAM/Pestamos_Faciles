@@ -46,6 +46,7 @@ class CuentaActivity : AppCompatActivity() {
         val btnMisDatos = findViewById<TextView>(R.id.tv_misDatos)
         val btnMisPrestamos = findViewById<TextView>(R.id.tv_misPrestamos)
         val btnMisRentas = findViewById<TextView>(R.id.tv_misRentas)
+        val btnHistorialRentadores = findViewById<TextView>(R.id.tv_misHistorialDeRentadores)
         val btnMisTarjetas = findViewById<TextView>(R.id.tv_misTarjetas)
         val btnMiPrivacidad = findViewById<TextView>(R.id.tv_privacidad)
         val btnCerrarMiSesion = findViewById<TextView>(R.id.tv_cerrarSesion)
@@ -68,6 +69,14 @@ class CuentaActivity : AppCompatActivity() {
 
         btnMisRentas.setOnClickListener{
             var intent = Intent(this, MisRentasActivity::class.java)
+            intent.putExtra("id", id)
+            intent.putExtra("name", name)
+            intent.putExtra("email", correo)
+            startActivity(intent)
+        }
+
+        btnHistorialRentadores.setOnClickListener{
+            var intent = Intent(this, HistorialRentadoresActivity::class.java)
             intent.putExtra("id", id)
             intent.putExtra("name", name)
             intent.putExtra("email", correo)

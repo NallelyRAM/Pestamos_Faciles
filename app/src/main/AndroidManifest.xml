@@ -19,15 +19,17 @@
             android:theme="@style/AppTheme"
             />
         <activity
+            android:name=".Actividades.HistorialRentadoresActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".Actividades.RentadorDetallesActivity"
             android:exported="false"
-            android:theme="@style/AppTheme"
-            />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Actividades.AgregarTarjetaActivity"
             android:exported="false"
-            android:theme="@style/AppTheme"
-            />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Actividades.AgregarProductoActivity"
             android:exported="false"

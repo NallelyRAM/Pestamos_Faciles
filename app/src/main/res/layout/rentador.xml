@@ -55,7 +55,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_fecha_alquiler"
+                android:id="@+id/tv_nombre_alquiler"
                 android:layout_width="167dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"

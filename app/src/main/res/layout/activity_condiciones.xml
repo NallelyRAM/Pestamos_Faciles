@@ -74,20 +74,8 @@
         />
 
     <Button
-        android:id="@+id/btn_condicionesLocalizar"
-        android:layout_marginTop="35dp"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/round_button"
-        android:text="@string/localizar"
-        android:textSize="20sp"
-        android:fontFamily="@font/avenir_roman"
-        android:textAllCaps="false"
-        android:textColor="@color/white"/>
-    <Button
         android:id="@+id/btn_condicionesSiguiente"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="50dp"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

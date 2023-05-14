@@ -86,7 +86,7 @@
 
     //Detalle Rentador
     <string name="rentador">Rentador</string>
-        <string name="fecha_alquiler">Fecha Alquiler</string>
+    <string name="fecha_alquiler">Fecha Alquiler</string>
     <string name="fecha_vencimiento">Fecha Vencimiento</string>
     <string name="articulo">Artículo</string>
     <string name="ayuda_mis_prestamos">Aquí encontrarás información acerca de los prestamos que estás ofreciendo a los usuarios.</string>

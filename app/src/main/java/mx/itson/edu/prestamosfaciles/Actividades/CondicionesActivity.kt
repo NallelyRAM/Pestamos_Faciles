@@ -14,7 +14,6 @@ class CondicionesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_condiciones)
 
-        val btnUbicacion: TextView = findViewById(R.id.btn_condicionesLocalizar)
         val btnSiguiente: TextView = findViewById(R.id.btn_condicionesSiguiente)
 
         val iv_producto: ImageView = findViewById(R.id.iv_productoCondiciones)
@@ -30,11 +29,6 @@ class CondicionesActivity : AppCompatActivity() {
                 .into(iv_producto)
             tv_nombreProducto.text = producto.nombre
             tv_descripcion.text = producto.descripcion
-        }
-
-        btnUbicacion.setOnClickListener{
-            var intent: Intent = Intent(this, UbicacionActivity::class.java)
-            startActivity(intent)
         }
 
         btnSiguiente.setOnClickListener{
