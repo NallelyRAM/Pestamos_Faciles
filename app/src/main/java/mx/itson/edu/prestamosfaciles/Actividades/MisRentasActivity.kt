@@ -67,7 +67,7 @@ class MisRentasActivity : AppCompatActivity() {
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
         swipeRefreshLayout.isRefreshing = true
         rentasRef
-            .whereEqualTo("usuario.id", id)
+            .whereEqualTo("producto.idVendedor", id)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
