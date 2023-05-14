@@ -24,6 +24,7 @@ class MisTarjetasActivity : AppCompatActivity() {
 
     private val userRef = FirebaseFirestore.getInstance().collection("usuarios")
 
+
     var adapter: TarjetaAdapter? = null
     var tarjetas = ArrayList<Tarjeta>()
     var bundle: Bundle? = null
@@ -32,18 +33,14 @@ class MisTarjetasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mis_tarjetas)
-        cargarTarjetas()
         bundle = intent.extras
 
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
 
         swipeRefreshLayout.setOnRefreshListener {
             // Llamamos a la función que se encarga de actualizar los datos
-            tarjetas.clear()
             cargarTarjetas()
-            swipeRefreshLayout.isRefreshing = false
         }
-        swipeRefreshLayout.isRefreshing = false
 
 
 
@@ -92,6 +89,11 @@ class MisTarjetasActivity : AppCompatActivity() {
             true
         }
     }
+    override fun onResume() {
+        super.onResume()
+        cargarTarjetas()
+    }
+
     private fun actualizarTarjeta(tarjeta: Tarjeta) {
         var intent = Intent(this, AgregarTarjetaActivity::class.java)
         val usuario = bundle?.getString("id")
@@ -132,6 +134,7 @@ class MisTarjetasActivity : AppCompatActivity() {
                                         .addOnSuccessListener {
                                             Log.d(TAG, "Tarjeta eliminada correctamente.")
                                             Toast.makeText(this, "Se eliminó correctamente la tarjeta", Toast.LENGTH_LONG).show()
+                                            cargarTarjetas()
                                         }
                                         .addOnFailureListener { e ->
                                             Log.e(TAG, "Error al eliminar tarjeta: $e")
@@ -160,6 +163,7 @@ class MisTarjetasActivity : AppCompatActivity() {
             }
     }
     fun cargarTarjetas(){
+        tarjetas.clear()
         var producto: Producto? = null
         try{
             producto = intent.getSerializableExtra("producto") as Producto
@@ -169,6 +173,7 @@ class MisTarjetasActivity : AppCompatActivity() {
         val bundle = intent.extras
         val id = bundle?.getString("id")
         val query = userRef.whereEqualTo("id", id)
+        val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
 
         query.get().addOnSuccessListener { querySnapshot ->
             if (!querySnapshot.isEmpty) {
@@ -192,6 +197,7 @@ class MisTarjetasActivity : AppCompatActivity() {
                             )
                             tarjetas.add(tarjeta)
                         }
+                        swipeRefreshLayout.isRefreshing = false
                     } else {
                         Toast.makeText(this, "Agregue una tarjeta para rentar! :)", Toast.LENGTH_LONG).show()
                         break

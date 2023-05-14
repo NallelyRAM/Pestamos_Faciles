@@ -43,16 +43,16 @@ class HistorialRentadoresActivity : AppCompatActivity() {
             correo = bundle.getString("email")
             idUsuario = bundle.getString("id")
         }
-        cargarHistorialRentadores(idUsuario)
+
 
         swipeRefreshLayout.setOnRefreshListener {
             // Llamamos a la función que se encarga de actualizar los datos
             arrayMisRentas.clear()
             cargarHistorialRentadores(idUsuario)
-            swipeRefreshLayout.isRefreshing = false
+
         }
 
-        swipeRefreshLayout.isRefreshing = false
+
 
         btn_back.setOnClickListener { finish() }
 
@@ -64,6 +64,7 @@ class HistorialRentadoresActivity : AppCompatActivity() {
 
     }
     private fun cargarHistorialRentadores(id: String?){
+        arrayMisRentas.clear()
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
         swipeRefreshLayout.isRefreshing = true
         rentasRef
@@ -78,7 +79,7 @@ class HistorialRentadoresActivity : AppCompatActivity() {
                 val adapter = RentaAdapter(arrayMisRentas, this)
                 val gridview: GridView = findViewById(R.id.id_gridMisPrestamos)
                 gridview.adapter = adapter
-
+                swipeRefreshLayout.isRefreshing = false
             }
             .addOnFailureListener { exception ->
                 Log.e(TAG, "Error al buscar productos por nombre: $exception")
@@ -137,5 +138,11 @@ class HistorialRentadoresActivity : AppCompatActivity() {
             val date = Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000)
             return dateFormat.format(date)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Aquí ejecuta la función que deseas
+        cargarHistorialRentadores(idUsuario)
     }
 }

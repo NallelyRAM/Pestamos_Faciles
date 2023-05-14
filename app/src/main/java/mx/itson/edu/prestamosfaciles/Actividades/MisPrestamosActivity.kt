@@ -12,11 +12,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import mx.itson.edu.prestamosfaciles.Entidades.Producto
+import mx.itson.edu.prestamosfaciles.Entidades.User
 import mx.itson.edu.prestamosfaciles.R
 
 class MisPrestamosActivity : AppCompatActivity() {
 
     private val productoRef = FirebaseFirestore.getInstance().collection("productos")
+    private val rentasRef = FirebaseFirestore.getInstance().collection("rentas")
     private val arrayMisProductos: ArrayList<Producto> = arrayListOf()
     private val storageProductoRef = FirebaseStorage.getInstance().reference
 
@@ -63,7 +65,6 @@ class MisPrestamosActivity : AppCompatActivity() {
                     .setTitle("¿Qué deseas hacer?")
                     .setItems(
                         arrayOf(
-                            "Ver usuarios que me estan rentando",
                             "Actualizar",
                             "Eliminar"
                         )
@@ -107,7 +108,6 @@ class MisPrestamosActivity : AppCompatActivity() {
         startActivity(intent)
     }
     private fun eliminarProducto(producto: Producto){
-        // Consultar documentos cuyo campo "nombre" coincide con el valor dado
 
         val referenciaCarpeta = storageProductoRef.child("prestodo_objetos")
         val referenciaArchivo = referenciaCarpeta.child(producto.id)
@@ -120,29 +120,54 @@ class MisPrestamosActivity : AppCompatActivity() {
                     Toast.makeText(this, "No se encontró el producto a eliminar", Toast.LENGTH_SHORT).show()
                     return@addOnSuccessListener
                 }
-
+                var flag = true
                 // Mostrar un diálogo de confirmación al usuario
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Eliminar producto")
                     .setMessage("¿Está seguro de que desea eliminar este producto?")
                     .setPositiveButton("Sí") { dialog, which ->
 
-                        referenciaArchivo.delete()
-                            .addOnSuccessListener {
-                                // Archivo eliminado exitosamente
+                        rentasRef.whereEqualTo("producto.id", producto.id)
+                            .get()
+                            .addOnSuccessListener { documents ->
+                                for (document in documents) {
+                                    Toast.makeText(
+                                        this,
+                                        "No puedes eliminar un préstamo que está siendo rentado!\nTermina el prestamo y vuelve a intentarlo." +
+                                                "",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                    flag = false
+                                }
+
+                                if (flag) {
+                                    referenciaArchivo.delete()
+                                        .addOnSuccessListener {
+                                            // Archivo eliminado exitosamente
+                                        }
+                                        .addOnFailureListener {
+                                            // Error al eliminar archivo
+                                        }
+                                    // Eliminar el documento
+                                    for (document in querySnapshot) {
+                                        document.reference.delete().addOnSuccessListener {
+                                            Toast.makeText(
+                                                this,
+                                                "Producto eliminado correctamente",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }.addOnFailureListener {
+                                            Toast.makeText(
+                                                this,
+                                                "Error al eliminar el producto",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
+                                    }
+                                }
                             }
-                            .addOnFailureListener {
-                                // Error al eliminar archivo
-                            }
-                        // Eliminar el documento
-                        for (document in querySnapshot) {
-                            document.reference.delete().addOnSuccessListener {
-                                Toast.makeText(this, "Producto eliminado correctamente", Toast.LENGTH_SHORT).show()
-                            }.addOnFailureListener {
-                                Toast.makeText(this, "Error al eliminar el producto", Toast.LENGTH_SHORT).show()
-                            }
-                        }
                     }
+
                     .setNegativeButton("No") { dialog, which ->
                         // No hacer nada
                     }
