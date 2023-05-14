@@ -17,10 +17,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import mx.itson.edu.prestamosfaciles.Entidades.Producto
-import mx.itson.edu.prestamosfaciles.Entidades.Renta
 import mx.itson.edu.prestamosfaciles.R
 import java.util.*
-
 
 class PrincipalActivity : AppCompatActivity() {
 
@@ -126,7 +124,6 @@ class PrincipalActivity : AppCompatActivity() {
         }
 
     }
-
     private fun agregarProductosCatalogo(productos: ArrayList<Producto>){
         adapter = ProductoAdapter(productos, this,intent.extras,1)
         val gridview: GridView = findViewById(R.id.id_grid)
@@ -157,8 +154,6 @@ class PrincipalActivity : AppCompatActivity() {
         override fun getItemId(position: Int): Long {
             return position.toLong()
         }
-
-
         @SuppressLint("MissingInflatedId")
         override fun getView(position: Int, converView: View?, parent: ViewGroup?): View {
             productos.sortBy { it.nombre.uppercase() }
@@ -179,8 +174,6 @@ class PrincipalActivity : AppCompatActivity() {
             Glide.with(context!!)
                 .load(producto.imagen)
                 .into(imagen)
-
-
             layoutClick.setOnClickListener{
                 if(seleccion != null){
                     val intento = Intent(context, SeleccionProductoActivity::class.java)
@@ -225,7 +218,6 @@ class PrincipalActivity : AppCompatActivity() {
             Toast.makeText(this, "Ocurrió un error al cargar el usuario", Toast.LENGTH_SHORT).show()
         }
     }
-
     fun goScreenAddProducts(){
 
         val bundle = intent.extras
@@ -237,5 +229,4 @@ class PrincipalActivity : AppCompatActivity() {
         }
 
     }
-
 }

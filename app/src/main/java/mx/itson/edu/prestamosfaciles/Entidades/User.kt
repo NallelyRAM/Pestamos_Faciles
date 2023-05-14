@@ -1,7 +1,6 @@
 package mx.itson.edu.prestamosfaciles.Entidades
 
 import com.google.firebase.Timestamp
-import com.google.firebase.firestore.GeoPoint
 
 data class User(
     var id: String? = null,
@@ -12,11 +11,10 @@ data class User(
     var fechaNacimiento: Timestamp? = null,
     var ubicacion: String? = "",
     var tarjetas: ArrayList<Tarjeta> = arrayListOf()
-) {
+) : java.io.Serializable {
     fun addTarjeta(tarjeta: Tarjeta) {
         this.tarjetas.add(tarjeta)
     }
-
     fun toMap(): Map<String, Any?> {
         val map = HashMap<String, Any?>()
         map["id"] = id
@@ -29,7 +27,6 @@ data class User(
         map["tarjetas"] = tarjetas
         return map
     }
-
     override fun toString(): String {
         return "User(id=$id, nombre=$nombre, apellido=$apellido, " +
                 "correo=$correo, telefono=$telefono, fechaNacimiento=$fechaNacimiento, ubicacion=$ubicacion, tarjetas=$tarjetas)"

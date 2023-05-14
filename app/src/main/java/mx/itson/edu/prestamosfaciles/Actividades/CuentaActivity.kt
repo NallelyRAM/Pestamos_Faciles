@@ -42,10 +42,7 @@ class CuentaActivity : AppCompatActivity() {
             Glide.with(this)
                 .load(photoURI)
                 .into(iv_photoUser)
-
         }
-
-
         val btnMisDatos = findViewById<TextView>(R.id.tv_misDatos)
         val btnMisPrestamos = findViewById<TextView>(R.id.tv_misPrestamos)
         val btnMisRentas = findViewById<TextView>(R.id.tv_misRentas)
@@ -93,9 +90,6 @@ class CuentaActivity : AppCompatActivity() {
             cerrarSesion()
         }
     }
-
-
-
 
     fun btnHome(view: View){
         var intent = Intent(this, PrincipalActivity::class.java)

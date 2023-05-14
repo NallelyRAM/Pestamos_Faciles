@@ -49,9 +49,6 @@ class InicioActivity : AppCompatActivity() {
         }
 
     }
-
-
-
     override fun onStart() {
         super.onStart()
         val account = GoogleSignIn.getLastSignedInAccount(this)
@@ -105,7 +102,6 @@ class InicioActivity : AppCompatActivity() {
         }
 
     }
-
     private fun usuarioExiste(acct: GoogleSignInAccount?, onComplete: (Boolean) -> Unit) {
         userRef.whereEqualTo("id", acct?.id).get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -118,8 +114,6 @@ class InicioActivity : AppCompatActivity() {
             }
         }
     }
-
-
     private fun guardarUsuario(acct: GoogleSignInAccount?){
         val nameFull = acct?.displayName?.split(" ")
 
@@ -135,5 +129,4 @@ class InicioActivity : AppCompatActivity() {
         )
         userRef.add(usuario)
     }
-
 }

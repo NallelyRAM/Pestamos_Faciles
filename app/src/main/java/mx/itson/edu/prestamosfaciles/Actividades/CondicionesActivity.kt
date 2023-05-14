@@ -3,7 +3,6 @@ package mx.itson.edu.prestamosfaciles.Actividades
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide

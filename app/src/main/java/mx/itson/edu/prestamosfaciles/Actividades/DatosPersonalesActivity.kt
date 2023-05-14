@@ -9,20 +9,16 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.MotionEvent
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.GeoPoint
-import mx.itson.edu.prestamosfaciles.Entidades.Producto
 import mx.itson.edu.prestamosfaciles.Entidades.User
 import mx.itson.edu.prestamosfaciles.R
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class DatosPersonalesActivity : AppCompatActivity() {
 
@@ -34,7 +30,6 @@ class DatosPersonalesActivity : AppCompatActivity() {
     var telefono: String? = ""
     var correo: String? = ""
     var ubicacion: String? = ""
-    //var ubicacionSeleccionada: String?= ""
     var id = ""
     var photoURI: Uri? = null
 
@@ -60,8 +55,6 @@ class DatosPersonalesActivity : AppCompatActivity() {
         if(bundle != null) {
             photoURI = bundle?.getParcelable("photo")
             id = bundle.getString("id").toString()
-
-
             val query = userRef.whereEqualTo("id", id) // construye una consulta para buscar el usuario con el nombre dado como parámetro
 
             query.get().addOnSuccessListener { documents ->
@@ -145,7 +138,6 @@ class DatosPersonalesActivity : AppCompatActivity() {
                 // maneja la excepción si no se puede completar la consulta
             }
         }
-
         val btnFinalizar = findViewById<TextView>(R.id.btn_inicioFinalizar)
         btnFinalizar.setOnClickListener{
 
@@ -186,14 +178,8 @@ class DatosPersonalesActivity : AppCompatActivity() {
                 startActivity(intent)
 
             }
-
-
-
         }
-
         btnBack.setOnClickListener { finish() }
-
-
 
     }
     /**
@@ -490,6 +476,4 @@ class DatosPersonalesActivity : AppCompatActivity() {
 
         return categoriasColonias;
     }
-
-
 }

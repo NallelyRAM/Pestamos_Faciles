@@ -11,9 +11,7 @@ class Producto : Serializable {
     var precio: Double = 0.0
     var ubicacion: String = ""
     var idVendedor: String = ""
-
     constructor()
-
     constructor(id: String, nombre: String, descripcion: String, imagen: String?, categoria: String, precio: Double, ubicacion: String, idVendedor: String) {
         this.id = id
         this.nombre = nombre

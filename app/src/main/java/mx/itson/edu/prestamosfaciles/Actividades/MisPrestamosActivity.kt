@@ -6,10 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.AdapterView
-import android.widget.Button
-import android.widget.GridView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.firestore.FirebaseFirestore
@@ -27,7 +24,7 @@ class MisPrestamosActivity : AppCompatActivity() {
     var correo: String? = null
     var nombre: String? = null
 
-    @SuppressLint("WrongViewCast")
+    @SuppressLint("WrongViewCast", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mis_prestamos)
@@ -37,7 +34,7 @@ class MisPrestamosActivity : AppCompatActivity() {
 
         val btn_back: Button = findViewById(R.id.btn_back)
 
-        if(bundle != null){
+        if (bundle != null) {
             nombre = bundle.getString("name")
             correo = bundle.getString("email")
             idUsuario = bundle.getString("id")
@@ -55,46 +52,53 @@ class MisPrestamosActivity : AppCompatActivity() {
 
         val gridview: GridView = findViewById(R.id.id_gridMisPrestamos)
 
-        gridview.onItemLongClickListener = AdapterView.OnItemLongClickListener { parent, view, position, id ->
+        gridview.onItemLongClickListener =
+            AdapterView.OnItemLongClickListener { parent, view, position, id ->
 
-            // Obtenemos el producto seleccionado por el usuario
-            val selectedItem = parent.getItemAtPosition(position) as Producto
+                // Obtenemos el producto seleccionado por el usuario
+                val selectedItem = parent.getItemAtPosition(position) as Producto
 
-            // Crea un diálogo con las opciones de acción
-            val dialog = AlertDialog.Builder(this)
-                .setTitle("¿Qué deseas hacer?")
-                .setItems(arrayOf("Ver usuarios que me estan rentando","Actualizar", "Eliminar")) { _, which ->
-                    when (which) {
-                        0 -> {
-                            // Obtenemos a todos los usuarios que nos estan rentando
-                            obtenerUsuariosQueMeEstanRentando(selectedItem)
-                        }
-                        1 -> {
-                            // Actualizamos producto
-                            actualizarProducto(selectedItem)
-                        }
-                        2 -> {
-                            // Eliminamos producto
-                            eliminarProducto(selectedItem)
+                // Crea un diálogo con las opciones de acción
+                val dialog = AlertDialog.Builder(this)
+                    .setTitle("¿Qué deseas hacer?")
+                    .setItems(
+                        arrayOf(
+                            "Ver usuarios que me estan rentando",
+                            "Actualizar",
+                            "Eliminar"
+                        )
+                    ) { _, which ->
+                        when (which) {
+                            0 -> {
+                                // Actualizamos producto
+                                actualizarProducto(selectedItem)
+                            }
+                            1 -> {
+                                // Eliminamos producto
+                                eliminarProducto(selectedItem)
+                            }
                         }
                     }
-                }
-                .create()
+                    .create()
 
-            // Mostrar el diálogo
-            dialog.show()
+                // Mostrar el diálogo
+                dialog.show()
 
-            // Devuelve verdadero para indicar que el evento ha sido manejado
-            true
-        }
+                // Devuelve verdadero para indicar que el evento ha sido manejado
+                true
+            }
 
         btn_back.setOnClickListener { finish() }
+
+        val helpButton: ImageView = findViewById(R.id.helpButton)
+        helpButton.setOnClickListener {
+            Toast.makeText(
+                this,
+                "Aquí encontrarás información sobre los productos que estás prestando.",
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
-
-    private fun obtenerUsuariosQueMeEstanRentando(producto: Producto){
-
-    }
-
     private fun actualizarProducto(producto: Producto){
         var intent = Intent(this, AgregarProductoActivity::class.java)
         intent.putExtra("producto",producto)
@@ -102,8 +106,6 @@ class MisPrestamosActivity : AppCompatActivity() {
         intent.putExtra("actualizar","actualizar")
         startActivity(intent)
     }
-
-
     private fun eliminarProducto(producto: Producto){
         // Consultar documentos cuyo campo "nombre" coincide con el valor dado
 

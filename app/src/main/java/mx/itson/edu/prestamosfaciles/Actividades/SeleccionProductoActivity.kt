@@ -2,7 +2,6 @@ package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -45,9 +44,6 @@ class SeleccionProductoActivity : AppCompatActivity() {
                 btnDetalles.visibility = View.INVISIBLE
             }
         }
-
-
-
         btnDetalles.setOnClickListener{
             if(bundle != null){
                 val intento = Intent(this, CondicionesActivity::class.java)
@@ -60,6 +56,5 @@ class SeleccionProductoActivity : AppCompatActivity() {
         }
 
         btn_back.setOnClickListener { finish() }
-
     }
 }

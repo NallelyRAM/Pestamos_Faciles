@@ -6,8 +6,6 @@ import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
-import android.text.InputFilter
-import android.text.InputType
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -83,11 +81,7 @@ class AgregarProductoActivity : AppCompatActivity() {
                 }
             }
         }
-
-
-
     }
-
     private fun llenarCampos(producto: Producto){
         llenarSpinner(producto)
 

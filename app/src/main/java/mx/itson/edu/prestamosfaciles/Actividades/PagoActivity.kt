@@ -16,8 +16,6 @@ import mx.itson.edu.prestamosfaciles.Entidades.Renta
 import mx.itson.edu.prestamosfaciles.Entidades.Tarjeta
 import mx.itson.edu.prestamosfaciles.Entidades.User
 import mx.itson.edu.prestamosfaciles.R
-import java.text.SimpleDateFormat
-import java.util.*
 
 class PagoActivity : AppCompatActivity() {
 
@@ -46,7 +44,7 @@ class PagoActivity : AppCompatActivity() {
         val btn_back: Button = findViewById(R.id.btn_back)
 
         val bundle = intent.extras
-        var total: Double = 0.0
+        var total = 0.0
         if(bundle != null){
             producto = intent.getSerializableExtra("producto") as Producto
             tarjeta = intent.getSerializableExtra("tarjeta") as Tarjeta

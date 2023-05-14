@@ -9,7 +9,6 @@ fun sumarDias(timestamp: Timestamp, dias: Int): Timestamp {
     calendar.add(Calendar.DAY_OF_YEAR, dias)
     return Timestamp(calendar.time)
 }
-
 class Renta(
     var id: String = UUID.randomUUID().toString(),
     var usuario: User = User(),
@@ -18,7 +17,7 @@ class Renta(
     var totalRenta: Double = 0.0,
     var fechaRenta: Timestamp = Timestamp.now(),
     var fechaVencimiento: Timestamp = sumarDias(fechaRenta, 7)
-) {
+) : java.io.Serializable{
     init {
         fechaVencimiento = sumarDias(fechaRenta, 7)
     }

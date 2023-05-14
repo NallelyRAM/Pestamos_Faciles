@@ -179,8 +179,8 @@ class AgregarTarjetaActivity : AppCompatActivity() {
                             val usuarioRef = document.reference
                             usuarioRef.update(usuario.toMap())
                                 .addOnSuccessListener {
-                                    Log.d(TAG, "Se agregó la tarjeta al usuario correctamente.")
-                                    Toast.makeText(this, "Se agregó la tarjeta correctamente", Toast.LENGTH_SHORT).show()
+                                    Log.d(TAG, "Se ha agregado correctamente la tarjeta")
+                                    Toast.makeText(this, "Se ha agregado correctamente la tarjeta", Toast.LENGTH_SHORT).show()
                                     finish()
                                 }
                                 .addOnFailureListener { e ->

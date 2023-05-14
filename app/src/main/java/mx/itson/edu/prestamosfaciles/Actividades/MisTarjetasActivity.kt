@@ -1,8 +1,6 @@
 package mx.itson.edu.prestamosfaciles.Actividades
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
@@ -20,11 +18,8 @@ import mx.itson.edu.prestamosfaciles.Entidades.Producto
 import mx.itson.edu.prestamosfaciles.Entidades.Tarjeta
 import mx.itson.edu.prestamosfaciles.Entidades.User
 import mx.itson.edu.prestamosfaciles.R
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
-
-
 class MisTarjetasActivity : AppCompatActivity() {
 
     private val userRef = FirebaseFirestore.getInstance().collection("usuarios")
@@ -97,7 +92,6 @@ class MisTarjetasActivity : AppCompatActivity() {
             true
         }
     }
-
     private fun actualizarTarjeta(tarjeta: Tarjeta) {
         var intent = Intent(this, AgregarTarjetaActivity::class.java)
         val usuario = bundle?.getString("id")
@@ -105,7 +99,6 @@ class MisTarjetasActivity : AppCompatActivity() {
         intent.putExtra("id",usuario)
         startActivity(intent)
     }
-
     private fun eliminarTarjeta(tarjeta: Tarjeta){
 
         val usuarioId = bundle?.getString("id") ?: return
@@ -166,7 +159,6 @@ class MisTarjetasActivity : AppCompatActivity() {
                 Log.e(TAG, "Error al obtener el usuario: $exception")
             }
     }
-
     fun cargarTarjetas(){
         var producto: Producto? = null
         try{
@@ -217,11 +209,7 @@ class MisTarjetasActivity : AppCompatActivity() {
         }.addOnFailureListener { exception ->
             // Manejar el error aquí
         }
-
-
-
     }
-
     class TarjetaAdapter : BaseAdapter{
         var tarjetas = ArrayList<Tarjeta>()
         var context: Context? = null
@@ -246,8 +234,6 @@ class MisTarjetasActivity : AppCompatActivity() {
         override fun getItemId(position: Int): Long {
             return position.toLong()
         }
-
-
         @SuppressLint("MissingInflatedId")
         override fun getView(position: Int, converView: View?, parent: ViewGroup?): View {
             var tarjeta = tarjetas[position]
@@ -273,8 +259,6 @@ class MisTarjetasActivity : AppCompatActivity() {
             return vista
         }
     }
-
-
     fun btnMiPerfil(view: View){
         var intent: Intent = Intent(this, CuentaActivity::class.java)
         startActivity(intent)

@@ -25,12 +25,10 @@ class MainActivity : AppCompatActivity() {
         val animacion1 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_arriba)
         val logoImageView = findViewById<ImageView>(R.id.logo)
         logoImageView.startAnimation(animacion1)
-
         Handler().postDelayed({
             val intent = Intent(this, InicioActivity::class.java)
             startActivity(intent)
             finish()
-        }, 2500) // 4000 milisegundos = 4 segundos
-
+        }, 4000) // 4000 milisegundos = 4 segundos
     }
 }
