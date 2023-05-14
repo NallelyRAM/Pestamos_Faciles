@@ -260,8 +260,6 @@ class DatosPersonalesActivity : AppCompatActivity() {
             null
         }
     }
-
-
     fun stringToTimestamp(dateString: String): Timestamp? {
         val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         val date = formatter.parse(dateString)
@@ -275,15 +273,6 @@ class DatosPersonalesActivity : AppCompatActivity() {
         val latStr = "${kotlin.math.abs(latitude)}° ${if (latitude >= 0) "N" else "S"}"
         val lonStr = "${kotlin.math.abs(longitude)}° ${if (longitude >= 0) "E" else "W"}"
         return "[$latStr, $lonStr]"
-    }
-
-    private fun stringToGeoPoint(s: String): GeoPoint {
-        val regex = Regex("""\[(\d+(?:\.\d+)?)° ([NS]), (\d+(?:\.\d+)?)° ([EW])\]""")
-        val matchResult = regex.find(s) ?: throw IllegalArgumentException("Invalid format")
-        val (latStr, latDir, lonStr, lonDir) = matchResult.destructured
-        val lat = latStr.toDouble() * if (latDir == "N") 1 else -1
-        val lon = lonStr.toDouble() * if (lonDir == "E") 1 else -1
-        return GeoPoint(lat, lon)
     }
 
     fun secondsToDate(seconds: Long): String {

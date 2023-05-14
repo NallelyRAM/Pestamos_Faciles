@@ -1,22 +1,32 @@
 package mx.itson.edu.prestamosfaciles.Actividades
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.google.firebase.firestore.FirebaseFirestore
 import mx.itson.edu.prestamosfaciles.Entidades.Producto
+import mx.itson.edu.prestamosfaciles.Entidades.Renta
 import mx.itson.edu.prestamosfaciles.Entidades.Tarjeta
+import mx.itson.edu.prestamosfaciles.Entidades.User
 import mx.itson.edu.prestamosfaciles.R
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PagoActivity : AppCompatActivity() {
 
-    var IVA: Double = 0.16
+    private var IVA: Double = 0.16
+
+    var producto: Producto = Producto()
+    var idUsuario: String = ""
+    var usuario: User = User()
+    var tarjeta: Tarjeta = Tarjeta()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,10 +46,11 @@ class PagoActivity : AppCompatActivity() {
         val btn_back: Button = findViewById(R.id.btn_back)
 
         val bundle = intent.extras
-
+        var total: Double = 0.0
         if(bundle != null){
-            val producto = intent.getSerializableExtra("producto") as Producto
-            val tarjeta = intent.getSerializableExtra("tarjeta") as Tarjeta
+            producto = intent.getSerializableExtra("producto") as Producto
+            tarjeta = intent.getSerializableExtra("tarjeta") as Tarjeta
+            idUsuario = bundle.getString("id").toString()
 
             var subtotal = producto.precio
             var numeroTarjeta = tarjeta.numTarjeta
@@ -49,7 +60,7 @@ class PagoActivity : AppCompatActivity() {
             var emisor = tarjeta.emisor
 
             var IVA_actual = subtotal * IVA
-            var total = subtotal + IVA_actual
+            total = subtotal + IVA_actual
 
             var iv_producto: ImageView = findViewById(R.id.imagen_producto)
 
@@ -66,17 +77,50 @@ class PagoActivity : AppCompatActivity() {
             Glide.with(this)
                 .load(producto.imagen)
                 .into(iv_producto)
-
-
         }
 
         btn_pagar.setOnClickListener{
-            Toast.makeText(this, "Gracias por su compra! :D", Toast.LENGTH_SHORT).show()
-            var intent: Intent = Intent(this, PrincipalActivity::class.java)
-            startActivity(intent)
+            val userRef = FirebaseFirestore.getInstance().collection("usuarios")
+            val rentasRef = FirebaseFirestore.getInstance().collection("rentas")
+
+            userRef.whereEqualTo("id", idUsuario)
+                .get()
+                .addOnSuccessListener { querySnapshot ->
+                    for (document in querySnapshot.documents) {
+                        val usuario = document.toObject(User::class.java)
+
+                        val renta = Renta(
+                            usuario = usuario!!,
+                            producto = producto!!,
+                            tarjeta = tarjeta,
+                            totalRenta = total
+                        )
+
+                        rentasRef.add(renta).addOnCompleteListener{
+                            Toast.makeText(this, "Gracias por su compra! :D", Toast.LENGTH_SHORT).show()
+                            var intent = Intent(this, InicioActivity::class.java)
+                            intent.putExtra("id",idUsuario)
+                            startActivity(intent)
+                        }
+                    }
+                }
+                .addOnFailureListener { e ->
+                    Log.e(ContentValues.TAG, "Error al obtener usuarios: $e")
+                }
+
+
+
+
         }
 
         btn_back.setOnClickListener { finish() }
+    }
 
+
+    fun obtenerUsuarioPorId(id: String): User?{
+        var usuario: User? = null
+
+
+        return usuario
     }
 }

@@ -10,7 +10,6 @@ data class User(
     var correo: String? = null,
     var telefono: String? = "",
     var fechaNacimiento: Timestamp? = null,
-    //var ubicacion: GeoPoint? = GeoPoint(0.0, 0.0),
     var ubicacion: String? = "",
     var tarjetas: ArrayList<Tarjeta> = arrayListOf()
 ) {

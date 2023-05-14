@@ -17,6 +17,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import mx.itson.edu.prestamosfaciles.Entidades.Producto
+import mx.itson.edu.prestamosfaciles.Entidades.Renta
 import mx.itson.edu.prestamosfaciles.R
 import java.util.*
 
