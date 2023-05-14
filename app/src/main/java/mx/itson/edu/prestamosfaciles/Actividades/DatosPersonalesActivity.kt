@@ -197,6 +197,7 @@ class DatosPersonalesActivity : AppCompatActivity() {
         try{
             val datee = fecha.parse(fechaNacimiento.text.toString())
         }catch(e: Exception){
+            Toast.makeText(this, "Selecciona una fecha válida!", Toast.LENGTH_LONG).show()
             return false
         }
 
