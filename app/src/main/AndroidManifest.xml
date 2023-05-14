@@ -14,8 +14,15 @@
         android:theme="@style/Theme.PrestamosFaciles"
         tools:targetApi="31">
         <activity
+            android:name=".Actividades.MisRentasActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme"
+            />
+        <activity
             android:name=".Actividades.AgregarTarjetaActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme"
+            />
         <activity
             android:name=".Actividades.AgregarProductoActivity"
             android:exported="false"

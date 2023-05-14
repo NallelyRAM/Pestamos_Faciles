@@ -15,7 +15,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import mx.itson.edu.prestamosfaciles.Entidades.Producto
-import mx.itson.edu.prestamosfaciles.Entidades.Tarjeta
 import mx.itson.edu.prestamosfaciles.R
 
 class MisPrestamosActivity : AppCompatActivity() {
@@ -58,21 +57,23 @@ class MisPrestamosActivity : AppCompatActivity() {
 
         gridview.onItemLongClickListener = AdapterView.OnItemLongClickListener { parent, view, position, id ->
 
-            // Obtenemos la tarjeta seleccionada por el usuario
+            // Obtenemos el producto seleccionado por el usuario
             val selectedItem = parent.getItemAtPosition(position) as Producto
-
-            //Log.e(ContentValues.TAG, "ITEM SELECCIONADO CLASE::::::::::::::${selectedItem.javaClass}")
 
             // Crea un diálogo con las opciones de acción
             val dialog = AlertDialog.Builder(this)
                 .setTitle("¿Qué deseas hacer?")
-                .setItems(arrayOf("Actualizar", "Eliminar")) { _, which ->
+                .setItems(arrayOf("Ver usuarios que me estan rentando","Actualizar", "Eliminar")) { _, which ->
                     when (which) {
                         0 -> {
+                            // Obtenemos a todos los usuarios que nos estan rentando
+                            obtenerUsuariosQueMeEstanRentando(selectedItem)
+                        }
+                        1 -> {
                             // Actualizamos producto
                             actualizarProducto(selectedItem)
                         }
-                        1 -> {
+                        2 -> {
                             // Eliminamos producto
                             eliminarProducto(selectedItem)
                         }
@@ -88,6 +89,9 @@ class MisPrestamosActivity : AppCompatActivity() {
         }
 
         btn_back.setOnClickListener { finish() }
+    }
+
+    private fun obtenerUsuariosQueMeEstanRentando(producto: Producto){
 
     }
 
