@@ -46,7 +46,6 @@ class DatosPersonalesActivity : AppCompatActivity() {
         val tv_telefono: TextView = findViewById(R.id.tv_telefono)
         val tv_correo: TextView = findViewById(R.id.tv_Correo)
         val sp_ubicacion: Spinner = findViewById(R.id.sp_categoria_colonia)
-        val btn_agregarDatos: Button = findViewById(R.id.btn_inicioFinalizar)
 
         val btnBack: Button = findViewById(R.id.btn_back)
 
@@ -193,8 +192,13 @@ class DatosPersonalesActivity : AppCompatActivity() {
         val cal = Calendar.getInstance()
         val currentDate = cal.time
         val fecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        val datee = fecha.parse(fechaNacimiento.text.toString())
+        val datee = null
 
+        try{
+            val datee = fecha.parse(fechaNacimiento.text.toString())
+        }catch(e: Exception){
+            return false
+        }
 
         if(ubicacion=="Seleccione una colonia"){//AQUIIIIIIII
             Toast.makeText(this, "Selecciona una colonia", Toast.LENGTH_LONG).show()
