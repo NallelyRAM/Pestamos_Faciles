@@ -192,16 +192,16 @@ class DatosPersonalesActivity : AppCompatActivity() {
         val cal = Calendar.getInstance()
         val currentDate = cal.time
         val fecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        val datee = null
+        var datee: Date
 
         try{
-            val datee = fecha.parse(fechaNacimiento.text.toString())
+            datee = fecha.parse(fechaNacimiento.text.toString())
         }catch(e: Exception){
             Toast.makeText(this, "Selecciona una fecha válida!", Toast.LENGTH_LONG).show()
             return false
         }
 
-        if(ubicacion=="Seleccione una colonia"){//AQUIIIIIIII
+        if(ubicacion=="Seleccione una colonia" || ubicacion!!.isEmpty()){//AQUIIIIIIII
             Toast.makeText(this, "Selecciona una colonia", Toast.LENGTH_LONG).show()
             return false
         }
@@ -210,10 +210,11 @@ class DatosPersonalesActivity : AppCompatActivity() {
             Toast.makeText(this, "Favor de ingresar los 10 digitos", Toast.LENGTH_LONG).show()
             return false
         }
+        val fechaMinima = Calendar.getInstance()
+        fechaMinima.add(Calendar.YEAR, -16)
 
-
-        if (datee?.compareTo(currentDate) == 1) {
-            Toast.makeText(this, "No puedes ingresar una fecha futura", Toast.LENGTH_LONG).show()
+        if (datee.after(fechaMinima.time)) {
+            Toast.makeText(this, "Tienes que ser mayor de 16 años", Toast.LENGTH_LONG).show()
             return false
         }
 
