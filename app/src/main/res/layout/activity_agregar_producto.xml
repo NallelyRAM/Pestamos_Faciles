@@ -72,7 +72,7 @@
             android:fontFamily="@font/avenir_roman"
             android:hint="@string/nombre_producto"
             android:padding="10dp"
-            android:maxLength="20"
+            android:maxLength="50"
             android:inputType="textCapSentences"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "/>
 
@@ -88,7 +88,7 @@
             android:gravity="start"
             android:hint="@string/descripcion_articulo"
             android:padding="10dp"
-            android:maxLength="50"
+            android:maxLength="200"
             android:inputType="textCapSentences"/>
 
         <EditText
