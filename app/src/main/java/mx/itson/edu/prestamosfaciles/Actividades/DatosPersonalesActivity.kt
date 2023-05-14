@@ -206,7 +206,7 @@ class DatosPersonalesActivity : AppCompatActivity() {
             return false
         }
 
-        if(numeroTelefono.text.toString().length <= 9 && numeroTelefono.text.toString().length >=1){
+        if(numeroTelefono.text.toString().length in 1..9){
             Toast.makeText(this, "Favor de ingresar los 10 digitos", Toast.LENGTH_LONG).show()
             return false
         }

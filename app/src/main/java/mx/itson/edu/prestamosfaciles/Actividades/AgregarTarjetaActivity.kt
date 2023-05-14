@@ -49,7 +49,6 @@ class AgregarTarjetaActivity : AppCompatActivity() {
 
 
         btn_aceptar.setOnClickListener {
-            btn_aceptar.isEnabled = false
             guardarTarjetaAUsuario(bundle)
         }
 
@@ -153,6 +152,8 @@ class AgregarTarjetaActivity : AppCompatActivity() {
                         tarjetaExistente.apellidoTitular = et_apellidosPropietario.text.toString()
 
                         if (validaciones(tarjetaExistente)){
+                            val btn_aceptar: Button = findViewById(R.id.btn_aceptar)
+                            btn_aceptar.isEnabled = false
                             val usuarioRef = document.reference
                             usuarioRef.update(usuario.toMap())
                                 .addOnSuccessListener {
