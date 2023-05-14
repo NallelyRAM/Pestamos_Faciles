@@ -126,8 +126,6 @@ class MisRentasActivity : AppCompatActivity() {
         }
 
     }
-
-
     private fun cargarMisRentas(id: String?){
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
         swipeRefreshLayout.isRefreshing = true

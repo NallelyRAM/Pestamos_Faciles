@@ -78,6 +78,7 @@ class PagoActivity : AppCompatActivity() {
         }
 
         btn_pagar.setOnClickListener{
+            btn_pagar.isEnabled = false
             val userRef = FirebaseFirestore.getInstance().collection("usuarios")
             val rentasRef = FirebaseFirestore.getInstance().collection("rentas")
 

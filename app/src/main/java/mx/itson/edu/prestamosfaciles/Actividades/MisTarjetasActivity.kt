@@ -265,12 +265,4 @@ class MisTarjetasActivity : AppCompatActivity() {
             return vista
         }
     }
-    fun btnMiPerfil(view: View){
-        var intent: Intent = Intent(this, CuentaActivity::class.java)
-        startActivity(intent)
-    }
-    fun btnHome(view: View){
-        var intent: Intent = Intent(this, PrincipalActivity::class.java)
-        startActivity(intent)
-    }
 }

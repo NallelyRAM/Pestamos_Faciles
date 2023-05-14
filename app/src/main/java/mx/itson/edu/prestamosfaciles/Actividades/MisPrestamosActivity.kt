@@ -41,16 +41,12 @@ class MisPrestamosActivity : AppCompatActivity() {
             correo = bundle.getString("email")
             idUsuario = bundle.getString("id")
         }
-        cargarMisPrestamos(idUsuario)
 
         swipeRefreshLayout.setOnRefreshListener {
             // Llamamos a la función que se encarga de actualizar los datos
-            arrayMisProductos.clear()
             cargarMisPrestamos(idUsuario)
-            swipeRefreshLayout.isRefreshing = false
         }
 
-        swipeRefreshLayout.isRefreshing = false
 
         val gridview: GridView = findViewById(R.id.id_gridMisPrestamos)
 
@@ -100,6 +96,11 @@ class MisPrestamosActivity : AppCompatActivity() {
             ).show()
         }
     }
+    override fun onResume() {
+        super.onResume()
+        cargarMisPrestamos(idUsuario)
+    }
+
     private fun actualizarProducto(producto: Producto){
         var intent = Intent(this, AgregarProductoActivity::class.java)
         intent.putExtra("producto",producto)
@@ -137,8 +138,8 @@ class MisPrestamosActivity : AppCompatActivity() {
                                                 "",
                                         Toast.LENGTH_LONG
                                     ).show()
-                                    break
                                     flag = false
+                                    break
                                 }
 
                                 if (flag) {
@@ -157,6 +158,7 @@ class MisPrestamosActivity : AppCompatActivity() {
                                                 "Producto eliminado correctamente",
                                                 Toast.LENGTH_SHORT
                                             ).show()
+                                            cargarMisPrestamos(idUsuario)
                                         }.addOnFailureListener {
                                             Toast.makeText(
                                                 this,
@@ -180,6 +182,7 @@ class MisPrestamosActivity : AppCompatActivity() {
     }
 
     private fun cargarMisPrestamos(id: String?){
+        arrayMisProductos.clear()
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
         swipeRefreshLayout.isRefreshing = true
         productoRef
@@ -193,7 +196,7 @@ class MisPrestamosActivity : AppCompatActivity() {
                 val adapter = PrincipalActivity.ProductoAdapter(arrayMisProductos, this, intent.extras,null)
                 val gridview: GridView = findViewById(R.id.id_gridMisPrestamos)
                 gridview.adapter = adapter
-
+                swipeRefreshLayout.isRefreshing = false
             }
             .addOnFailureListener { exception ->
                 Log.e(TAG, "Error al buscar productos por nombre: $exception")

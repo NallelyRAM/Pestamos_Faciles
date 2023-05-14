@@ -33,18 +33,13 @@ class PrincipalActivity : AppCompatActivity() {
         val btnAgregarProducto = findViewById<ImageView>(R.id.iv_navMenu_Principal_mas)
         btnAgregarProducto.setOnClickListener{goScreenAddProducts()}
 
-        cargarProductos()
-
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
 
         swipeRefreshLayout.setOnRefreshListener {
             // Llamamos a la función que se encarga de actualizar los datos
-            productos.clear()
             cargarProductos()
-            swipeRefreshLayout.isRefreshing = false
-        }
-        swipeRefreshLayout.isRefreshing = false
 
+        }
 
         val et_buscar: EditText = findViewById(R.id.et_buscar)
 
@@ -86,6 +81,7 @@ class PrincipalActivity : AppCompatActivity() {
     }
 
     fun cargarProductos(){
+        productos.clear()
         // Hacer la consulta de Firestore
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
         swipeRefreshLayout.isRefreshing = true
@@ -114,8 +110,10 @@ class PrincipalActivity : AppCompatActivity() {
                     idVendedor
                 ))
 
-                agregarProductosCatalogo(productos)
+
             }
+            agregarProductosCatalogo(productos)
+            swipeRefreshLayout.isRefreshing = false
             adapter?.notifyDataSetChanged()
 
         }.addOnFailureListener { e ->
@@ -123,6 +121,11 @@ class PrincipalActivity : AppCompatActivity() {
             Log.e("TAG", "Error al obtener los productos", e)
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        cargarProductos()
     }
     private fun agregarProductosCatalogo(productos: ArrayList<Producto>){
         adapter = ProductoAdapter(productos, this,intent.extras,1)

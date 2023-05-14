@@ -48,7 +48,10 @@ class AgregarTarjetaActivity : AppCompatActivity() {
         val et_numeroTarjeta: EditText = findViewById(R.id.et_numero_tarjeta)
 
 
-        btn_aceptar.setOnClickListener { guardarTarjetaAUsuario(bundle) }
+        btn_aceptar.setOnClickListener {
+            btn_aceptar.isEnabled = false
+            guardarTarjetaAUsuario(bundle)
+        }
 
         btn_back.setOnClickListener { finish() }
 
