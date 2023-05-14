@@ -96,18 +96,6 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/tv_misHistorialDeRentadores"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/avenir_roman"
-            android:text="Historial de Rentadores"
-            android:textColor="@color/gray"
-            android:textSize="18sp" />
-
-
-        <TextView
             android:id="@+id/tv_misTarjetas"
             android:layout_width="190dp"
             android:layout_height="50dp"
@@ -119,6 +107,16 @@
             android:textColor="@color/gray"
             android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/tv_misHistorialDeRentadores"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/avenir_roman"
+            android:text="Historial de Rentadores"
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_privacidad"
