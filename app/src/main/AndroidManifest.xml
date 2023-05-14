@@ -14,14 +14,21 @@
         android:theme="@style/Theme.PrestamosFaciles"
         tools:targetApi="31">
         <activity
-            android:name=".detalle_rentador"
+            android:name=".Actividades.MisRentasActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme"
+            />
+        <activity
+            android:name=".Actividades.detalle_rentador"
             android:exported="false" />
         <activity
-            android:name=".RentadoresActivity"
-            android:exported="false" />
+            android:name=".Actividades.RentadoresActivity"
+            android:exported="false"/>
         <activity
             android:name=".Actividades.AgregarTarjetaActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme"
+            />
         <activity
             android:name=".Actividades.AgregarProductoActivity"
             android:exported="false"

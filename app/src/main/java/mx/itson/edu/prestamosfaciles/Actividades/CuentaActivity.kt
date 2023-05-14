@@ -70,7 +70,11 @@ class CuentaActivity : AppCompatActivity() {
         }
 
         btnMisRentas.setOnClickListener{
-
+            var intent = Intent(this, MisRentasActivity::class.java)
+            intent.putExtra("id", id)
+            intent.putExtra("name", name)
+            intent.putExtra("email", correo)
+            startActivity(intent)
         }
 
         btnMisTarjetas.setOnClickListener{

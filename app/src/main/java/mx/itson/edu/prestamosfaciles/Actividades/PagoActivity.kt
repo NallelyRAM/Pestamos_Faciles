@@ -107,20 +107,7 @@ class PagoActivity : AppCompatActivity() {
                 .addOnFailureListener { e ->
                     Log.e(ContentValues.TAG, "Error al obtener usuarios: $e")
                 }
-
-
-
-
         }
-
         btn_back.setOnClickListener { finish() }
-    }
-
-
-    fun obtenerUsuarioPorId(id: String): User?{
-        var usuario: User? = null
-
-
-        return usuario
     }
 }
