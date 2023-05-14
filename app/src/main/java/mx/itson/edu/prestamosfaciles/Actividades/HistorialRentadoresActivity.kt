@@ -126,6 +126,7 @@ class HistorialRentadoresActivity : AppCompatActivity() {
             layout.setOnClickListener{
                 val intento = Intent(context, RentadorDetallesActivity::class.java)
                 intento.putExtra("idRenta", renta.id)
+                intento.putExtra("seleccion",1)
                 context!!.startActivity(intento)
             }
             return vista

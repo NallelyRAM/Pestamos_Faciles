@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linearLayoutContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -240,9 +241,25 @@
                 android:hint="0000.00"
                 android:textSize="18sp" />
 
+
+
         </LinearLayout>
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_productoEntregado"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/round_button"
+        android:text="Marcar como \nEntregado"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        android:fontFamily="@font/avenir_black"
+        android:textColor="@color/white"/>
 
 </LinearLayout>
