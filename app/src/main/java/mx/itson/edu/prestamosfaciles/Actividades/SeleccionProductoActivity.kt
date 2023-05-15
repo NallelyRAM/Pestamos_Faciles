@@ -23,6 +23,7 @@ class SeleccionProductoActivity : AppCompatActivity() {
         val tv_precio: TextView = findViewById(R.id.tv_precio_seleccionProducto)
         val tv_descripcion: TextView = findViewById(R.id.tv_descripcion_seleccion_producto)
         val btn_back: Button = findViewById(R.id.btn_back)
+        val tv_ubicacion: TextView = findViewById(R.id.tv_ubicacion)
         var btnDetalles: Button = findViewById(R.id.btn_detalles)
 
         val bundle = intent.extras
@@ -36,7 +37,7 @@ class SeleccionProductoActivity : AppCompatActivity() {
             tv_nombreProducto.text = producto.nombre
             tv_precio.text = "$${producto.precio}"
             tv_descripcion.text = producto.descripcion
-
+            tv_ubicacion.text = "Ubicado en "+ producto.ubicacion
 
             val seleccion = bundle.getString("seleccion")
 

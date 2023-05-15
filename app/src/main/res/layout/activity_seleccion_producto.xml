@@ -96,14 +96,23 @@
         android:fontFamily="@font/avenir_roman"
         android:textColor="@color/gray"/>
 
-
+    <TextView
+        android:id="@+id/tv_ubicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="Ubicacion"
+        android:textSize="18sp"
+        android:fontFamily="@font/avenir_roman"
+        android:textColor="@color/gray"/>
 
     <Button
         android:id="@+id/btn_detalles"
         android:layout_width="250dp"
         android:layout_height="49dp"
         android:layout_gravity="center"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/round_button"
         android:text="@string/detalles"
         android:fontFamily="@font/avenir_roman"
