@@ -189,8 +189,6 @@ class DatosPersonalesActivity : AppCompatActivity() {
         numeroTelefono.length()==10
 
         val fechaNacimiento : EditText = findViewById(R.id.tv_misDatosFechaNacimiento)
-        val cal = Calendar.getInstance()
-        val currentDate = cal.time
         val fecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         var datee: Date
 
@@ -257,21 +255,16 @@ class DatosPersonalesActivity : AppCompatActivity() {
         val date = formatter.parse(dateString)
         val calendar = Calendar.getInstance().apply {
             time = date
-            add(Calendar.DAY_OF_MONTH, +1)
+            add(Calendar.DAY_OF_MONTH, 0)
         }
         return date?.let { Timestamp(calendar.timeInMillis / 1000, 0) }
-    }
-    private fun formatGeoPoint(latitude: Double, longitude: Double): String {
-        val latStr = "${kotlin.math.abs(latitude)}° ${if (latitude >= 0) "N" else "S"}"
-        val lonStr = "${kotlin.math.abs(longitude)}° ${if (longitude >= 0) "E" else "W"}"
-        return "[$latStr, $lonStr]"
     }
 
     fun secondsToDate(seconds: Long): String {
         val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         val cal = Calendar.getInstance()
         cal.timeInMillis = seconds * 1000 // Multiplicamos por 1000 para convertir segundos a milisegundos
-        cal.add(Calendar.DAY_OF_MONTH, -1) // Restamos un día
+        cal.add(Calendar.DAY_OF_MONTH, 0)
         val date = cal.time
         return formatter.format(date)
     }
